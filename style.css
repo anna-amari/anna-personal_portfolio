@@ -5,6 +5,32 @@ body {
   padding: 20px;
   transition: background-color 0.3s, color 0.3s;
 }
+
+/* Vertical Navigation */
+.main-nav ul {
+  list-style: none;        /* remove bullets */
+  padding: 200;              /* remove default padding */
+  margin: 20;               /* remove default margin */
+  display: flex;
+  flex-direction: row;  /* stack items vertically */
+  gap: 15px;               /* space between links */
+  padding-left: 850px;
+}
+
+.main-nav ul li a {
+  text-decoration: underline;   /* remove underline */
+  color: white;            /* white text */
+  font-size: 18px;         /* adjust font size */
+  padding: 8px 12px;       /* add some padding */s
+  transition: color 0.3s;
+    
+}
+
+.main-nav ul li a:hover {
+  color: #ebeae6;          /* optional hover color */
+}
+
+
 .hero {
   padding: 50px;
 }
