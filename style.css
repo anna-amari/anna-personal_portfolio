@@ -1,0 +1,348 @@
+body {
+  background-color: #0d0d0d;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.hero {
+  padding: 50px;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px; 
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  flex: 10;
+  padding-right: 220px;
+  padding-right: 120px;
+}
+
+.hero-image img {
+ width: 250px;        /* square size */
+  height: 250px;       /* same as width */
+  object-fit: cover;   /* crop instead of stretch */
+  border-radius: 10px; 
+}
+
+.hero, .skills, .portfolio {
+  margin-bottom: 40px;
+}
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;                 /* space between icon & text */
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #f8f7f8; /* your preferred color */
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.cv-button:hover {
+  background-color: #ececec; /* hover effect */
+}
+
+.cv-icon {
+  width: 20px;
+  height: 20px;
+}
+
+h1, h2 {
+  color: rgb(185, 183, 183);
+}
+
+.icons span, .tags span {
+  background: #1f1f1f;
+  padding: 6px 12px;
+  margin: 4px;
+  display: inline-block;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.project img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.social-icons {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.social-icons a {
+  color: white;
+  margin-left: 15px;
+  font-size: 1.5em;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #00bfff; /* Light blue on hover */
+}
+
+body.light-mode {
+  background-color: #f9f9f9;
+  color: #222;
+}
+
+body.light-mode .social-icons a {
+  color: #222;
+}
+
+body.light-mode .icons span,
+body.light-mode .tags span {
+  background: #e0e0e0;
+  color: #000;
+}
+
+/* Theme toggle button */
+#toggle-theme {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+body.light-mode #toggle-theme {
+  color: #222;
+}
+
+.portfolio-carousel {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Hide scroll bar */
+}
+
+.project {
+  flex: 0 0 30%;
+  min-width: 30%;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  scroll-snap-align: start;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.project img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  width: 100%;         
+  height: auto; 
+}
+
+body.light-mode .project {
+  color: #ffffff;
+}
+
+.tags span {
+  background-color: #333;
+  padding: 4px 8px;
+  margin: 3px;
+  border-radius: 6px;
+  font-size: 0.8em;
+  display: inline-block;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.badge {
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;   /* rectangle width */
+  height: 120px;  /* rectangle height */
+}
+
+.badge img {
+  width: 60px;        /* good size for icons */
+  height: 60px;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+.badge:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+ body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+    }
+
+    .edu-cert-section {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Titles (Education | Certification) */
+    .tab-header {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-bottom: 20px;
+    }
+
+    .tab-header button {
+      background: none;
+      border: none;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #ccc;
+      padding: 10px 20px;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+    }
+
+    .tab-header button.active {
+      color: #e6b9e6;
+      border-bottom: 3px solid #e6b9e6;
+    }
+
+    /* Tab content */
+    .tab-content {
+      display: none;
+      width: 100%;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Education cards */
+    .edu-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .edu-card:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    .edu-image img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    .edu-text {
+      flex: 1;
+    }
+
+    .edu-card h3 {
+      margin: 0 0 10px;
+      color: #fff;
+    }
+
+    .edu-card p {
+      margin: 5px 0;
+      color: #ccc;
+    }
+
+.cert-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* space between rows */
+  align-items: center;
+}
+
+.cert-row {
+  display: flex;
+  gap: 20px; /* space between two certificates */
+  justify-content: center; /* center the row */
+}
+
+.cert-gallery img {
+  width: 450px;   /* certificate size */
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.cert-gallery img:hover {
+  transform: scale(1.05);
+}
+
+.center-cert {
+  display: block;
+  margin: 0 auto; /* center the third one */
+}
+
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+/* Light mode version */
+body.light-mode .badge {
+  background: #e0e0e0;
+  color: #000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
