@@ -6,33 +6,6 @@ $pageTitle = "About Me | Anna Mari Portfolio";
 
 // Example data
 $bio = "Hi! I'm Anna Mari, a passionate web developer with experience in PHP, HTML, CSS, JavaScript, and MySQL. I enjoy creating functional and aesthetic web applications that provide great user experiences.";
-$skills = [
-    "HTML & CSS" => 90,
-    "JavaScript" => 80,
-    "PHP & MySQL" => 85,
-    "React.js" => 70,
-    "UI/UX Design" => 75
-];
-$education = [
-    [
-        "school" => "Camarines Sur Polytechnic Colleges",
-        "course" => "Bachelor of Science in Information Technology",
-        "gwa" => "1.69",
-        "link" => "https://cspc.edu.ph/"
-    ],
-    [
-        "school" => "ACLC College of Iriga",
-        "course" => "Senior High - ABM Strand",
-        "gwa" => "High Honors",
-        "link" => "https://www.facebook.com/ACLCCollegeIRIGA/"
-    ],
-    [
-        "school" => "University of Northeastern Philippines",
-        "course" => "Junior High School",
-        "gwa" => "With Honors [Grade 7 and 8]",
-        "link" => "https://www.unep.edu.ph/"
-    ]
-];
 ?>
 
 <!DOCTYPE html>
@@ -42,129 +15,185 @@ $education = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo $pageTitle; ?></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
   <style>
-    /* ---------------- About Section CSS ---------------- */
     body {
-        background: #1a1a1a;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #ffffff; /* White background */
+      color: #333333;   /* Dark gray text for readability */
+      line-height: 1.6;
     }
 
     /* Navigation */
+    nav {
+      background-color: #ffffff; /* White background for nav */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    }
+
+    nav a {
+      color: #555555; /* Darker gray for nav links */
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #e89cae; /* Soft pink on hover */
+    }
+
+    .main-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background: #ffffff; /* White background */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for the sticky nav */
+    }
+
+    .main-nav .logo-container {
+      display: flex;
+      gap: 20px; /* Space between logo and text */
+    }
+
+    .main-nav .logo {
+      height: 100px; /* Adjust logo size as needed */
+      width: 100px;
+      object-fit: contain;
+      float:left;
+    }
+
+    .main-nav h2 {
+      color: #e89cae; /* Soft pink for the name */
+      font-size: 24px;
+      margin: 0;
+    }
+
     .main-nav ul {
       list-style: none;
-      padding: 0;
       margin: 0;
+      padding: 0;
       display: flex;
-      flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
 
     .main-nav ul li a {
+      color: #190909ff; /* Dark gray for nav links */
+      font-size: 16px;
+      font-weight: 500;
       text-decoration: none;
-      color: #fff;
-      font-size: 18px;
-      padding: 8px 12px;
+      transition: color 0.3s;
+      position: relative;
     }
 
-    .main-nav ul li a.active {
-      color: #FFD700;
+    .main-nav ul li a::after {
+      content: "";
+      display: block;
+      width: 0%;
+      height: 2px;
+      transition: width 0.3s;
+      margin-top: 4px;
+    }
+
+    .main-nav ul li a:hover::after,
+    .main-nav ul li a.active::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 10%;
+      gap: 50px;
+      min-height: 90vh;
+      background-color: #ffffff; /* White background */
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: #e89cae; /* Soft pink for the heading */
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      max-width: 550px;
+      margin-bottom: 30px;
+      color: #151414ff; /* Slightly lighter gray for body text */
+    }
+
+    .hero-text a {
+      display: inline-block; /* Added display property for correct padding */
+      padding: 12px 25px;
+      background: #e89cae; /* Soft pink button */
+      color: #ffffff; /* White text for button */
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .hero-text a:hover {
+      background: #fcc7d1; /* Lighter pink on hover */
+    }
+
+    .hero img {
+      width: 320px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1); /* Lighter shadow for elegant look */
+      object-fit: cover;
     }
 
     /* Social Icons */
     .social-icons {
+      margin-top: 20px;
       display: flex;
-      gap: 15px;
-      margin: 20px 0;
+      gap: 20px;
     }
 
     .social-icons a {
-      color: #fff;
-      font-size: 24px;
-      text-decoration: none;
-      transition: color 0.3s;
+      color: #0b0b0bff; /* Subtle gray for icons */
+      font-size: 22px;
+      transition: color 0.3s, transform 0.2s;
     }
 
     .social-icons a:hover {
-      color: #FFD700;
-    }
-
-    /* About Section */
-    .about-section {
-        padding: 50px 20px;
-    }
-
-    .about-profile {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
-    }
-
-    .profile-img {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    .bio h2 {
-        margin-bottom: 15px;
-    }
-
-    .about-skills ul, .about-education ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .about-skills li {
-        margin-bottom: 15px;
-    }
-
-    .skill-bar {
-        background: rgba(255,255,255,0.2);
-        border-radius: 12px;
-        height: 12px;
-        overflow: hidden;
-    }
-
-    .skill-fill {
-        height: 100%;
-        background: #FFD700;
-        border-radius: 12px;
-    }
-
-    .about-education li {
-        margin-bottom: 20px;
-    }
-
-    .about-education a {
-        color: #fff;
-        text-decoration: underline;
+      color: #e89cae; /* Soft pink on hover */
+      transform: translateY(-3px);
     }
 
     /* Responsive */
-    @media(max-width: 768px){
-        .about-profile {
-            flex-direction: column;
-            text-align: center;
-        }
+    @media(max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero img {
+        margin-top: 50px;
+      }
+      .main-nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 5%;
+      }
+      .main-nav .logo-container {
+        flex-direction: column; /* Stack logo and text vertically on small screens */
+        gap: 5px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Theme Toggle -->
-  <button id="toggle-theme" title="Toggle light/dark mode">
-    <i class="fas fa-moon"></i>
-  </button>
 
   <!-- Navigation -->
   <nav class="main-nav">
+    <div class="logo-container">
+      <img src="images/Projects/Logo/AnnaMari.png" alt="Anna Mari Logo" class="logo"> <!-- Added logo image -->
+    </div>
     <ul>
       <li><a href="index.html" <?php if(basename($_SERVER['PHP_SELF']) == 'index.html') echo 'class="active"'; ?>>Home</a></li>
       <li><a href="about.php" <?php if(basename($_SERVER['PHP_SELF']) == 'about.php') echo 'class="active"'; ?>>About</a></li>
@@ -174,49 +203,21 @@ $education = [
     </ul>
   </nav>
 
-  <!-- Social Icons -->
-  <div class="social-icons">
-    <a href="https://github.com/zaeuamari" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=annamarietaduran44@gmail.com&su=Portfolio Inquiry" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-  </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>About Me</h1>
+      <p><?php echo $bio; ?></p>
+      <a href="projects.php"> View My Work</a>
 
-  <!-- About Section -->
-  <section id="about" class="about-section">
-    <div class="about-profile">
-        <img src="images/profile.jpg" alt="Anna Mari Profile" class="profile-img">
-        <div class="bio">
-            <h2>About Me</h2>
-            <p><?php echo $bio; ?></p>
-        </div>
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="https://github.com/zaeuamari" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="mailto:annamarietaduran44@gmail.com?subject=Portfolio Inquiry" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
     </div>
-
-    <div class="about-skills">
-        <h2>Skills</h2>
-        <ul>
-            <?php foreach($skills as $skill => $percent): ?>
-                <li>
-                    <span><?php echo $skill; ?></span>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width: <?php echo $percent; ?>%;"></div>
-                    </div>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-
-    <div class="about-education">
-        <h2>Education</h2>
-        <ul>
-            <?php foreach($education as $edu): ?>
-                <li>
-                    <h3><a href="<?php echo $edu['link']; ?>" target="_blank"><?php echo $edu['school']; ?></a></h3>
-                    <p><i><?php echo $edu['course']; ?></i></p>
-                    <p><b><?php echo $edu['gwa']; ?></b></p>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
+    <img src="images/amari.jpeg" alt="Anna Mari Profile">
   </section>
 
 </body>

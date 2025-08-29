@@ -38,9 +38,12 @@
 
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-text">
-      <h1>Anna Mari</h1>
-      <h3 class="title-role">3rd Year I.T Student</h3>
+  <div class="hero-text">
+  <h1>Anna Mari</h1>
+  
+  <!-- Typing animation role -->
+  <h3 class="title-role"></h3>
+     
       <p>📍 Iriga City, Philippines</p>
       <p>
         I've been into coding since 18, building projects in Python, C++, 
@@ -257,6 +260,48 @@
   </section>
 
   <script>
+    // Typing Animation for Roles
+const roles = [
+  "3rd Year IT Student",
+  "Aspiring Software Engineer",
+  "Woman in Tech"
+];
+
+const roleElement = document.querySelector(".title-role");
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+  const currentRole = roles[roleIndex];
+
+  if (!isDeleting) {
+    // typing forward
+    roleElement.textContent = currentRole.substring(0, charIndex + 1);
+    charIndex++;
+
+    if (charIndex === currentRole.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 1500); // pause after full word
+      return;
+    }
+  } else {
+    // deleting
+    roleElement.textContent = currentRole.substring(0, charIndex - 1);
+    charIndex--;
+
+    if (charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length; // next role
+    }
+  }
+
+  const speed = isDeleting ? 80 : 120;
+  setTimeout(typeEffect, speed);
+}
+
+typeEffect();
+
     const tabBtns = document.querySelectorAll(".tab-btn");
     const contents = document.querySelectorAll(".tab-content");
 

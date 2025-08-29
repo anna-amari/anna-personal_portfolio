@@ -6,6 +6,21 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+.title-role {
+  font-size: 20px;
+  margin: 10px 0;
+  border-right: 2px solid #e6b9e6; /* pink cursor */
+  white-space: nowrap;
+  overflow: hidden;
+  width: fit-content;
+  animation: blink 0.7s step-end infinite;
+  color: #e6b9e6; /* pink text to match theme */
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
 /* Vertical Navigation */
 .main-nav ul {
   list-style: none;        /* remove bullets */
