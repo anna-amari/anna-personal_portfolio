@@ -22,6 +22,7 @@ $bio = "Hi! I'm Anna Mari, a passionate web developer with experience in PHP, HT
       background-color: #ffffff; /* White background */
       color: #333333;   /* Dark gray text for readability */
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     /* Navigation */
@@ -44,7 +45,7 @@ $bio = "Hi! I'm Anna Mari, a passionate web developer with experience in PHP, HT
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 10%;
+      padding: 5px 5%;
       background: #ffffff; /* White background */
       position: sticky;
       top: 0;
@@ -75,7 +76,7 @@ $bio = "Hi! I'm Anna Mari, a passionate web developer with experience in PHP, HT
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 20px;
+      gap: 40px;
     }
 
     .main-nav ul li a {
@@ -106,10 +107,11 @@ $bio = "Hi! I'm Anna Mari, a passionate web developer with experience in PHP, HT
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 80px 10%;
-      gap: 50px;
+      padding: 60px 10%;
+      gap: 5px;
       min-height: 90vh;
       background-color: #ffffff; /* White background */
+      min-height: calc(10vh - 90px);
     }
 
     .hero-text h1 {
