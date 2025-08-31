@@ -221,6 +221,7 @@ body.light-mode .project {
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 20px;
   justify-items: center;
+  margin: 5px;
 }
 
 .badge {
@@ -342,27 +343,22 @@ body.light-mode .project {
       margin: 5px 0;
       color: #ccc;
     }
-
 .cert-gallery {
   display: flex;
-  flex-direction: column;
-  gap: 20px; /* space between rows */
-  align-items: center;
-}
-
-.cert-row {
-  display: flex;
-  gap: 20px; /* space between two certificates */
-  justify-content: center; /* center the row */
+  flex-wrap: wrap; /* allow wrapping into rows */
+  gap: 20px; /* spacing between certificates */
+  justify-content: center; /* center all rows */
 }
 
 .cert-gallery img {
-  width: 450px;   /* certificate size */
+  width: 45%;   /* about half the container */
+  max-width: 500px; /* prevent too large on big screens */
   height: auto;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: transform 0.3s ease;
+  animation: fadeIn 0.6s ease both;
 }
 
 .cert-gallery img:hover {
@@ -373,8 +369,6 @@ body.light-mode .project {
   display: block;
   margin: 0 auto; /* center the third one */
 }
-
-
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
