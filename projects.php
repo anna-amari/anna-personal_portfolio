@@ -8,6 +8,7 @@ $pageTitle = "Projects | Anna Mari Portfolio";
   <meta charset="UTF-8">
   <title><?php echo $pageTitle; ?></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       background-color: #0d0d0dff;
@@ -150,6 +151,18 @@ $pageTitle = "Projects | Anna Mari Portfolio";
       gap: 10px;
     }
 
+  
+
+    /* Floating Animation */
+    @keyframes floaty {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
     /* Animations */
     @keyframes fadeInUp {
       0% {
@@ -187,83 +200,123 @@ $pageTitle = "Projects | Anna Mari Portfolio";
     <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
   </div>
 
-  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:10vh; text-align:center;">
-  <h3>Presentation and Defense of the Projects</h3>
-  <h4>Implementation of Practical Learnings</h4>
+ <div class="flex flex-col items-center justify-center text-center py-8">
+  <h3 class="text-2xl font-bold">Presentation and Defense of the Projects</h3>
+  <h4 class="text-lg text-gray-400">Implementation of Practical Learnings</h4>
 </div>
 
-   
-  <!-- Page Content -->
-  <main>
-    <!-- Project 1 -->
-    <div class="project-card">
-      <h2>Pizza Haus Ordering System</h2>
-      <h3>Programming Language: C++</h3>
-      <h3>Role: Leader</h3>
-      <p>Our first project that requires critical thinking skills and my comeback to the fluctuating grades.</p>
-      <img src="images/presentation/p1.jpg" alt="Pizza Haus Ordering System">
-    </div>
+<!-- Page Content -->
+<main class="grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
+  
 
-    <!-- Project 2 -->
-    <div class="project-card">
-      <h2>Engineering Jobs in I.T</h2>
-      <h3>App: Figma</h3>
-      <h3>Role: Collaborator</h3>
-      <p>This project helped us design and get used to UI/UX concepts, prototypes, and wireframes.</p>
-      <div class="grid-images">
-        <img src="images/Presentation/p2.png" alt="Engineering Jobs in IT - Screen 1">
-        <img src="images/Presentation/p3.png" alt="Engineering Jobs in IT - Screen 2">
-        <img src="images/Presentation/p4.png" alt="Engineering Jobs in IT - Screen 3">
-        <img src="images/Presentation/p5.jpeg" alt="Engineering Jobs in IT - Screen 4">
-      </div>
-    </div>
+  <div class="project-card bg-gray-900 p-6 rounded-xl shadow-lg">
+    <h2 class="text-xl font-bold mb-2">Pizza Haus Ordering System</h2>
+    <h3 class="text-pink-400">Programming Language: C++</h3>
+    <h3 class="text-gray-300">Role: Leader</h3>
+    <p class="mt-2 text-gray-400">
+      Our first project that requires critical thinking skills and my comeback to the fluctuating grades.
+    </p>
+   <img src="images/presentation/p1.jpg" 
+       alt="Pizza Haus Ordering System" 
+       class="max-w-full h-auto rounded-lg object-contain flex justify-center">
+</div> 
+  </div>
 
-    <!-- Project 3 -->
-    <div class="project-card">
-      <h2>Nabua Express</h2>
-      <h3>App: Figma</h3>
-      <h3>Role: Partner</h3>
-      <p>A digital transportation project focusing on UI/UX and functionality.</p>
-      <div class="grid-images">
-        <img src="images/presentation/p6.jpg" alt="Nabua Express Screen 1">
-        <img src="images/presentation/p7.jpg" alt="Nabua Express Screen 2">
-      </div>
+  
+  <div class="project-card bg-gray-900 p-6 rounded-xl shadow-lg">
+    <h2 class="text-xl font-bold mb-2">Engineering Jobs in I.T</h2>
+    <h3 class="text-pink-400">App: Figma</h3>
+    <h3 class="text-gray-300">Role: Collaborator</h3>
+    <p class="mt-2 text-gray-400">
+      This project helped us design and get used to UI/UX concepts, prototypes, and wireframes.
+    </p>
+    <div class="grid grid-cols-2 gap-2 mt-git 4">
+      <img src="images/Presentation/p2.png" alt="Engineering Jobs in IT - Screen 1" class="rounded-lg">
+      <img src="images/Presentation/p3.png" alt="Engineering Jobs in IT - Screen 2" class="rounded-lg">
+      <img src="images/Presentation/p4.png" alt="Engineering Jobs in IT - Screen 3" class="rounded-lg">
+      <img src="images/Presentation/p5.jpeg" alt="Engineering Jobs in IT - Screen 4" class="rounded-lg">
     </div>
+  </div>
 
-    <!-- Project 4 -->
-    <div class="project-card">
-      <h2>Sweet Brew Machine Learning</h2>
-      <h3>Programming Language: C++</h3>
-      <h3>Role: Partner</h3>
-      <p>A collaborative partnership of finding and debugging errors in a machine learning project.</p>
-      <div class="grid-images">
-        <img src="images/presentation/p8.jpg" alt="Sweet Brew Screen 1">
-        <img src="images/presentation/p9.jpg" alt="Sweet Brew Screen 2">
-      </div>
+  <!-- Project 3 -->
+  <div class="project-card bg-gray-900 p-6 rounded-xl shadow-lg">
+    <h2 class="text-xl font-bold mb-2">Nabua Express</h2>
+    <h3 class="text-pink-400">App: Figma</h3>
+    <h3 class="text-gray-300">Role: Partner</h3>
+    <p class="mt-2 text-gray-400">A digital transportation project focusing on UI/UX and functionality.</p>
+    <div class="grid grid-cols-2 gap-2 mt-4">
+      <img src="images/presentation/p6.jpg" alt="Nabua Express Screen 1" class="rounded-lg">
+      <img src="images/presentation/p7.jpg" alt="Nabua Express Screen 2" class="rounded-lg">
     </div>
+  </div>
 
-    <!-- Project 5 -->
-    <div class="project-card">
-      <h2>BookTrack</h2>
-      <h3>Software: MySQL</h3>
-      <h3>Role: Partner</h3>
-      <p>A collaborative partnership for creating and debugging a book tracking database system.</p>
-      <img src="images/presentation/p11.jpg" alt="BookTrack">
+  <!-- Project 4 -->
+  <div class="project-card bg-gray-900 p-6 rounded-xl shadow-lg">
+    <h2 class="text-xl font-bold mb-2">Sweet Brew Machine Learning</h2>
+    <h3 class="text-pink-400">Programming Language: C++</h3>
+    <h3 class="text-gray-300">Role: Partner</h3>
+    <p class="mt-2 text-gray-400">
+      A collaborative partnership of finding and debugging errors in a machine learning project.
+    </p>
+    <div class="grid grid-cols-2 gap-2 mt-4">
+      <img src="images/presentation/p8.jpg" alt="Sweet Brew Screen 1" class="rounded-lg">
+      <img src="images/presentation/p9.jpg" alt="Sweet Brew Screen 2" class="rounded-lg">
     </div>
+  </div>
 
-    <!-- Project 6 -->
-    <div class="project-card">
-      <h2>Every Lives Matter: Pet Adoption</h2>
-      <h3>Tech Stack: HTML, CSS, JavaScript, PHP, MySQL</h3>
-      <h3>Role: FullStack Support</h3>
-      <p>A web system for pet adoption and application, developed collaboratively with full-stack support.</p>
-      <div class="grid-images">
-        <img src="images/presentation/p12.jpg" alt="Pet Adoption 1">
-        <img src="images/presentation/p13.jpg" alt="Pet Adoption 2">
-        <img src="images/presentation/p14.jpeg" alt="Pet Adoption 3">
-      </div>
+  <!-- Project 5 -->
+  <div class="project-card bg-gray-900 p-6 rounded-xl shadow-lg">
+    <h2 class="text-xl font-bold mb-2">BookTrack</h2>
+    <h3 class="text-pink-400">Software: MySQL</h3>
+    <h3 class="text-gray-300">Role: Partner</h3>
+    <p class="mt-2 text-gray-400">
+      A collaborative partnership for creating and debugging a book tracking database system.
+    </p>
+    <img src="images/presentation/p11.jpg" alt="BookTrack" class="rounded-lg mt-4">
+  </div>
+
+  <!-- Project 6 -->
+  <div class="project-card bg-gray-900 p-6 rounded-xl shadow-lg">
+    <h2 class="text-xl font-bold mb-2">Every Lives Matter: Pet Adoption</h2>
+    <h3 class="text-pink-400">Tech Stack: HTML, CSS, JavaScript, PHP, MySQL</h3>
+    <h3 class="text-gray-300">Role: FullStack Support</h3>
+    <p class="mt-2 text-gray-400">
+      A web system for pet adoption and application, developed collaboratively with full-stack support.
+    </p>
+    <div class="grid grid-cols-3 gap-2 mt-4">
+      <img src="images/presentation/p12.jpg" alt="Pet Adoption 1" class="rounded-lg">
+      <img src="images/presentation/p13.jpg" alt="Pet Adoption 2" class="rounded-lg">
+      <img src="images/presentation/p14.jpeg" alt="Pet Adoption 3" class="rounded-lg">
     </div>
-  </main>
+  </div>
+
+</main>
+s
+
+  <footer class="mt-16 py-12 bg-black text-center text-white">
+  <h2 class="text-3xl font-extrabold mb-2 tracking-widest uppercase">My Canva Logos</h2>
+  <div class="w-24 h-1 bg-white/80 mx-auto rounded-full mb-6"></div>
+  <p class="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-10">
+    These are some of the creative logo designs I crafted using Canva. Each one reflects a unique concept, 
+    style, and visual identity that showcases my creativity.
+  </p>
+
+  <!-- Logo Row -->
+  <div class="flex justify-center flex-wrap gap-10">
+    <img src="images/Logo/2.jpg" alt="Logo 2"
+      class="w-28 h-28 object-contain rounded-full bg-white/20 p-3 shadow-xl hover:scale-110 hover:rotate-3 transition-all duration-500 ease-in-out" />
+    <img src="images/Logo/3.jpg" alt="Logo 3"
+      class="w-28 h-28 object-contain rounded-full bg-white/20 p-3 shadow-xl hover:scale-110 hover:-rotate-3 transition-all duration-500 ease-in-out" />
+    <img src="images/Logo/4.jpg" alt="Logo 4"
+      class="w-28 h-28 object-contain rounded-full bg-white/20 p-3 shadow-xl hover:scale-110 hover:rotate-6 transition-all duration-500 ease-in-out" />
+    <img src="images/Logo/5.jpg" alt="Logo 5"
+      class="w-28 h-28 object-contain rounded-full bg-white/20 p-3 shadow-xl hover:scale-110 hover:-rotate-6 transition-all duration-500 ease-in-out" />
+  </div>
+</footer>
+
+
+
+
 
   <!-- Theme Toggle Script -->
   <script>

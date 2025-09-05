@@ -36,11 +36,10 @@ body {
   text-decoration: underline;   /* remove underline */
   color: white;            /* white text */
   font-size: 18px;         /* adjust font size */
-  padding: 8px 12px;       /* add some padding */s
+  padding: 8px 12px;       /* add some padding */
   transition: color 0.3s;
     
 }
-
 .main-nav ul li a:hover {
   color: #ebeae6;          /* optional hover color */
 }
@@ -259,8 +258,8 @@ body.light-mode .project {
     }
 
     .edu-cert-section {
-      width: 100%;
-      max-width: 1200px;
+      width: 130%;
+      max-width: 1300px;
       margin: 0 auto;
       padding: 40px 20px;
     }
