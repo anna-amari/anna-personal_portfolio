@@ -217,8 +217,8 @@ body.light-mode .project {
 
 .stack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
+ grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* narrower */
+  gap: 5px;
   justify-items: center;
   margin: 5px;
 }
@@ -235,8 +235,8 @@ body.light-mode .project {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 140px;   /* rectangle width */
-  height: 120px;  /* rectangle height */
+  width: 120px;   /* rectangle width */
+  height: 110px;  /* rectangle height */
 }
 
 .badge img {

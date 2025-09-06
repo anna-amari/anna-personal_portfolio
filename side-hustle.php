@@ -98,7 +98,7 @@ $pageTitle = "Projects | Anna Mari Portfolio";
   <!-- Navigation Menu -->
   <nav class="main-nav">
     <ul>
-      <li><a href="index.php">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="about.php">About</a></li>
       <li><a href="projects.php">Projects</a></li>
       <li><a href="hobbies.php">Hobbies</a></li>

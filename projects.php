@@ -230,7 +230,7 @@ $pageTitle = "Projects | Anna Mari Portfolio";
     <p class="mt-2 text-gray-400">
       This project helped us design and get used to UI/UX concepts, prototypes, and wireframes.
     </p>
-    <div class="grid grid-cols-2 gap-2 mt-git 4">
+    <div class="grid grid-cols-2 gap-2 mt-4">
       <img src="images/Presentation/p2.png" alt="Engineering Jobs in IT - Screen 1" class="rounded-lg">
       <img src="images/Presentation/p3.png" alt="Engineering Jobs in IT - Screen 2" class="rounded-lg">
       <img src="images/Presentation/p4.png" alt="Engineering Jobs in IT - Screen 3" class="rounded-lg">
