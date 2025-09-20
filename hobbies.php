@@ -1,127 +1,280 @@
 <?php 
-// project.php
-
-// Dynamic Page Title
-$pageTitle = "Hobbies | Anna Mari Portfolio"; 
+$pageTitle = "Anna Mari Portfolio";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title><?php echo $pageTitle; ?></title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      background: #fff;
-      color: #333;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center; /* Center text globally */
-    }
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    /* Navigation */
-    .main-nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: right; /* Center menu */
-      padding: 20px;
-      margin: 0;
-      background: #f9f9f9;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .main-nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-size: 18px;
-      padding: 8px 12px;
-      transition: color 0.3s;
-    }
-    .main-nav ul li a:hover {
-      color: #edccddff;
-    }
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    background: #fafafa;
+    color: #333;
+    transition: background-color 0.4s, color 0.4s;
+  }
 
-    /* Page Content */
-    main {
-      padding: 40px;
-      max-width: 1100px;
-      margin: auto;
-    }
+  /* Navigation */
+  .main-nav {
+    padding: 15px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+  .main-nav ul {
+    list-style: none;
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+    padding-left: 850px;
+  }
+  .main-nav ul li a {
+    text-decoration: none;
+    color: #ffffffff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .main-nav ul li a:hover {
+    background: #d785c315;
+    color: #d785c3;
+  }
 
-    h2 {
-      font-size: 28px;
-      margin-top: 40px;
-      color: #222;
-      display: inline-block;
-      border-left: 5px solid #eeb7d3ff;
-      padding-left: 10px;
-    }
+  /* Hero Section */
+  .hero {
+    position: relative;
+    background: url('https://i.pinimg.com/1200x/2a/da/9d/2ada9d1617d5752038695a04df6beb2c.jpg') no-repeat center center/cover;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 80px;
+    overflow: hidden;
+  }
+  .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, rgba(215,133,195,0.5), rgba(0,0,0,0.5));
+}
+.hero-content h1 span {
+  color: #d785c3;
+}
+  .hero-content {
+    position: relative;
+    max-width: 600px;
+    z-index: 1;
+    animation: fadeUp 1.2s ease;
+  }
+  @keyframes fadeUp {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  .hero-content h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  .hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.95;
+  }
+ 
+  .hero-content .btn {
+    padding: 14px 34px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+     background: linear-gradient(135deg, #d785c3, #9b59b6);
+  box-shadow: 0 6px 20px rgba(215,133,195,0.6);
+  transition: all 0.3s ease;
+  }
+  .hero-content .btn:hover {
+    background: #c46db0;
+    transform: translateY(-3px);
+     transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(215,133,195,0.8);
+  }
 
-    h3 {
-      margin-top: 30px;
-      color: #444;
-    }
+  /* Carousel Section */
+  .carousel-section {
+    background: #fff;
+    padding: 80px 0;
+    position: relative;
+  }
+  .carousel-container {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0 80px;
+  }
+  .carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+  .carousel-card {
+    flex: 0 0 300px;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    position: relative;
+  }
+  .carousel-card:hover {
+    transform: translateY(-6px);
+  }
+  .carousel-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+  }
+  .carousel-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px;
+    margin: 0;
+  }
+  .carousel-card .bookmark {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .carousel-card .bookmark:hover {
+    background: #d785c3;
+    color: #fff;
+  }
 
-    p.description {
-      font-size: 16px;
-      color: #555;
-      margin: 10px auto 20px;
-      max-width: 700px;
-    }
+  /* Carousel Arrows */
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffffdd;
+    color: #d785c3;
+    border: none;
+    font-size: 22px;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+  }
+  .carousel-arrow:hover {
+    background: #d785c3;
+    color: #fff;
+  }
+  .arrow-left { left: 30px; }
+  .arrow-right { right: 30px; }
 
-    /* Gallery Grid */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      justify-items: center; /* Center images inside grid */
-      margin: 0 auto 40px;
-      max-width: 1000px;
-    }
+  /* Dots */
+  .carousel-dots {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .carousel-dots span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .carousel-dots .active {
+    background: #d785c3;
+  }
 
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05) rotate(-1deg);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    }
+  /* Projects */
+  main {
+    padding: 80px 20px;
+    text-align: center;
+  }
+  main h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  main p {
+    font-size: 19px;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
 
-    /* Social Icons */
-    .social-icons {
-      text-align: center;
-      padding: 30px;
-      border-top: 1px solid #eee;
-    }
-    .social-icons a {
-      color: #333;
-      font-size: 24px;
-      margin: 0 12px;
-      transition: color 0.3s;
-    }
-    .social-icons a:hover {
-      color: #ff69b4;
-    }
+  /* Social Icons */
+  .social-icons {
+    margin: 60px 0;
+    text-align: center;
+  }
+  .social-icons a {
+    color: #333;
+    font-size: 26px;
+    margin: 0 14px;
+    transition: color 0.3s;
+  }
+  .social-icons a:hover {
+    color: #d785c3;
+  }
 
-    /* Scroll Animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Theme Toggle Button */
+  #toggle-theme {
+    background: none;
+    border: none;
+    color: #111;
+    font-size: 24px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 200;
+    transition: color 0.3s;
+  }
+  
+  .dancing-script-<uniquifier> {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  }
+  
   </style>
 </head>
 <body>
-  <!-- Navigation Menu -->
+
+  <!-- Navigation -->
   <nav class="main-nav">
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -132,96 +285,228 @@ $pageTitle = "Hobbies | Anna Mari Portfolio";
     </ul>
   </nav>
 
-  <!-- Page Content -->
-  <main>
-    <h2>DIY as a Hobby</h2>
-    <p class="description">I enjoy creating things with my hands. DIY projects help me relax and also spark creativity.</p>
-    <div class="gallery fade-in">
-      <img src="images/diy1.jpg" alt="DIY project 1">
-      <img src="images/diy2.jpg" alt="DIY project 2">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Travels in this Lifetime</h1>
+    <p style="font-family: 'Dancing Script', cursive; font-weight:400;">
+  Escape from these places, Find solace in the unknown.
+</p>
+      <a href="#carousel" class="btn">Explore</a>
+    </div>
+  </section>
+
+<!-- Carousel -->
+<section class="carousel-section" id="carousel">
+  <button class="carousel-arrow arrow-left"><i class="fas fa-chevron-left"></i></button>
+  <div class="carousel-container" id="carouselContainer">
+    <div class="carousel-card">
+      <h3>Hanginan, Southern Leyte</h3>
+        <img src="images/location/l1.jpg">
+      <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+    <div class="carousel-card">
+      <img src="images/location/l2.jfif">
+    <h3>Punta Almara, Ligao Albay</h3>
+      <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+    <div class="carousel-card">
+      <h3>Bula, Camarines Sur</h3>
+        <img src="images/location/l3.jfif">
+       <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+    <div class="carousel-card">
+      <img src="images/location/l4.jfif">
+    <h3>Balatan</h3>
+      <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+    <div class="carousel-card">
+      <h3>Mayon, Albay</h3>
+        <img src="images/location/l5.jfif">
+       <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+    <div class="carousel-card">
+        <img src="images/location/l6.jfif">
+         <h3>Iriga City Resort</h3>
+      <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+    <div class="carousel-card">
+      <h3>Masuso, Iriga City</h3>
+      <img src="images/location/l7.jfif">
+      <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+    <div class="carousel-card">
+      <img src="images/location/l8.jpg">
+    <h3>Carnival, Iriga City</h3>
+      <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+    <div class="carousel-card">
+      <h3>Sugod St. Leyte</h3>
+        <img src="images/location/l9.jfif">
+       <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+   <div class="carousel-card">
+      <img src="images/location/l10.jfif">
+    <h3>Naga Cathedral Church</h3>
+      <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+    <div class="carousel-card">
+      <h3>Inorogan, Iriga City</h3>
+        <img src="images/location/l11.jfif">
+       <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+   <div class="carousel-card">
+      <img src="images/location/l12.jfif">
+    <h3>Camarines Sur Polytechnic Colleges <h3>
+      <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+    <div class="carousel-card">
+      <h3>SVS Iriga City</h3>
+        <img src="images/location/l13.jfif">
+       <div class="bookmark"><i class="fas fa-bookmark"></i></div>
+    </div>
+     <div class="carousel-card">
+      <img src="images/location/l14.jfif">
+    <h3>Illian Hill</h3>
+      <div class="bookmark"><i class="fas fa-bookmark"></i></div>
     </div>
 
-    <h2>Scrapbook</h2>
-    <p class="description">Collecting memories and designing scrapbooks brings joy and nostalgia.</p>
-    <div class="gallery fade-in">
-      <img src="images/scrap1.jpg" alt="Scrapbook 1">
-      <img src="images/scrap2.jpg" alt="Scrapbook 2">
-      <img src="images/scrap3.jpg" alt="Scrapbook 3">
-      <img src="images/scrap4.jpg" alt="Scrapbook 4">
-    </div>
-
-    <h2>Devotional Journal</h2>
-    <p class="description">Writing reflections and prayers keeps me grounded and spiritually connected.</p>
-    <div class="gallery fade-in">
-      <img src="images/dev1.jpg" alt="Devotional 1">
-      <img src="images/dev2.jpg" alt="Devotional 2">
-      <img src="images/dev3.jpg" alt="Devotional 3">
-    </div>
-
-    <h2>Coding Projects</h2>
-    <p class="description">I love building useful projects and experimenting with web technologies.</p>
-    <div class="gallery fade-in">
-      <img src="images/code1.jpg" alt="Code Project 1">
-      <img src="images/code2.jpg" alt="Code Project 2">
-      <img src="images/code3.jpg" alt="Code Project 3">
-      <img src="images/code4.jpg" alt="Code Project 4">
-      <img src="images/code5.jpg" alt="Code Project 5">
-    </div>
-
-    <h2>Poetry</h2>
-    <p class="description">Through poems and writings, I express emotions and create art with words.</p>
-    <div class="gallery fade-in">
-      <img src="images/poem1.jpg" alt="Poetry 1">
-      <img src="images/poem2.jpg" alt="Poetry 2">
-      <img src="images/poem3.jpg" alt="Poetry 3">
-      <img src="images/poem4.jpg" alt="Poetry 4">
-      <img src="images/poem5.jpg" alt="Poetry 5">
-      <img src="images/poem6.jpg" alt="Poetry 6">
-    </div>
-
-    <h2>Travel Locations</h2>
-    <p class="description">Exploring different places broadens my perspective and inspires creativity.</p>
-    
-    <?php for($i=1; $i<=10; $i++): ?>
-      <h3>Location <?php echo $i; ?></h3>
-      <p class="description">A memorable place that gave me inspiration and joy.</p>
-      <div class="gallery fade-in">
-        <img src="images/location<?php echo $i; ?>-1.jpg" alt="Location <?php echo $i; ?> Pic 1">
-        <img src="images/location<?php echo $i; ?>-2.jpg" alt="Location <?php echo $i; ?> Pic 2">
-        <img src="images/location<?php echo $i; ?>-3.jpg" alt="Location <?php echo $i; ?> Pic 3">
-      </div>
-    <?php endfor; ?>
-  </main>
-
-  <!-- Social Icons -->
-  <div class="social-icons">
-    <a href="https://github.com/zaeuamari" target="_blank" title="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=annamarietaduran44@gmail.com&su=Portfolio Inquiry" target="_blank" title="Email">
-      <i class="fas fa-envelope"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a>
+  
   </div>
 
-  <!-- Scroll Animation Script -->
+  <button class="carousel-arrow arrow-right"><i class="fas fa-chevron-right"></i></button>
+
+  <!-- Dots -->
+  <div class="carousel-dots" id="carouselDots">
+    <!-- JS will populate these to match pages -->
+  </div>
+</section>
+
+<div style="text-align:center; margin: 20px 0;">
+  <img src="https://i.pinimg.com/1200x/24/75/b7/2475b7c078e08aa5fd7a011ef9eb0c45.jpg" 
+       alt="Projects Banner"
+       style="width: 500px; height: 220px; object-fit: cover; border-radius: 10px;">
+</div>
+  <!-- Hobbies -->
+  <main>
+    <h1>My Hobbies</h1>
+    <p>This is the collective routines, I created and implemented creativity for the 2 decades of my life.</p>
+  </main>
+
+  <!-- Social -->
+  <div class="social-icons">
+    <a href="https://github.com/zaeuamari" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="mailto:annamarietaduran44@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  </div>
+
+  <!-- Scripts -->
   <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.2 };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
+    // guard theme toggle (if you add the button later)
+    const toggleBtn = document.getElementById('toggle-theme');
+    if (toggleBtn) {
+      const body = document.body;
+      const icon = toggleBtn.querySelector('i');
+      toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        if (icon) {
+          icon.classList.toggle('fa-moon');
+          icon.classList.toggle('fa-sun');
+        }
       });
-    }, appearOptions);
+    }
 
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
+    // Carousel: arrows + clickable dots (keeps your design & CSS)
+    (function () {
+      const carousel = document.getElementById('carouselContainer');
+      const dotsContainer = document.getElementById('carouselDots');
+      const btnLeft = document.querySelector('.arrow-left');
+      const btnRight = document.querySelector('.arrow-right');
+      if (!carousel || !dotsContainer) return;
+
+      const cards = Array.from(carousel.querySelectorAll('.carousel-card'));
+      if (!cards.length) return;
+
+      const style = getComputedStyle(carousel);
+      const gap = parseInt(style.gap || 24, 10) || 24;
+
+      function cardWidth() {
+        return Math.round(cards[0].getBoundingClientRect().width);
+      }
+
+      function visibleCount() {
+        // how many cards fit into the visible carousel width (account for gap)
+        return Math.max(1, Math.floor((carousel.clientWidth + gap) / (cardWidth() + gap)));
+      }
+
+      function pageWidth() {
+        const v = visibleCount();
+        return v * cardWidth() + Math.max(0, v - 1) * gap;
+      }
+
+      function pages() {
+        return Math.max(1, Math.ceil(cards.length / visibleCount()));
+      }
+
+      function renderDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < pages(); i++) {
+          const span = document.createElement('span');
+          span.dataset.page = i;
+          if (i === 0) span.classList.add('active');
+          span.addEventListener('click', () => scrollToPage(i));
+          dotsContainer.appendChild(span);
+        }
+      }
+
+      function scrollToPage(pageIndex) {
+        const pw = pageWidth();
+        const maxLeft = carousel.scrollWidth - carousel.clientWidth;
+        const left = Math.min(pageIndex * pw, maxLeft);
+        carousel.scrollTo({ left, behavior: 'smooth' });
+      }
+
+      function updateDotsOnScroll() {
+        const pw = pageWidth();
+        const page = pw ? Math.round(carousel.scrollLeft / pw) : 0;
+        const spans = dotsContainer.children;
+        for (let i = 0; i < spans.length; i++) {
+          spans[i].classList.toggle('active', i === page);
+        }
+      }
+
+      // arrows: go to previous/next page
+      if (btnRight) {
+        btnRight.addEventListener('click', () => {
+          const currentPage = Math.round(carousel.scrollLeft / pageWidth());
+          const next = Math.min(pages() - 1, currentPage + 1);
+          scrollToPage(next);
+        });
+      }
+      if (btnLeft) {
+        btnLeft.addEventListener('click', () => {
+          const currentPage = Math.round(carousel.scrollLeft / pageWidth());
+          const prev = Math.max(0, currentPage - 1);
+          scrollToPage(prev);
+        });
+      }
+
+      // debounce helper
+      let resizeTimer;
+      function debounce(fn, wait = 80) {
+        return function () {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(fn, wait);
+        };
+      }
+
+      carousel.addEventListener('scroll', debounce(updateDotsOnScroll, 60));
+      window.addEventListener('resize', debounce(() => { renderDots(); updateDotsOnScroll(); }, 120));
+
+      // initial
+      renderDots();
+      updateDotsOnScroll();
+    })();
   </script>
 </body>
 </html>

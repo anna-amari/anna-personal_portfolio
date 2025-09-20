@@ -342,6 +342,8 @@ body.light-mode .project {
       margin: 5px 0;
       color: #ccc;
     }
+
+    
 .cert-gallery {
   display: flex;
   flex-wrap: wrap; /* allow wrapping into rows */
