@@ -24,16 +24,18 @@ $pageTitle = "Anna Mari Portfolio";
     background: #fafafa;
     color: #333;
     transition: background-color 0.4s, color 0.4s;
+  
   }
 
   /* Navigation */
   .main-nav {
     padding: 15px 40px;
-    position: fixed;
+    position: absolute; 
     width: 100%;
     top: 0;
     left: 0;
     z-index: 100;
+  background: transparent; 
   }
   .main-nav ul {
     list-style: none;
@@ -45,8 +47,8 @@ $pageTitle = "Anna Mari Portfolio";
   }
   .main-nav ul li a {
     text-decoration: none;
-    color: #ffffffff;
-    font-size: 18px;
+     color: #fff;  /* white so it’s visible on hero image */
+ font-size: 18px;
     font-weight: 500;
     padding: 6px 10px;
     border-radius: 6px;
@@ -269,6 +271,105 @@ $pageTitle = "Anna Mari Portfolio";
     font-weight: <weight>;
     font-style: normal;
   }
+  /* Hobbies Grid */
+.hobbies-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.hobby-card {
+  background: #ffe6f3;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(215,133,195,0.25);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hobby-card h3 {
+  background: linear-gradient(135deg, #f8c6e7, #f3a7d3);
+  margin: 0;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 16px 16px 0 0;
+}
+
+.hobby-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0 0 16px 16px;
+}
+
+.hobby-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(215,133,195,0.4);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hobbies-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .hobbies-section {
+    grid-template-columns: 1fr;
+  }
+}
+ .dream-destination {
+    padding: 50px 20px;
+    text-align: center;
+    background: #fdfdfd;
+  }
+
+  .dream-destination .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #d24787;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .destination-card {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .destination-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .destination-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  .destination-card:hover img {
+    transform: scale(1.08);
+  }
+
   
   </style>
 </head>
@@ -381,17 +482,84 @@ $pageTitle = "Anna Mari Portfolio";
     <!-- JS will populate these to match pages -->
   </div>
 </section>
-
-<div style="text-align:center; margin: 20px 0;">
+<div style="text-align:center; margin: 40px 0 60px 0;">
   <img src="https://i.pinimg.com/1200x/24/75/b7/2475b7c078e08aa5fd7a011ef9eb0c45.jpg" 
-       alt="Projects Banner"
-       style="width: 500px; height: 220px; object-fit: cover; border-radius: 10px;">
+       style="width: 450px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
 </div>
+
+<!-- Dream Destination Section -->
+<section class="dream-destination">
+  <h2 class="section-title">Dream Destination</h2>
+  <p style="font-family: 'Dancing Script', cursive; font-size: 1.2rem; font-weight:400; margin: 10px 0 40px 0; color: #666;">
+    I aspire to feel it underneath my skin, the beauty and everything intertwined
+  </p>
+
+  <div class="destination-grid" id="destinationGrid">
+    <div class="destination-card">
+      <img src="https://i.pinimg.com/736x/9d/e6/c9/9de6c9c2c33e49b1ff4bc76bc7d8aa39.jpg" alt="Destination 1">
+    </div>
+    <div class="destination-card">
+      <img src="https://i.pinimg.com/1200x/ab/6f/0c/ab6f0cfa5d8239c6c0f6684d5f26fd29.jpg" alt="Destination 2">
+    </div>
+    <div class="destination-card">
+      <img src="https://i.pinimg.com/736x/12/db/4e/12db4e928868f3146573aed41e7ad939.jpg" alt="Destination 3">
+    </div>
+    <div class="destination-card">
+      <img src="https://i.pinimg.com/1200x/c2/26/e3/c226e3fad5203d336453d9cf0b6d3b0c.jpg" alt="Destination 4">
+    </div>
+    <div class="destination-card">
+      <img src="https://i.pinimg.com/1200x/94/e0/8e/94e08e6d0b4f70a7c7b3fdd01ff27cb7.jpg" alt="Destination 5">
+    </div>
+    <div class="destination-card">
+      <img src="https://i.pinimg.com/1200x/0a/d0/74/0ad0749b4478a8463cfb4c9b0c27fc97.jpg" alt="Destination 6">
+    </div>
+     <div class="destination-card">
+      <img src="https://i.pinimg.com/1200x/fd/7b/ec/fd7becf818dc6a4be682b5dc77a5b1e3.jpg" alt="Destination 5">
+    </div>
+    <div class="destination-card">
+      <img src="https://i.pinimg.com/736x/b6/ac/7a/b6ac7a0c954b0fe7af8dfa12edadcc0e.jpg" alt="Destination 6">
+    </div>
+  </div>
+</section>
   <!-- Hobbies -->
   <main>
     <h1>My Hobbies</h1>
     <p>This is the collective routines, I created and implemented creativity for the 2 decades of my life.</p>
   </main>
+
+  <!-- Hobbies Grid -->
+<section class="hobbies-section" id="hobbiesGrid">
+  <!-- JS will inject hobby cards here -->
+</section>
+
+<script>
+  // Define hobbies dynamically
+  const hobbies = [
+    { title: "Photography", img: "https://picsum.photos/300/200?random=1" },
+    { title: "Painting", img: "https://picsum.photos/300/200?random=2" },
+    { title: "Reading", img: "https://picsum.photos/300/200?random=3" },
+    { title: "Traveling", img: "https://picsum.photos/300/200?random=4" },
+    { title: "Cooking", img: "https://picsum.photos/300/200?random=5" },
+    { title: "Music", img: "https://picsum.photos/300/200?random=6" },
+    { title: "Gaming", img: "https://picsum.photos/300/200?random=7" },
+    { title: "Writing", img: "https://picsum.photos/300/200?random=8" }
+  ];
+
+  const grid = document.getElementById("hobbiesGrid");
+
+  // Generate hobby cards
+  hobbies.forEach(hobby => {
+    const card = document.createElement("div");
+    card.classList.add("hobby-card");
+
+    card.innerHTML = `
+      <h3>${hobby.title}</h3>
+      <img src="${hobby.img}" alt="${hobby.title}">
+    `;
+
+    grid.appendChild(card);
+  });
+</script>
 
   <!-- Social -->
   <div class="social-icons">
