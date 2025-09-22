@@ -127,14 +127,23 @@ $pageTitle = "Anna Mari Portfolio";
     background: #fff;
     padding: 80px 0;
     position: relative;
+     overflow: hidden; 
   }
+  .carousel-wrapper {
+  width: 100%;
+  overflow: hidden; /* 🔹 Added: wrapper to contain the scrolling row */
+}
   .carousel-container {
     display: flex;
     gap: 24px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding: 0 80px;
+    padding: 0 80px 0 0;  
   }
+  .carousel-container::after {
+  content: "";
+    flex: 0 0 40px; 
+}
   .carousel-container::-webkit-scrollbar {
     display: none;
   }
