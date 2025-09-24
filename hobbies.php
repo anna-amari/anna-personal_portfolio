@@ -572,7 +572,7 @@ $pageTitle = "Anna Mari Portfolio";
 
   <!-- Social -->
   <div class="social-icons">
-    <a href="https://github.com/zaeuamari" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://github.com/anna-amari" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
     <a href="mailto:annamarietaduran44@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
     <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
   </div>

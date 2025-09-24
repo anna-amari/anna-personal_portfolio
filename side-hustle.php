@@ -114,7 +114,7 @@ $pageTitle = "Projects | Anna Mari Portfolio";
 
   <!-- Social Icons -->
   <div class="social-icons">
-    <a href="https://github.com/zaeuamari" target="_blank" title="GitHub">
+    <a href="https://github.com/anna-amari" target="_blank" title="GitHub">
       <i class="fab fa-github"></i>
     </a>
     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=annamarietaduran44@gmail.com&su=Portfolio Inquiry" target="_blank" title="Email">

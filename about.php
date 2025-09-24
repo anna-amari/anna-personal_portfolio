@@ -4,7 +4,13 @@ include 'db.php'; // connects to AnnaPortfolio
 // about.php
 $pageTitle = "About Me | Anna Mari Portfolio";
 
-$bio = "Hi! I'm Anna Mari, a passionate web developer with experience in PHP, HTML, CSS, JavaScript, and MySQL. I enjoy creating functional and aesthetic web applications that provide great user experiences.";
+$bio = "Hi! I'm Anna Mari, a passionate web developer with experience in PHP, HTML, CSS, JavaScript, and MySQL. 
+I enjoy creating functional and aesthetic web applications that provide great user experiences. Also, I’m a soft yet strong INFJ soul who finds comfort in creativity and quiet moments. 
+I love writing poems and novels, exploring stories that touch the heart—whether through BL dramas or 
+imeless Ghibli films. My humor drifts between light and dark, but I always find beauty in balance. 
+Light pink is my anthem color, a reflection of my gentle side, while my ideals and convictions keep me grounded. 
+I live by the “let them” theory, valuing solitude, authenticity, and meaningful growth. With dreams of traveling the world, 
+I hold close both my fears and my hopes—choosing to embrace life with depth, honesty, and a touch of wonder..";
 
 // Handle contact form
 $formMessage = "";
@@ -310,6 +316,73 @@ $classmates = $conn->query("SELECT * FROM classmates");
         gap: 5px;
       }
     }
+    .account-card {
+    background:#ffffff;
+    border:2px solid #f4c2c2;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 6px 12px rgba(0,0,0,0.1);
+    text-align:center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .account-card:hover {
+    transform: translateY(-8px);
+    box-shadow:0 10px 18px rgba(0,0,0,0.15);
+  }
+  .account-img {
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    display:block;
+    transition: transform 0.4s ease;
+  }
+  .account-card:hover .account-img {
+    transform: scale(1.08);
+  }
+  .account-btn {
+    display:inline-block;
+    padding:8px 16px;
+    background:#e89cae;
+    color:#fff;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    transition: background 0.3s ease;
+  }
+  .account-btn:hover {
+    background:#f7b8c8;
+  }
+   .social-card {
+    position: relative;
+    background:#fff;
+    border:2px solid #f4c2c2;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 6px 14px rgba(0,0,0,0.08);
+    text-align:center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width:100%;
+    max-width:280px;
+    padding-bottom:12px;
+  }
+  .social-card:hover {
+    transform: translateY(-8px);
+    box-shadow:0 12px 22px rgba(0,0,0,0.15);
+  }
+  .social-img {
+    width:100%;
+    height:420px; /* portrait style */
+    object-fit:cover;
+    border-bottom:2px solid #f4c2c2;
+    display:block;
+  }
+  .social-title {
+    color:#d46a85;
+    margin-top:12px;
+    font-size:1.1rem;
+    font-weight:600;
+  }
+
   </style>
 </head>
 <body>
@@ -337,7 +410,7 @@ $classmates = $conn->query("SELECT * FROM classmates");
 
       <!-- Social Icons -->
       <div class="social-icons">
-        <a href="https://github.com/zaeuamari" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://github.com/anna-amari" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         <a href="mailto:annamarietaduran44@gmail.com?subject=Portfolio Inquiry" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
         <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
@@ -399,6 +472,144 @@ $classmates = $conn->query("SELECT * FROM classmates");
 
 
 
+<section class="accounts-section" style="margin:60px auto; padding:40px; max-width:1100px; background:#fff5f8; border-radius:12px;">
+  <h2 style="text-align:center; color:#d46a85; margin-bottom:30px;">My Tech Accounts</h2>
+  
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px;">
+    
+    <!-- GitHub -->
+    <div class="account-card">
+      <a href="https://github.com/anna-amari" target="_blank" rel="noopener">
+        <img src="images/Accounts/Github.png" class="account-img">
+      </a>
+      <div style="padding:15px;">
+        <h3 style="color:#d46a85; margin:10px 0;">GitHub</h3>
+        <a href="https://github.com/anna-amari" target="_blank" class="account-btn">Visit GitHub</a>
+      </div>
+    </div>
+
+    <!-- Codedex -->
+    <div class="account-card">
+      <a href="https://www.codedex.io/profile/your-username" target="_blank" rel="noopener">
+        <img src="images/Accounts/codedexProfile.jfif" alt="Codedex Profile Screenshot" class="account-img">
+      </a>
+      <div style="padding:15px;">
+        <h3 style="color:#d46a85; margin:10px 0;">Codedex</h3>
+        <a href="https://www.codedex.io/@aAmari" target="_blank" class="account-btn">Visit Codedex</a>
+      </div>
+    </div>
+
+    <!-- TryHackMe -->
+    <div class="account-card">
+      <a href="https://tryhackme.com/p/your-username" target="_blank" rel="noopener">
+        <img src="images/Accounts/tryHackMe.jfif" alt="TryHackMe Profile Screenshot" class="account-img">
+      </a>
+      <div style="padding:15px;">
+        <h3 style="color:#d46a85; margin:10px 0;">TryHackMe</h3>
+        <a href="https://tryhackme.com/p/anntaduran" target="_blank" class="account-btn">Visit TryHackMe</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="social-section" style="margin:60px auto; padding:40px; max-width:900px; background:#fff5f8; border-radius:16px;">
+  <h2 style="text-align:center; color:#d46a85; margin-bottom:35px;">My Social Accounts</h2>
+  
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; justify-items:center;">
+    
+  
+
+    <!-- Instagram -->
+    <div class="social-card">
+      <img src="images/Accounts/insta.jfif" alt="Instagram Profile Screenshot" class="social-img">
+      <h3 class="social-title">Instagram</h3>
+    </div>
+
+      <!-- Facebook -->
+    <div class="social-card">
+      <img src="images/Accounts/fb.jfif" alt="Facebook Profile Screenshot" class="social-img">
+      <h3 class="social-title">Facebook</h3>
+    </div>
+
+    <!-- TikTok -->
+    <div class="social-card">
+      <img src="images/Accounts/tiktok.jfif" alt="TikTok Profile Screenshot" class="social-img">
+      <h3 class="social-title">TikTok</h3>
+    </div>
+
+  </div>
+</section>
+
+<section class="likes-dislikes" style="margin:60px auto; padding:40px; max-width:900px; background:#fff5f8; border-radius:16px;">
+  <h2 style="text-align:center; color:#d46a85; margin-bottom:35px;">✨ Likes & Dislikes ✨</h2>
+
+  <table style="width:100%; border-collapse:collapse; font-size:1rem;">
+    <thead>
+      <tr style="background:#fdd9e5; color:#d46a85; text-align:center;">
+        <th style="padding:15px; border-radius:8px 0 0 8px;">Likes </th>
+        <th style="padding:15px; border-radius:0 8px 8px 0;">Dislikes </th>
+      </tr>
+    </thead>
+    <tbody style="color:#444;">
+      <tr>
+        <td style="padding:12px 18px;">Writing poems & novels</td>
+        <td style="padding:12px 18px;">❌ People with "parking lot ego"</td>
+      </tr>
+      <tr style="background:#fff0f5;">
+        <td style="padding:12px 18px;">My humor (between dark & light)</td>
+        <td style="padding:12px 18px;">❌ People who can’t understand “NO”</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 18px;">Watching BL (esp. Japanese)</td>
+        <td style="padding:12px 18px;">❌ SKs corrupt in the making</td>
+      </tr>
+      <tr style="background:#fff0f5;">
+        <td style="padding:12px 18px;"> I love angst story</td>
+        <td style="padding:12px 18px;">  ❌ Doesn't like if it's too painful</td>
+
+      <tr style="background:#fff0f5;">
+        <td style="padding:12px 18px;"> INFJ girlie ✨</td>
+        <td style="padding:12px 18px;">❌ Philippine government</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 18px;"> Loving solitude most of the time</td>
+        <td style="padding:12px 18px;"> ❌ The marching noise I hear in the night</td>
+      </tr>
+    
+        <td style="padding:12px 18px;">Light pink is my anthem color 🎀</td>
+        <td style="padding:12px 18px;"> ❌ People who finds joy over someone's misery</td>
+      </tr>
+      <tr style="background:#fff0f5;">
+        <td style="padding:12px 18px;"> Traveling to many destinations</td>
+        <td style="padding:12px 18px;">  ❌ Lack of financial capability</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 18px;">Ghibli movies (10/10 amazing!)</td>
+        <td style="padding:12px 18px;"> ❌ Too much selflessnesss</td>
+      </tr>
+      <tr style="background:#fff0f5;">
+        <td style="padding:12px 18px;"> Gen-Z fear: pregnancy & being unsuccessful</td>
+        <td style="padding:12px 18px;"> ❌ My father side of a family</td>
+      </tr>
+      <tr style="background:#fff0f5;">
+        <td style="padding:12px 18px;"> Ribbon and Tulip Emoticon </td>
+        <td style="padding:12px 18px;"> ❌ Losing connection to ones I love dearly</td>
+      </tr>
+      <tr style="background:#fff0f5;">
+        <td style="padding:12px 18px;"> I believe in supernatural beings </td>
+        <td style="padding:12px 18px;"> ❌ Unable to see them </td>
+      </tr>
+      <tr style="background:#fff0f5;">
+        <td style="padding:12px 18px;"> My body letting me to do things I want</td>
+        <td style="padding:12px 18px;"> ❌ My aching back</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
   <h1 style="color:#d46a85; text-align:center; background-color:#ffe6ec; padding:10px; border-radius:8px;">REACH ME</h1>
 
 <!-- Contact Form Section -->
@@ -425,6 +636,18 @@ $classmates = $conn->query("SELECT * FROM classmates");
     </div>
   </form>
 </div>
+
+<footer style="background:#fff5f8; padding:30px 20px; margin-top:50px; border-top:2px solid #f2c6d3;">
+  <div style="max-width:1100px; margin:auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; text-align:center;">
+    
+    <!-- Left -->
+    <div style="flex:1; min-width:220px; margin-bottom:15px;">
+      <h3 style="color:#d46a85; margin-bottom:10px;">🌸 Amari’s Space</h3>
+      <p style="color:#555; font-size:14px;">A little corner of poems, thoughts, and creations.</p>
+        <p>© 2025 Amari • Made with 🌸 and ☕</p>
+    </div>
+
+
 
 
 
