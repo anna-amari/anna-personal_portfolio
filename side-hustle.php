@@ -1,8 +1,7 @@
 <?php
 // project.php
 
-// Dynamic Page Title
-$pageTitle = "Projects | Anna Mari Portfolio";
+$pageTitle = "Projects";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,15 +100,15 @@ $pageTitle = "Projects | Anna Mari Portfolio";
       <li><a href="index.html">Home</a></li>
       <li><a href="about.php">About</a></li>
       <li><a href="projects.php">Projects</a></li>
-      <li><a href="hobbies.php">Hobbies</a></li>
+      <li><a href="places.php">Places</a></li>
       <li><a href="side-hustle.php">Side Hustle</a></li>
     </ul>
   </nav>
 
   <!-- Page Content -->
   <main>
-    <h1>My Projects</h1>
-    <p>Welcome to my projects page! Here I will showcase some of my works and achievements.</p>
+    <h1>Side Hustles</h1>
+    <p>My source of income as a student.</p>
   </main>
 
   <!-- Social Icons -->

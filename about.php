@@ -1,18 +1,16 @@
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 <?php
-include 'db.php'; // connects to AnnaPortfolio
 
-// about.php
-$pageTitle = "About Me | Anna Mari Portfolio";
+include 'db.php'; 
 
-$bio = "Hi! I'm Anna Mari, a passionate web developer with experience in PHP, HTML, CSS, JavaScript, and MySQL. 
-I enjoy creating functional and aesthetic web applications that provide great user experiences. Also, I’m a soft yet strong INFJ soul who finds comfort in creativity and quiet moments. 
-I love writing poems and novels, exploring stories that touch the heart—whether through BL dramas or 
-imeless Ghibli films. My humor drifts between light and dark, but I always find beauty in balance. 
-Light pink is my anthem color, a reflection of my gentle side, while my ideals and convictions keep me grounded. 
-I live by the “let them” theory, valuing solitude, authenticity, and meaningful growth. With dreams of traveling the world, 
-I hold close both my fears and my hopes—choosing to embrace life with depth, honesty, and a touch of wonder..";
 
-// Handle contact form
+$pageTitle = "About Me";
+
+$bio = "Hi! I'm Anna Mari, an aspiring web developer with interest and currently learning in PHP, HTML, CSS, JavaScript, and MySQL. 
+I enjoy creating functional and aesthetic web applications that provide great user experiences. ";
+
+
 $formMessage = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $first = $conn->real_escape_string($_POST['first_name']);
@@ -70,7 +68,7 @@ $classmates = $conn->query("SELECT * FROM classmates");
       background: #ffffff;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 10;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
     .main-nav .logo-container {
@@ -297,6 +295,53 @@ $classmates = $conn->query("SELECT * FROM classmates");
     }
 
 
+    /* 🌸 Pink Aesthetic Gallery */
+.photo-gallery {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(180deg, #ffd6f9, #ffe6f9);
+  color: #5a4a57;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(255, 182, 244, 0.3);
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+.photo-gallery h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #d147a3;
+  letter-spacing: 1px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.gallery-item {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
     /* Responsive */
     @media(max-width: 900px) {
       .hero {
@@ -371,7 +416,7 @@ $classmates = $conn->query("SELECT * FROM classmates");
   }
   .social-img {
     width:100%;
-    height:420px; /* portrait style */
+    height:420px; 
     object-fit:cover;
     border-bottom:2px solid #f4c2c2;
     display:block;
@@ -390,14 +435,15 @@ $classmates = $conn->query("SELECT * FROM classmates");
   <!-- Navigation -->
   <nav class="main-nav">
     <div class="logo-container">
-      <img src="images/Projects/Logo/AnnaMari.png" alt="Anna Mari Logo" class="logo">
+      <img src="images/Projects/Logo/AnnaMari.png" class="logo">
     </div>
     <ul>
       <li><a href="index.html" <?php if(basename($_SERVER['PHP_SELF']) == 'index.html') echo 'class="active"'; ?>>Home</a></li>
-      <li><a href="about.php" <?php if(basename($_SERVER['PHP_SELF']) == 'about.php') echo 'class="active"'; ?>>About</a></li>
+    <li><a href="about.php" <?php if(basename($_SERVER['PHP_SELF']) == 'about.php') echo 'class="active"'; ?>>About</a></li>
       <li><a href="projects.php" <?php if(basename($_SERVER['PHP_SELF']) == 'projects.php') echo 'class="active"'; ?>>Projects</a></li>
-      <li><a href="hobbies.php" <?php if(basename($_SERVER['PHP_SELF']) == 'hobbies.php') echo 'class="active"'; ?>>Hobbies</a></li>
+      <li><a href="places.php" <?php if(basename($_SERVER['PHP_SELF']) == 'places.php') echo 'class="active"'; ?>>Places</a></li>
       <li><a href="side-hustle.php" <?php if(basename($_SERVER['PHP_SELF']) == 'side-hustle.php') echo 'class="active"'; ?>>Side Hustle</a></li>
+   
     </ul>
   </nav>
 
@@ -437,8 +483,8 @@ $classmates = $conn->query("SELECT * FROM classmates");
   <?php endwhile; ?>
 </div>
 
-<!-- Bestfriends Section -->
-<!-- Bestfriends Section -->
+
+
 <section class="bestfriends-section" style="margin-top:50px; padding:40px; background-color:#fff0f5;">
   <h2 style="text-align:center; color:#d46a85; margin-bottom:30px;">My SHS Bestfriends</h2>
 
@@ -469,6 +515,39 @@ $classmates = $conn->query("SELECT * FROM classmates");
     ?>
   </div>
 </section>
+
+<div style="text-align:center;">
+  <h2 style="font-family:'Press Start 2P',cursive;font-size:24px;color:#ff66b2;letter-spacing:3px;text-shadow:2px 2px 0 #fff,4px 4px 0 #ffb6c1;background:linear-gradient(180deg,#ffe6f9,#ffd6f9);padding:20px;border-radius:12px;display:inline-block;margin-top:40;width:auto;">
+    COLLEGE FRIENDS
+  </h2>
+</div>
+
+<section class="photo-gallery">
+ 
+  <div class="gallery-grid">
+    <?php
+      $folder = "images/BFF/";
+      $photos = [
+        "1.jfif", "5.jfif", "15.jfif",
+        "4.jfif", "29.jfif", "12.jfif",
+        "28.jfif", "14.jfif", "18.jfif",
+        "13.jfif", "19.jfif",  "26.jfif", "37.jfif",
+         "20.jfif", "11.jfif", "17.jfif"
+      ];
+
+      foreach ($photos as $photo) {
+        echo "
+          <div class='gallery-item'>
+            <img src='{$folder}{$photo}' alt='Gallery Photo'>
+          </div>
+        ";
+      }
+    ?>
+  </div>
+</section>
+
+
+
 
 
 
@@ -541,6 +620,9 @@ $classmates = $conn->query("SELECT * FROM classmates");
 
   </div>
 </section>
+
+
+
 
 <section class="likes-dislikes" style="margin:60px auto; padding:40px; max-width:900px; background:#fff5f8; border-radius:16px;">
   <h2 style="text-align:center; color:#d46a85; margin-bottom:35px;">✨ Likes & Dislikes ✨</h2>
@@ -640,16 +722,10 @@ $classmates = $conn->query("SELECT * FROM classmates");
 <footer style="background:#fff5f8; padding:30px 20px; margin-top:50px; border-top:2px solid #f2c6d3;">
   <div style="max-width:1100px; margin:auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; text-align:center;">
     
-    <!-- Left -->
+
     <div style="flex:1; min-width:220px; margin-bottom:15px;">
-      <h3 style="color:#d46a85; margin-bottom:10px;">🌸 Amari’s Space</h3>
-      <p style="color:#555; font-size:14px;">A little corner of poems, thoughts, and creations.</p>
-        <p>© 2025 Amari • Made with 🌸 and ☕</p>
+      <p style="color:#555; font-size:14px;">© 2025 Amari</p>
     </div>
-
-
-
-
-
+</footer>
 </body>
 </html>

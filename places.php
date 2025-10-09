@@ -43,12 +43,12 @@ $pageTitle = "Anna Mari Portfolio";
     display: flex;
     justify-content: flex-end;
     gap: 25px;
-    padding-left: 850px;
+    padding-left: 50px;
   }
   .main-nav ul li a {
     text-decoration: none;
      color: #fff;  /* white so it’s visible on hero image */
- font-size: 18px;
+    font-size: 18px;
     font-weight: 500;
     padding: 6px 10px;
     border-radius: 6px;
@@ -280,7 +280,7 @@ $pageTitle = "Anna Mari Portfolio";
     font-weight: <weight>;
     font-style: normal;
   }
-  /* Hobbies Grid */
+
 .hobbies-section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -390,7 +390,7 @@ $pageTitle = "Anna Mari Portfolio";
       <li><a href="index.html">Home</a></li>
       <li><a href="about.php">About</a></li>
       <li><a href="projects.php">Projects</a></li>
-      <li><a href="hobbies.php">Hobbies</a></li>
+      <li><a href="places.php">Places</a></li>
       <li><a href="side-hustle.php">Side Hustle</a></li>
     </ul>
   </nav>
@@ -530,45 +530,7 @@ $pageTitle = "Anna Mari Portfolio";
     </div>
   </div>
 </section>
-  <!-- Hobbies -->
-  <main>
-    <h1>My Hobbies</h1>
-    <p>This is the collective routines, I created and implemented creativity for the 2 decades of my life.</p>
-  </main>
 
-  <!-- Hobbies Grid -->
-<section class="hobbies-section" id="hobbiesGrid">
-  <!-- JS will inject hobby cards here -->
-</section>
-
-<script>
-  // Define hobbies dynamically
-  const hobbies = [
-    { title: "Photography", img: "https://picsum.photos/300/200?random=1" },
-    { title: "Painting", img: "https://picsum.photos/300/200?random=2" },
-    { title: "Reading", img: "https://picsum.photos/300/200?random=3" },
-    { title: "Traveling", img: "https://picsum.photos/300/200?random=4" },
-    { title: "Cooking", img: "https://picsum.photos/300/200?random=5" },
-    { title: "Music", img: "https://picsum.photos/300/200?random=6" },
-    { title: "Gaming", img: "https://picsum.photos/300/200?random=7" },
-    { title: "Writing", img: "https://picsum.photos/300/200?random=8" }
-  ];
-
-  const grid = document.getElementById("hobbiesGrid");
-
-  // Generate hobby cards
-  hobbies.forEach(hobby => {
-    const card = document.createElement("div");
-    card.classList.add("hobby-card");
-
-    card.innerHTML = `
-      <h3>${hobby.title}</h3>
-      <img src="${hobby.img}" alt="${hobby.title}">
-    `;
-
-    grid.appendChild(card);
-  });
-</script>
 
   <!-- Social -->
   <div class="social-icons">
