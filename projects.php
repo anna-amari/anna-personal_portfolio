@@ -189,7 +189,7 @@ $pageTitle = "Projects | Anna Mari Portfolio";
       <li><a href="about.php">About</a></li>
       <li><a href="projects.php">Projects</a></li>
       <li><a href="places.php">Places</a></li>
-      <li><a href="side-hustle.php">Side Hustle</a></li>
+      <li><a href="education.php">Education</a></li>
     </ul>
   </nav>
 

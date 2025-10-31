@@ -1,0 +1,289 @@
+<!-- header.php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000000;
+      color: #ffffff;
+      display: flex;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background-color: #111111;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 2px 0 10px rgba(255,255,255,0.1);
+      position: fixed;
+      height: 100%;
+      border-right: 1px solid #333333;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 25px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #ffffff;
+    }
+
+    .sidebar a {
+      color: #cccccc;
+      text-decoration: none;
+      padding: 12px 15px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .sidebar a:hover {
+      background-color: #ffffff;
+      color: #000000;
+      transform: translateX(5px);
+    }
+
+    .sidebar a.active {
+      background-color: #ffffff;
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .sidebar hr {
+      border: none;
+      border-top: 1px solid #333333;
+      margin: 15px 0;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 30px;
+      flex-grow: 1;
+      background-color: #000000;
+    }
+
+    .main h1 {
+      font-weight: 600;
+      margin-bottom: 25px;
+      color: #ffffff;
+      font-size: 2rem;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background-color: #111111;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(255,255,255,0.05);
+      transition: all 0.3s ease;
+      border: 1px solid #333333;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(255,255,255,0.1);
+      border-color: #555555;
+    }
+
+    .card i {
+      font-size: 32px;
+      color: #ffffff;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin: 12px 0;
+      font-size: 1.1rem;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: #cccccc;
+      font-size: 0.9rem;
+    }
+
+    /* Sections */
+    .section {
+      background-color: #111111;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+      border: 1px solid #333333;
+    }
+
+    .section h2 {
+      color: #ffffff;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ffffff;
+    }
+
+    .section p {
+      color: #cccccc;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .btn:hover {
+      background-color: #e0e0e0;
+      transform: translateY(-2px);
+    }
+
+    /* Message Styles */
+    .message {
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      font-weight: 500;
+      border: 1px solid transparent;
+    }
+
+    .message.success {
+      background-color: #1a331a;
+      color: #90ee90;
+      border-color: #2d5016;
+    }
+
+    .message.error {
+      background-color: #331a1a;
+      color: #ff6b6b;
+      border-color: #501616;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+        padding: 15px;
+      }
+      
+      .main {
+        margin-left: 200px;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+      
+      .main {
+        margin-left: 0;
+      }
+      .dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #fff;
+}
+
+.sidebar {
+  width: 260px;
+  background: #1a1a1a;
+  padding: 20px;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 40px;
+}
+
+.dashboard-main h1 {
+  color: #d785c3;
+  margin-bottom: 10px;
+}
+
+.dashboard-footer {
+  text-align: center;
+  padding: 20px;
+  background: #1a1a1a;
+  color: #ccc;
+}
+
+    }
+ 
+</style>
+<body>
+
+
+<!-- sidebar.php -->
+<div class="sidebar">
+  <h2><i class="fas fa-user-circle"></i> Dashboard</h2>
+    <a href="dashboard.php" class="active"><i class="fas fa-home"></i> Overview</a>
+     <a href="manage_home/tech-stack/tech_stack.php"><i class="fas fa-briefcase"></i> Manages Home</a>
+    <a href="manage_projects/college_friends.php"><i class="fas fa-briefcase"></i> Manages Projects</a>
+    <a href="places.php"><i class="fas fa-map-marker-alt"></i> Manage Places</a>
+    <a href="manage_education/webinar.php"><i class="fas fa-graduation-cap"></i> Manage Education</a>
+    <a href="about_me/message_form.php"><i class="fas fa-user"></i> About Me</a>
+    <a href="index.php"><i class="fas fa-globe"></i> View Portfolio</a>
+    <hr>
+    <a href="settings.php"><i class="fas fa-cog"></i> Settings</a>
+    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+
+
+
+<!-- footer.php -->
+<footer class="dashboard-footer">
+  <p>&copy; <?= date("Y") ?> Amari's Portfolio. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
+
