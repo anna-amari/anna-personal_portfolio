@@ -18,7 +18,7 @@ $result = mysqli_query($conn, $query);
   <!-- Font & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="dashboard.css">
 
 </head>
 <body>
@@ -27,8 +27,8 @@ $result = mysqli_query($conn, $query);
   <div class="sidebar">
     <h2><i class="fas fa-user-circle"></i> Dashboard</h2>
     <a href="dashboard.php" class="active"><i class="fas fa-home"></i> Overview</a>
-     <a href="manage_home/tech-stack/tech_stack.php"><i class="fas fa-briefcase"></i> Manages Home</a>
-<a href="manage_projects.php"><i class="fas fa-briefcase"></i> Manage Projects</a>
+    <a href="manage_home/tech-stack/tech_stack.php"><i class="fas fa-briefcase"></i> Manage Home</a>
+    <a href="manage_projects.php"><i class="fas fa-briefcase"></i> Manage Projects</a>
     <a href="places.php"><i class="fas fa-map-marker-alt"></i> Manage Places</a>
     <a href="manage_education/webinar.php"><i class="fas fa-graduation-cap"></i> Manage Education</a>
     <a href="message_form.php"><i class="fas fa-user"></i> Messages</a>
@@ -39,7 +39,7 @@ $result = mysqli_query($conn, $query);
   </div>
 
   <!-- Main Content -->
-  <div class="main">
+  <main class="dashboard-main">
     <!-- Message Display Section -->
     <?php if (isset($_SESSION['message'])): ?>
       <div class="message success">
@@ -82,18 +82,18 @@ $result = mysqli_query($conn, $query);
     <!-- Quick Actions Section -->
     <div class="section">
       <h2>Quick Actions</h2>
-      <p>Quickly links for your portfolio content.</p>
+      <p>Quick links for your portfolio content.</p>
       <button class="btn" onclick="window.location.href='about.php'" style="margin-right: 10px;">
-        <i class="fas fa-briefcase"></i> About
+        <i class="fas fa-user"></i> About
       </button>
-      <button class="btn" onclick="window.location.href='project.php'" style="margin-right: 10px;">
-        <i class="fas fa-map-marker-alt"></i> Project
+      <button class="btn" onclick="window.location.href='projects.php'" style="margin-right: 10px;">
+        <i class="fas fa-briefcase"></i> Projects
       </button>
       <button class="btn" onclick="window.location.href='places.php'" style="margin-right: 10px;">
-        <i class="fas fa-graduation-cap"></i>Places 
+        <i class="fas fa-map-marker-alt"></i> Places
       </button>
       <button class="btn" onclick="window.location.href='education.php'">
-        <i class="fas fa-layer-group"></i> Education
+        <i class="fas fa-graduation-cap"></i> Education
       </button>
     </div>
 
@@ -105,7 +105,7 @@ $result = mysqli_query($conn, $query);
         <i class="fas fa-info-circle"></i> No recent activity to display
       </div>
     </div>
-  </div>
+  </main>
 
 </body>
 </html>

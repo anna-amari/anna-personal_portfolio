@@ -391,7 +391,7 @@ $pageTitle = "Manage Projects";
                 <?php endwhile; ?>
             </div>
         <?php else: ?>
-            <!-- Empty State -->
+          
             <div class="no-projects">
                 <div class="empty-state-icon">
                     <i class="fas fa-folder-open"></i>
@@ -433,3 +433,4 @@ function goBack() {
     window.location.href = 'dashboard.php';
 }
 </script>
+

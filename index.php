@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="style.css">
   
   <style>
-    /* Screenshot Gallery Styles */
     .screenshot-gallery {
       display: none;
       position: fixed;

@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Projects";
+$pageTitle = "Education & Certifications";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,122 +7,158 @@ $pageTitle = "Projects";
   <meta charset="UTF-8">
   <title><?php echo $pageTitle; ?></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-   <link rel="stylesheet" href="style.css">
-   </head>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
     <?php include 'nav.php'; ?>
+    
 <section class="edu-cert-section">
-  <div class="tab-header">
-    <button class="tab-btn active" data-tab="education">EDUCATION</button>
-    <button class="tab-btn" data-tab="certification">CERTIFICATION</button>
-    <button class="tab-btn" data-tab="webinar">WEBINARS</button>
-  </div>
+  <!-- Hero Header -->
 
-  <!-- EDUCATION TAB -->
-  <div id="education" class="tab-content active">
-    <div class="edu-grid">
-      <div class="edu-card">
-        <div class="edu-image">
-          <img src="images/college.jfif" alt="College">
+  <!-- Education Section -->
+  <div class="section-container" id="education">
+    <div class="section-header">
+      <div class="section-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <h2>Education</h2>
+      <p>My academic background and achievements</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <div class="school-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Camarines_Sur_Polytechnic_Colleges_Logo.png/250px-Camarines_Sur_Polytechnic_Colleges_Logo.png" alt="CSPC Logo">
+          </div>
+          <div class="marker-dot"></div>
+          <div class="marker-line"></div>
         </div>
-        <div class="edu-text">
-          <h3>
-            <b>
-              <a href="https://cspc.edu.ph/" target="_blank"
-                style="color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;">
-                Camarines Sur Polytechnic Colleges
-              </a>
-            </b>
-          </h3>
-          <p><b><i>Bachelor of Science in Information Technology</i></b></p>
-          <p><b>GWA: 1.69</b></p>
-          <div class="edu-details">
-            <span class="year">2021 - Present</span>
-            <span class="status">Undergraduate</span>
+        <div class="timeline-content">
+          <div class="edu-card">
+            <div class="edu-text">
+              <h3>
+                <a href="https://cspc.edu.ph/" target="_blank">
+                  Camarines Sur Polytechnic Colleges
+                </a>
+              </h3>
+              <p class="edu-degree">Bachelor of Science in Information Technology</p>
+              <p class="edu-honors">GWA: 1.69</p>
+              <div class="edu-details">
+                <span class="year">2021 - Present</span>
+                <span class="status undergraduate">Undergraduate</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="edu-card">
-        <div class="edu-image">
-          <img src="images/shs.png" alt="Senior High Graduation">
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <div class="school-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaXVnPyeRUXo6MFAX_A5ExqS2z25zE9spKWQ&s" alt="ACLC Logo">
+          </div>
+          <div class="marker-dot"></div>
+          <div class="marker-line"></div>
         </div>
-        <div class="edu-text">
-          <h3>
-            <b>
-              <a href="https://www.facebook.com/ACLCCollegeIRIGA/" target="_blank"
-                style="color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;">
-                ACLC College of Iriga
-              </a>
-            </b>
-          </h3>
-          <p><b><i>Senior High - ABM Strand</i></b></p>
-          <p><b>With High Honors</b></p>
-          <div class="edu-details">
-            <span class="year">2019 - 2021</span>
-            <span class="status">Completed</span>
+        <div class="timeline-content">
+          <div class="edu-card">
+            <div class="edu-text">
+              <h3>
+                <a href="https://www.facebook.com/ACLCCollegeIRIGA/" target="_blank">
+                  ACLC College of Iriga
+                </a>
+              </h3>
+              <p class="edu-degree">Senior High - ABM Strand</p>
+              <p class="edu-honors">With High Honors</p>
+              <div class="edu-details">
+                <span class="year">2019 - 2021</span>
+                <span class="status completed">Completed</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="edu-card">
-        <div class="edu-image">
-          <img src="images/jhs.png" alt="Junior High Graduation">
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <div class="school-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnHxYpzSOQJhcFuxG0Hr1joAjBiw5u9aYBNg&s" alt="UNEP Logo">
+          </div>
+          <div class="marker-dot"></div>
         </div>
-        <div class="edu-text">
-          <h3>
-            <b>
-              <a href="https://www.unep.edu.ph/" target="_blank"
-                style="color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;">
-                University of Northeastern Philippines
-              </a>
-            </b>
-          </h3>
-          <p><b><i>Junior High School</i></b></p>
-          <p><b>With Honors [Grade 7 and 8]</b></p>
-          <div class="edu-details">
-            <span class="year">2015 - 2019</span>
-            <span class="status">Completed</span>
+        <div class="timeline-content">
+          <div class="edu-card">
+            <div class="edu-text">
+              <h3>
+                <a href="https://www.unep.edu.ph/" target="_blank">
+                  University of Northeastern Philippines
+                </a>
+              </h3>
+              <p class="edu-degree">Junior High School</p>
+              <p class="edu-honors">With Honors [Grade 7 and 8]</p>
+              <div class="edu-details">
+                <span class="year">2015 - 2019</span>
+                <span class="status completed">Completed</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- CERTIFICATION TAB -->
-  <div id="certification" class="tab-content">
-    <div class="cert-gallery">
-      <div class="cert-item">
-        <img src="images/webinar/c1.jpg" alt="Certification 1">
-        <div class="cert-overlay">
-          <span>Web Development Fundamentals</span>
+  <!-- Certifications Section -->
+  <div class="section-container" id="certifications">
+    <div class="section-header">
+      <div class="section-icon">
+        <i class="fas fa-certificate"></i>
+      </div>
+      <h2>Certifications</h2>
+      <p>Professional certifications and achievements</p>
+    </div>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-image">
+          <img src="images/webinar/c1.jpg">
+      </div>
+</div>
+
+      <div class="cert-card">
+        <div class="cert-image">
+          <img src="images/webinar/c2.png">
         </div>
       </div>
-      <div class="cert-item">
-        <img src="images/webinar/c2.png" alt="Certification 2">
-        <div class="cert-overlay">
-          <span>JavaScript Mastery</span>
+
+      <div class="cert-card">
+        <div class="cert-image">
+          <img src="images/webinar/c3.jpg">
+
         </div>
       </div>
-      <div class="cert-item">
-        <img src="images/webinar/c3.jpg" alt="Certification 3">
-        <div class="cert-overlay">
-          <span>UI/UX Design Principles</span>
-        </div>
-      </div>
-      <div class="cert-item">
-        <img src="images/webinar/c4.jfif" alt="Certification 4">
-        <div class="cert-overlay">
-          <span>Database Management</span>
+
+      <div class="cert-card">
+        <div class="cert-image">
+          <img src="images/webinar/c4.jfif">
         </div>
       </div>
     </div>
   </div>
 
-  <!-- WEBINAR TAB -->
-  <div id="webinar" class="tab-content">
+  <!-- Webinars Section -->
+  <div class="section-container" id="webinars">
+    <div class="section-header">
+      <div class="section-icon">
+        <i class="fas fa-video"></i>
+      </div>
+      <h2>Webinars & Workshops</h2>
+      <p>Professional development and continuous learning</p>
+    </div>
+
     <div class="webinar-grid">
       <div class="webinar-card">
+        <div class="webinar-badge">Latest</div>
         <div class="webinar-header">
           <h3>Advanced Web Development</h3>
           <span class="webinar-date">March 15, 2024</span>
@@ -136,8 +172,10 @@ $pageTitle = "Projects";
           </div>
         </div>
         <div class="webinar-footer">
-          <span class="webinar-duration">2 hours</span>
-          <span class="webinar-attendees">150 attendees</span>
+          <div class="webinar-stats">
+            <span class="duration"><i class="far fa-clock"></i> 2 hours</span>
+            <span class="attendees"><i class="fas fa-users"></i> 150 attendees</span>
+          </div>
         </div>
       </div>
 
@@ -155,8 +193,10 @@ $pageTitle = "Projects";
           </div>
         </div>
         <div class="webinar-footer">
-          <span class="webinar-duration">3 hours</span>
-          <span class="webinar-attendees">200 attendees</span>
+          <div class="webinar-stats">
+            <span class="duration"><i class="far fa-clock"></i> 3 hours</span>
+            <span class="attendees"><i class="fas fa-users"></i> 200 attendees</span>
+          </div>
         </div>
       </div>
 
@@ -174,8 +214,10 @@ $pageTitle = "Projects";
           </div>
         </div>
         <div class="webinar-footer">
-          <span class="webinar-duration">2.5 hours</span>
-          <span class="webinar-attendees">180 attendees</span>
+          <div class="webinar-stats">
+            <span class="duration"><i class="far fa-clock"></i> 2.5 hours</span>
+            <span class="attendees"><i class="fas fa-users"></i> 180 attendees</span>
+          </div>
         </div>
       </div>
     </div>
@@ -184,214 +226,356 @@ $pageTitle = "Projects";
 
 <style>
 .edu-cert-section {
-  padding: 60px 5%;
-  background-color: #000000;
+  padding: 15px 3%;
+  min-height: auto;
   color: #ffffff;
-  min-height: 100vh;
 }
 
-/* Tab Header */
-.tab-header {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
-  border-bottom: 2px solid #333333;
-  padding-bottom: 10px;
+/* Hero Section */
+.section-hero {
+  text-align: center;
+  padding: 30px 20px;
+  margin-bottom: 20px;
 }
 
-.tab-btn {
-  background: transparent;
-  color: #cccccc;
-  border: none;
-  padding: 12px 30px;
-  margin: 0 10px;
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #e89cae 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
   font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 8px 8px 0 0;
+  color: #94a3b8;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
 }
 
-.tab-btn.active {
+/* Section Containers */
+.section-container {
+  max-width: 1100px;
+  margin: 0 auto 25px;
+  padding: 25px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #e89cae 0%, #60a5fa 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  font-size: 1.8rem;
+}
+
+.section-header h2 {
+  font-size: 2rem;
   color: #ffffff;
-  background: #333333;
-  border-bottom: 3px solid #ffffff;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, #e89cae 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.tab-btn:hover:not(.active) {
-  color: #ffffff;
-  background: #222222;
+.section-header p {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin: 0;
 }
 
-/* Tab Content */
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-/* Education Grid */
-.edu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
+/* Timeline */
+.timeline {
+  position: relative;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.edu-card {
-  background: #111111;
-  border-radius: 15px;
-  padding: 25px;
+.timeline-item {
   display: flex;
-  gap: 20px;
-  box-shadow: 0 4px 15px rgba(255,255,255,0.05);
-  border: 1px solid #333333;
-  transition: all 0.3s ease;
+  margin-bottom: 25px;
+  position: relative;
+  align-items: flex-start;
 }
 
-.edu-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(255,255,255,0.1);
-  border-color: #555555;
-}
-
-.edu-image {
+.timeline-marker {
+  position: relative;
+  width: 80px;
+  margin-right: 20px;
   flex-shrink: 0;
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 2px solid #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.edu-image img {
+.school-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 10px;
+}
+
+.school-logo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.edu-text {
+.marker-dot {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #e89cae 0%, #60a5fa 100%);
+  border-radius: 50%;
+  border: 3px solid #1a1a1a;
+  z-index: 2;
+  position: relative;
+}
+
+.marker-line {
+  position: absolute;
+  top: 86px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: calc(100% + 10px);
+  background: linear-gradient(to bottom, #e89cae, #60a5fa);
+  z-index: 1;
+}
+
+.timeline-item:last-child .marker-line {
+  display: none;
+}
+
+.timeline-content {
   flex: 1;
+  padding-bottom: 10px;
+}
+
+/* Education Cards */
+.edu-card {
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-height: 140px;
+}
+
+.edu-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(232, 156, 174, 0.3);
+  box-shadow: 0 8px 25px rgba(232, 156, 174, 0.15);
 }
 
 .edu-text h3 {
   margin: 0 0 10px 0;
   font-size: 1.3rem;
-  color: #ffffff;
 }
 
 .edu-text h3 a {
-  color: #ffffff !important;
-  text-decoration: underline !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 4px !important;
-  transition: color 0.3s ease;
+  color: #ffffff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #ffffff 0%, #e89cae 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
 }
 
 .edu-text h3 a:hover {
-  color: #cccccc !important;
+  text-shadow: 0 0 20px rgba(232, 156, 174, 0.5);
 }
 
-.edu-text p {
-  margin: 5px 0;
-  color: #cccccc;
+.edu-degree {
+  color: #e89cae;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 6px 0;
+}
+
+.edu-honors {
+  color: #60a5fa;
+  font-weight: 500;
+  margin: 6px 0;
+  font-size: 0.95rem;
 }
 
 .edu-details {
-  margin-top: 15px;
+  margin-top: 12px;
   display: flex;
-  gap: 15px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .edu-details span {
-  background: #333333;
-  color: #ffffff;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
-/* Certification Gallery */
-.cert-gallery {
+.year {
+  background: rgba(96, 165, 250, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.status {
+  border: 1px solid;
+}
+
+.status.undergraduate {
+  background: rgba(232, 156, 174, 0.15);
+  color: #e89cae;
+  border-color: rgba(232, 156, 174, 0.3);
+}
+
+.status.completed {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* Certifications Grid */
+.cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-.cert-item {
-  position: relative;
-  border-radius: 12px;
+.cert-card {
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(255,255,255,0.05);
-  border: 1px solid #333333;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  position: relative;
 }
 
-.cert-item:hover {
+.cert-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(255,255,255,0.1);
+  box-shadow: 0 12px 35px rgba(232, 156, 174, 0.25);
+  border-color: rgba(232, 156, 174, 0.3);
 }
 
-.cert-item img {
+.cert-image {
+  position: relative;
   width: 100%;
   height: 200px;
+  overflow: hidden;
+}
+
+.cert-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.3s ease;
+}
+
+.cert-card:hover .cert-image img {
+  transform: scale(1.08);
 }
 
 .cert-overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.8);
-  color: #ffffff;
-  padding: 15px;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(232, 156, 174, 0.9) 0%, rgba(96, 165, 250, 0.9) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.cert-item:hover .cert-overlay {
-  transform: translateY(0);
+.cert-card:hover .cert-overlay {
+  opacity: 1;
+}
+
+.cert-info {
+  text-align: center;
+  color: white;
+  padding: 15px;
+}
+
+.cert-info h4 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.cert-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.9;
 }
 
 /* Webinar Grid */
 .webinar-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 25px;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .webinar-card {
-  background: #111111;
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 4px 15px rgba(255,255,255,0.05);
-  border: 1px solid #333333;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
 }
 
 .webinar-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(255,255,255,0.1);
-  border-color: #555555;
+  transform: translateY(-3px);
+  border-color: rgba(232, 156, 174, 0.3);
+  box-shadow: 0 8px 25px rgba(232, 156, 174, 0.15);
+}
+
+.webinar-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #e89cae 0%, #60a5fa 100%);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .webinar-header {
   display: flex;
-  justify-content: between;
+  justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 15px;
-  gap: 15px;
+  gap: 12px;
 }
 
 .webinar-header h3 {
@@ -402,125 +586,153 @@ $pageTitle = "Projects";
 }
 
 .webinar-date {
-  background: #333333;
-  color: #ffffff;
-  padding: 4px 12px;
-  border-radius: 20px;
+  background: rgba(96, 165, 250, 0.15);
+  color: #60a5fa;
+  padding: 5px 12px;
+  border-radius: 16px;
   font-size: 0.8rem;
   font-weight: 500;
+  border: 1px solid rgba(96, 165, 250, 0.3);
   white-space: nowrap;
 }
 
 .webinar-content p {
-  color: #cccccc;
+  color: #cbd5e1;
   margin-bottom: 15px;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 .webinar-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   margin-bottom: 15px;
 }
 
 .webinar-tags span {
-  background: #222222;
-  color: #cccccc;
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
   padding: 4px 10px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  border: 1px solid #333333;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.webinar-card:hover .webinar-tags span {
+  background: rgba(232, 156, 174, 0.15);
+  color: #e89cae;
+  border-color: rgba(232, 156, 174, 0.3);
 }
 
 .webinar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+.webinar-stats {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 15px;
-  border-top: 1px solid #333333;
 }
 
-.webinar-footer span {
-  color: #999999;
-  font-size: 0.9rem;
+.webinar-stats span {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .tab-header {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .section-container {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .timeline-item {
     flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .timeline-marker {
+    margin-right: 0;
+    margin-bottom: 15px;
+    width: 100%;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
   }
   
-  .tab-btn {
-    width: 200px;
-    margin: 5px 0;
+  .school-logo {
+    margin-bottom: 0;
+    width: 50px;
+    height: 50px;
   }
   
-  .edu-grid,
-  .webinar-grid {
-    grid-template-columns: 1fr;
+  .marker-dot {
+    display: none;
   }
   
-  .cert-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-  
-  .edu-card {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .edu-image {
-    align-self: center;
+  .marker-line {
+    display: none;
   }
   
   .webinar-header {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+  }
+  
+  .webinar-stats {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .cert-grid,
+  .webinar-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 }
 
 @media (max-width: 480px) {
   .edu-cert-section {
-    padding: 40px 5%;
+    padding: 10px 2%;
   }
   
-  .cert-gallery {
-    grid-template-columns: 1fr;
+  .section-hero {
+    padding: 20px 10px;
   }
   
-  .edu-grid,
-  .webinar-grid {
-    grid-template-columns: 1fr;
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .section-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
   }
 }
 </style>
 
 <script>
-// Tab functionality
+// Smooth scrolling for navigation
 document.addEventListener('DOMContentLoaded', function() {
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const tabContents = document.querySelectorAll('.tab-content');
-  
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remove active class from all buttons and contents
-      tabBtns.forEach(b => b.classList.remove('active'));
-      tabContents.forEach(c => c.classList.remove('active'));
-      
-      // Add active class to clicked button
-      btn.classList.add('active');
-      
-      // Show corresponding content
-      const tabId = btn.getAttribute('data-tab');
-      document.getElementById(tabId).classList.add('active');
-    });
-  });
+  // Add any interactive functionality here if needed
+  console.log('Education & Certifications page loaded');
 });
 </script>
 </body>
-  
 </html>

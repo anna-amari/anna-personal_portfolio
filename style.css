@@ -78,8 +78,8 @@ body.light-mode .main-nav ul li a:hover {
 }
 
 .hero-image img {
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 400px; /* 3:4 ratio */
   object-fit: cover;
   border-radius: 10px;
 }

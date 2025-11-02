@@ -24,7 +24,6 @@ $pageTitle = "Projects";
   }
 
   body {
-    background: #000;
     color: #fff;
     line-height: 1.6;
     overflow-x: hidden;
