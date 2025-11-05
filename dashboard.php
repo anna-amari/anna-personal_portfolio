@@ -27,10 +27,10 @@ $result = mysqli_query($conn, $query);
   <div class="sidebar">
     <h2><i class="fas fa-user-circle"></i> Dashboard</h2>
     <a href="dashboard.php" class="active"><i class="fas fa-home"></i> Overview</a>
-    <a href="manage_home/tech-stack/tech_stack.php"><i class="fas fa-briefcase"></i> Manage Home</a>
+    <a href="manage_tech_stack.php"><i class="fas fa-briefcase"></i> Manage Home</a>
     <a href="manage_projects.php"><i class="fas fa-briefcase"></i> Manage Projects</a>
-    <a href="places.php"><i class="fas fa-map-marker-alt"></i> Manage Places</a>
-    <a href="manage_education/webinar.php"><i class="fas fa-graduation-cap"></i> Manage Education</a>
+    <a href="manage_places.php"><i class="fas fa-map-marker-alt"></i> Manage Places</a>
+    <a href="manage_certifications.php"><i class="fas fa-graduation-cap"></i> Manage Education</a>
     <a href="message_form.php"><i class="fas fa-user"></i> Messages</a>
     <a href="index.php"><i class="fas fa-globe"></i> View Portfolio</a>
     <hr>
@@ -83,16 +83,16 @@ $result = mysqli_query($conn, $query);
     <div class="section">
       <h2>Quick Actions</h2>
       <p>Quick links for your portfolio content.</p>
-      <button class="btn" onclick="window.location.href='about.php'" style="margin-right: 10px;">
+      <button class="btn" onclick="window.location.href='about1.php'" style="margin-right: 10px;">
         <i class="fas fa-user"></i> About
       </button>
-      <button class="btn" onclick="window.location.href='projects.php'" style="margin-right: 10px;">
+      <button class="btn" onclick="window.location.href='projects1.php'" style="margin-right: 10px;">
         <i class="fas fa-briefcase"></i> Projects
       </button>
-      <button class="btn" onclick="window.location.href='places.php'" style="margin-right: 10px;">
+      <button class="btn" onclick="window.location.href='places1.php'" style="margin-right: 10px;">
         <i class="fas fa-map-marker-alt"></i> Places
       </button>
-      <button class="btn" onclick="window.location.href='education.php'">
+      <button class="btn" onclick="window.location.href='education1.php'">
         <i class="fas fa-graduation-cap"></i> Education
       </button>
     </div>

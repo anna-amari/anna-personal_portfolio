@@ -274,10 +274,10 @@ $pageTitle = "Anna Mari Portfolio";
     transition: color 0.3s;
   }
   
-  .dancing-script-<uniquifier> {
+  .dancing-script {
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: 400;
     font-style: normal;
   }
 
@@ -378,8 +378,22 @@ $pageTitle = "Anna Mari Portfolio";
   .destination-card:hover img {
     transform: scale(1.08);
   }
+html, body {
+    overflow: auto; /* Keep scrolling functionality */
+  }
 
-  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+      display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  html, body {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+    
   </style>
 </head>
 <body>

@@ -9,6 +9,6 @@
     <li><a href="about1.php">About</a></li>
     <li><a href="projects1.php">Projects</a></li>
     <li><a href="places1.php">Places</a></li>
-    <li><a href="education.php">Education</a></li>
+    <li><a href="education1.php">Education</a></li>
   </ul>
 </nav>

@@ -108,6 +108,46 @@ $pageTitle = "Education & Certifications";
     </div>
   </div>
 
+  Introduction to Computing
+
+Computer Programming 1
+
+Computer Programming 2
+
+Networking 1
+
+Networking 2
+
+Multimedia Systems
+
+Introduction to Human Center Interaction
+
+Discrete Mathematics
+
+Web Systems and Technology 1
+
+Data Structures and Algorithm
+
+Information Management 1
+
+Object Oriented Programming
+
+IT Infrastructure and Network Technologies
+
+Platform Security
+
+Mobile Technology 1
+
+Advance Database Systems
+
+Integrative Programming and Technologies 1
+
+Probability and Statistics in Information Technology
+
+Cybersecurity
+
+IT Project Management
+
   <!-- Certifications Section -->
   <div class="section-container" id="certifications">
     <div class="section-header">
@@ -725,6 +765,21 @@ $pageTitle = "Education & Certifications";
     font-size: 1.5rem;
   }
 }
+ html, body {
+    overflow: auto; /* Keep scrolling functionality */
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    html, body {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
 </style>
 
 <script>

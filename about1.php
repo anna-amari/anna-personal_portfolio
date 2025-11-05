@@ -230,7 +230,6 @@ $classmates = $conn->query("SELECT * FROM classmates");
       text-align: center; 
     }
 
-    /* 🌸 Updated Gallery for dark theme */
     .photo-gallery {
       text-align: center;
       padding: 60px 20px;
@@ -412,7 +411,21 @@ $classmates = $conn->query("SELECT * FROM classmates");
       margin-top: 50px;
       border-top: 2px solid #e89cae;
     }
-  
+  html, body {
+    overflow: auto; /* Keep scrolling functionality */
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    html, body {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
 
   </style>
 </head>
@@ -473,35 +486,35 @@ $classmates = $conn->query("SELECT * FROM classmates");
     </div>
   </section>
 
-  <!-- College Friends Section -->
-  <div style="text-align:center;">
-    <h2 style="font-family:'Press Start 2P',cursive;font-size:24px;color:#e89cae;letter-spacing:3px;text-shadow:2px 2px 0 #000,4px 4px 0 #2a2a2a;background:linear-gradient(180deg,#1a1a1a,#2a2a2a);padding:20px;border-radius:12px;display:inline-block;margin-top:40px;width:auto;">
-      COLLEGE FRIENDS
-    </h2>
-  </div>
+<!-- College Friends Section -->
+<div style="text-align:center;">
+  <h2 style="font-family:'Press Start 2P',cursive;font-size:24px;color:#e89cae;letter-spacing:3px;text-shadow:2px 2px 0 #000,4px 4px 0 #2a2a2a;background:linear-gradient(180deg,#1a1a1a,#2a2a2a);padding:20px;border-radius:12px;display:inline-block;margin-top:40px;width:auto;">
+    COLLEGE FRIENDS
+  </h2>
+</div>
 
-  <section class="photo-gallery">
-    <div class="gallery-grid">
-      <?php
-        $folder = "images/BFF/";
-        $photos = [
-          "1.jfif", "5.jfif", "15.jfif",
-          "4.jfif", "29.jfif", "12.jfif",
-          "28.jfif", "14.jfif", "18.jfif",
-          "13.jfif", "19.jfif",  "26.jfif", "37.jfif",
-           "20.jfif", "11.jfif", "17.jfif"
-        ];
-
-        foreach ($photos as $photo) {
+<section class="photo-gallery">
+  <div class="gallery-grid">
+    <?php
+      $friends = $conn->query("SELECT * FROM college_friends ORDER BY id ASC");
+      if ($friends && $friends->num_rows > 0) {
+        while ($row = $friends->fetch_assoc()) {
+          $imagePath = 'images/BFF/' . htmlspecialchars($row['image']); 
           echo "
             <div class='gallery-item'>
-              <img src='{$folder}{$photo}' alt='Gallery Photo'>
+              <img src='{$imagePath}' alt='College Friend'>
             </div>
           ";
         }
-      ?>
-    </div>
-  </section>
+      } else {
+        echo "<p style='color:#fff; text-align:center;'>No college friends found.</p>";
+      }
+    ?>
+  </div>
+</section>
+
+
+
 
   <!-- Tech Accounts Section -->
   <section class="accounts-section">
@@ -570,74 +583,6 @@ $classmates = $conn->query("SELECT * FROM classmates");
       </div>
 
     </div>
-  </section>
-
-  <!-- Likes & Dislikes Section -->
-  <section class="likes-dislikes">
-    <h2 style="text-align:center; color:#e89cae; margin-bottom:35px;">✨ Likes & Dislikes ✨</h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Likes </th>
-          <th>Dislikes </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Writing poems & novels</td>
-          <td>❌ People with "parking lot ego"</td>
-        </tr>
-        <tr>
-          <td>My humor (between dark & light)</td>
-          <td>❌ People who can't understand "NO"</td>
-        </tr>
-        <tr>
-          <td>Watching BL (esp. Japanese)</td>
-          <td>❌ SKs corrupt in the making</td>
-        </tr>
-        <tr>
-          <td>I love angst story</td>
-          <td>❌ Doesn't like if it's too painful</td>
-        </tr>
-        <tr>
-          <td>INFJ girlie ✨</td>
-          <td>❌ Philippine government</td>
-        </tr>
-        <tr>
-          <td>Loving solitude most of the time</td>
-          <td>❌ The marching noise I hear in the night</td>
-        </tr>
-        <tr>
-          <td>Light pink is my anthem color 🎀</td>
-          <td>❌ People who finds joy over someone's misery</td>
-        </tr>
-        <tr>
-          <td>Traveling to many destinations</td>
-          <td>❌ Lack of financial capability</td>
-        </tr>
-        <tr>
-          <td>Ghibli movies (10/10 amazing!)</td>
-          <td>❌ Too much selflessness</td>
-        </tr>
-        <tr>
-          <td>Gen-Z fear: pregnancy & being unsuccessful</td>
-          <td>❌ My father side of a family</td>
-        </tr>
-        <tr>
-          <td>Ribbon and Tulip Emoticon</td>
-          <td>❌ Losing connection to ones I love dearly</td>
-        </tr>
-        <tr>
-          <td>I believe in supernatural beings</td>
-          <td>❌ Unable to see them</td>
-        </tr>
-        <tr>
-          <td>My body letting me to do things I want</td>
-          <td>❌ My aching back</td>
-        </tr>
-      </tbody>
-    </table>
   </section>
 
   <!-- Contact Form Section -->
