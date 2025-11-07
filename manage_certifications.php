@@ -107,6 +107,7 @@ $certResult = mysqli_query($conn, $certQuery);
 </head>
 <body>
 
+
 <div class="admin-container">
   <a href="dashboard.php" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</a>
   <h1><i class="fa-solid fa-certificate"></i> Manage Certifications</h1>

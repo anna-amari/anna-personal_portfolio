@@ -1,8 +1,40 @@
 <?php
 include 'd_header.php';
 include 'db.php';
+include 'activity_logger.php'; // Make sure this file exists
 
 $pageTitle = "Manage Projects";
+
+// Log page access
+logActivity($conn, 'view_projects', "Accessed manage projects page", 'projects');
+
+// Handle delete action
+if (isset($_GET['delete_id'])) {
+    $delete_id = intval($_GET['delete_id']);
+    
+    // Get project info before deleting for logging
+    $project_query = $conn->query("SELECT title FROM projects WHERE id = $delete_id");
+    if ($project_query && $project_query->num_rows > 0) {
+        $project_data = $project_query->fetch_assoc();
+        $project_title = $project_data['title'];
+        
+        // Delete project images first
+        $conn->query("DELETE FROM project_images WHERE project_id = $delete_id");
+        
+        // Delete project
+        if ($conn->query("DELETE FROM projects WHERE id = $delete_id")) {
+            logActivity($conn, 'delete_project', "Deleted project: $project_title", 'projects', $delete_id);
+            $_SESSION['message'] = "Project '$project_title' deleted successfully!";
+        } else {
+            $_SESSION['error'] = "Error deleting project: " . $conn->error;
+        }
+    } else {
+        $_SESSION['error'] = "Project not found!";
+    }
+    
+    header("Location: manage_projects.php");
+    exit();
+}
 ?>
 
 <link rel="stylesheet" href="dashboard.css">
@@ -270,6 +302,29 @@ $pageTitle = "Manage Projects";
         opacity: 0.7;
     }
 
+    /* Message Styles */
+    .message {
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .message.success {
+        background: rgba(34, 197, 94, 0.15);
+        color: #22c55e;
+        border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .message.error {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
         .dashboard-main {
@@ -297,7 +352,6 @@ $pageTitle = "Manage Projects";
     }
 </style>
 
-
 <main class="dashboard-main">
     <div class="projects-management">
         <!-- Header Section -->
@@ -308,7 +362,22 @@ $pageTitle = "Manage Projects";
                 Add New Project
             </a>
         </div>
+
+        <!-- Messages Display -->
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="message success">
+                <i class="fas fa-check-circle"></i>
+                <?= $_SESSION['message']; unset($_SESSION['message']); ?>
+            </div>
+        <?php endif; ?>
         
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="message error">
+                <i class="fas fa-exclamation-circle"></i>
+                <?= $_SESSION['error']; unset($_SESSION['error']); ?>
+            </div>
+        <?php endif; ?>
+
         <?php
         // Fetch all projects
         $projectsQuery = "
@@ -334,7 +403,7 @@ $pageTitle = "Manage Projects";
                                 <a href="edit_project.php?id=<?php echo $project['id']; ?>" class="action-btn edit-btn" title="Edit Project">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a href="delete_project.php?id=<?php echo $project['id']; ?>" class="action-btn delete-btn" title="Delete Project" onclick="return confirm('Are you sure you want to delete this project?')">
+                                <a href="manage_projects.php?delete_id=<?php echo $project['id']; ?>" class="action-btn delete-btn" title="Delete Project" onclick="return confirm('Are you sure you want to delete the project \"<?php echo addslashes($project['title']); ?>\"? This action cannot be undone.')">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </div>
@@ -407,6 +476,7 @@ $pageTitle = "Manage Projects";
         <?php endif; ?>
     </div>
 </main>
+
 <button onclick="goBack()" style="
     position: fixed;
     bottom: 30px;
@@ -434,4 +504,3 @@ function goBack() {
     window.location.href = 'dashboard.php';
 }
 </script>
-

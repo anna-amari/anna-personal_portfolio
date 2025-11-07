@@ -2,70 +2,97 @@
 include 'db.php'; // Database connection file
 session_start(); // Add this at the top
 
-// Folder for uploaded images - make sure this path is correct
-$uploadDir = 'images/';
+// Folder for uploaded images - match the structure from your database
+$uploadDir = 'images/location/';
 
-// Create images directory if it doesn't exist
+// Create images directory if it doesn't exist with proper permissions
 if (!file_exists($uploadDir)) {
-    mkdir($uploadDir, 0755, true);
+    if (!mkdir($uploadDir, 0755, true)) {
+        $_SESSION['error'] = "Failed to create directory: " . $uploadDir;
+    }
 }
 
 /* ------------------ ADD VISITED PLACE ------------------ */
 if (isset($_POST['add_place'])) {
     $place_name = trim($_POST['place_name']);
-    $fileName = basename($_FILES['place_image']['name']);
-    $targetPath = $uploadDir . $fileName;
     
-    // Debug information
-    echo "<!-- Debug: File upload started -->";
-    echo "<!-- Debug: File name: " . $fileName . " -->";
-    echo "<!-- Debug: Target path: " . $targetPath . " -->";
-    echo "<!-- Debug: Temp file: " . $_FILES['place_image']['tmp_name'] . " -->";
-    echo "<!-- Debug: Upload error: " . $_FILES['place_image']['error'] . " -->";
-
-    // Check if file is actually uploaded
-    if ($_FILES['place_image']['error'] === UPLOAD_ERR_OK) {
-        if (move_uploaded_file($_FILES['place_image']['tmp_name'], $targetPath)) {
-            $stmt = $conn->prepare("INSERT INTO visited_places (place_name, image) VALUES (?, ?)");
-            $stmt->bind_param("ss", $place_name, $fileName);
-            if ($stmt->execute()) {
-                $_SESSION['message'] = "Place added successfully!";
-            } else {
-                $_SESSION['error'] = "Database error: " . $stmt->error;
-            }
-        } else {
-            $_SESSION['error'] = "Failed to move uploaded file. Check folder permissions.";
-        }
+    // Check if file was uploaded
+    if (!isset($_FILES['place_image']) || $_FILES['place_image']['error'] !== UPLOAD_ERR_OK) {
+        $_SESSION['error'] = "Please select a valid image file.";
     } else {
-        $_SESSION['error'] = "File upload error: " . $_FILES['place_image']['error'];
+        $fileName = basename($_FILES['place_image']['name']);
+        $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'jfif'];
+        
+        // Validate file type
+        if (!in_array($fileExtension, $allowedExtensions)) {
+            $_SESSION['error'] = "Invalid file type. Allowed: JPG, JPEG, PNG, GIF, WebP, JFIF";
+        } else {
+            // Generate unique filename to avoid conflicts
+            $uniqueName = uniqid() . '_' . time() . '.' . $fileExtension;
+            $targetPath = $uploadDir . $uniqueName;
+            
+            // Store the full path in database to match your existing structure
+            $dbImagePath = 'images/location/' . $uniqueName;
+            
+            if (move_uploaded_file($_FILES['place_image']['tmp_name'], $targetPath)) {
+                $stmt = $conn->prepare("INSERT INTO visited_places (place_name, image) VALUES (?, ?)");
+                $stmt->bind_param("ss", $place_name, $dbImagePath);
+                if ($stmt->execute()) {
+                    $_SESSION['message'] = "Place added successfully!";
+                } else {
+                    $_SESSION['error'] = "Database error: " . $stmt->error;
+                    // Clean up the uploaded file if database insert failed
+                    if (file_exists($targetPath)) {
+                        unlink($targetPath);
+                    }
+                }
+            } else {
+                $_SESSION['error'] = "Failed to upload file. Check folder permissions.";
+            }
+        }
     }
 }
 
 /* ------------------ ADD DREAM DESTINATION ------------------ */
 if (isset($_POST['add_destination'])) {
     $destination_name = trim($_POST['destination_name']);
-    $fileName = basename($_FILES['destination_image']['name']);
-    $targetPath = $uploadDir . $fileName;
-
-    // Debug information
-    echo "<!-- Debug: Destination file upload started -->";
-    echo "<!-- Debug: File name: " . $fileName . " -->";
-    echo "<!-- Debug: Target path: " . $targetPath . " -->";
-
-    if ($_FILES['destination_image']['error'] === UPLOAD_ERR_OK) {
-        if (move_uploaded_file($_FILES['destination_image']['tmp_name'], $targetPath)) {
-            $stmt = $conn->prepare("INSERT INTO dream_destinations (destination_name, image) VALUES (?, ?)");
-            $stmt->bind_param("ss", $destination_name, $fileName);
-            if ($stmt->execute()) {
-                $_SESSION['message'] = "Dream destination added successfully!";
-            } else {
-                $_SESSION['error'] = "Database error: " . $stmt->error;
-            }
-        } else {
-            $_SESSION['error'] = "Failed to move uploaded file. Check folder permissions.";
-        }
+    
+    // Check if file was uploaded
+    if (!isset($_FILES['destination_image']) || $_FILES['destination_image']['error'] !== UPLOAD_ERR_OK) {
+        $_SESSION['error'] = "Please select a valid image file.";
     } else {
-        $_SESSION['error'] = "File upload error: " . $_FILES['destination_image']['error'];
+        $fileName = basename($_FILES['destination_image']['name']);
+        $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'jfif'];
+        
+        // Validate file type
+        if (!in_array($fileExtension, $allowedExtensions)) {
+            $_SESSION['error'] = "Invalid file type. Allowed: JPG, JPEG, PNG, GIF, WebP, JFIF";
+        } else {
+            // Generate unique filename to avoid conflicts
+            $uniqueName = uniqid() . '_' . time() . '.' . $fileExtension;
+            $targetPath = $uploadDir . $uniqueName;
+            
+            // Store appropriate path in database
+            $dbImagePath = 'images/location/' . $uniqueName;
+
+            if (move_uploaded_file($_FILES['destination_image']['tmp_name'], $targetPath)) {
+                $stmt = $conn->prepare("INSERT INTO dream_destinations (destination_name, image) VALUES (?, ?)");
+                $stmt->bind_param("ss", $destination_name, $dbImagePath);
+                if ($stmt->execute()) {
+                    $_SESSION['message'] = "Dream destination added successfully!";
+                } else {
+                    $_SESSION['error'] = "Database error: " . $stmt->error;
+                    // Clean up the uploaded file if database insert failed
+                    if (file_exists($targetPath)) {
+                        unlink($targetPath);
+                    }
+                }
+            } else {
+                $_SESSION['error'] = "Failed to upload file. Check folder permissions.";
+            }
+        }
     }
 }
 
@@ -74,13 +101,18 @@ if (isset($_POST['delete_place'])) {
     $id = intval($_POST['id']);
     $result = $conn->query("SELECT image FROM visited_places WHERE id=$id");
     if ($row = $result->fetch_assoc()) {
-        $imagePath = $uploadDir . $row['image'];
-        if (file_exists($imagePath)) {
-            unlink($imagePath);
+        // Extract filename from the stored path
+        $imagePath = basename($row['image']);
+        $fullPath = $uploadDir . $imagePath;
+        if (file_exists($fullPath)) {
+            unlink($fullPath);
         }
     }
-    $conn->query("DELETE FROM visited_places WHERE id=$id");
-    $_SESSION['message'] = "Place deleted successfully!";
+    if ($conn->query("DELETE FROM visited_places WHERE id=$id")) {
+        $_SESSION['message'] = "Place deleted successfully!";
+    } else {
+        $_SESSION['error'] = "Error deleting place: " . $conn->error;
+    }
 }
 
 /* ------------------ DELETE DREAM DESTINATION ------------------ */
@@ -88,13 +120,21 @@ if (isset($_POST['delete_destination'])) {
     $id = intval($_POST['id']);
     $result = $conn->query("SELECT image FROM dream_destinations WHERE id=$id");
     if ($row = $result->fetch_assoc()) {
-        $imagePath = $uploadDir . $row['image'];
-        if (file_exists($imagePath)) {
-            unlink($imagePath);
+        // Handle both URLs and local files
+        if (!filter_var($row['image'], FILTER_VALIDATE_URL)) {
+            // It's a local file
+            $imagePath = basename($row['image']);
+            $fullPath = $uploadDir . $imagePath;
+            if (file_exists($fullPath)) {
+                unlink($fullPath);
+            }
         }
     }
-    $conn->query("DELETE FROM dream_destinations WHERE id=$id");
-    $_SESSION['message'] = "Dream destination deleted successfully!";
+    if ($conn->query("DELETE FROM dream_destinations WHERE id=$id")) {
+        $_SESSION['message'] = "Dream destination deleted successfully!";
+    } else {
+        $_SESSION['error'] = "Error deleting destination: " . $conn->error;
+    }
 }
 
 /* ------------------ FETCH DATA ------------------ */
@@ -120,12 +160,58 @@ $destinationsResult = $conn->query("SELECT * FROM dream_destinations ORDER BY id
     color: #fff;
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
+    position: relative;
+  }
+
+  /* Back Button Styles */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #f2a6c1;
+    color: #111;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .back-btn:hover {
+    background: #e89cae;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(232, 156, 174, 0.3);
   }
 
   .admin-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 20px;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #e89cae 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+
+  .page-header p {
+    color: #94a3b8;
+    font-size: 1.1rem;
   }
 
   .section {
@@ -270,28 +356,6 @@ $destinationsResult = $conn->query("SELECT * FROM dream_destinations ORDER BY id
     font-weight: 600;
   }
 
-  .message {
-    padding: 15px 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .message.success {
-    background: rgba(34, 197, 94, 0.15);
-    color: #22c55e;
-    border: 1px solid rgba(34, 197, 94, 0.3);
-  }
-
-  .message.error {
-    background: rgba(239, 68, 68, 0.15);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-  }
-
   .empty-state {
     text-align: center;
     padding: 40px 20px;
@@ -305,15 +369,6 @@ $destinationsResult = $conn->query("SELECT * FROM dream_destinations ORDER BY id
     margin-bottom: 15px;
     color: #e89cae;
     opacity: 0.5;
-  }
-
-  .debug-info {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 8px;
-    margin: 10px 0;
-    font-size: 0.9rem;
-    color: #94a3b8;
   }
 
   @media (max-width: 768px) {
@@ -333,6 +388,14 @@ $destinationsResult = $conn->query("SELECT * FROM dream_destinations ORDER BY id
     .form-container {
       padding: 20px;
     }
+    
+    .back-btn {
+      position: relative;
+      top: fixed;
+      margin-left:50px;
+      margin-bottom: 20px;
+      align-self: flex-start;
+    }
   }
 
   @media (max-width: 480px) {
@@ -350,147 +413,149 @@ $destinationsResult = $conn->query("SELECT * FROM dream_destinations ORDER BY id
 </head>
 <body>
 
+<!-- Back Button -->
+<a href="dashboard.php" class="back-btn">
+  <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+</a>
+
 <div class="admin-container">
-    <!-- Debug Information -->
-    <div class="debug-info">
-        <strong>Debug Info:</strong><br>
-        Upload Directory: <?php echo realpath($uploadDir); ?><br>
-        Directory Exists: <?php echo file_exists($uploadDir) ? 'Yes' : 'No'; ?><br>
-        Directory Writable: <?php echo is_writable($uploadDir) ? 'Yes' : 'No'; ?>
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Manage Places & Destinations</h1>
+    <p>Add and manage your visited places and dream destinations</p>
+  </div>
+
+  <!-- ===================== VISITED PLACES ===================== -->
+  <div class="section">
+    <div class="section-header">
+      <i class="fa-solid fa-location-dot"></i>
+      <h2>Visited Places</h2>
     </div>
 
-    <!-- Messages Display -->
-    <?php if (isset($_SESSION['message'])): ?>
-        <div class="message success">
-            <i class="fas fa-check-circle"></i>
-            <?= $_SESSION['message']; unset($_SESSION['message']); ?>
+    <!-- Add Place Form -->
+    <div class="form-container">
+      <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="place_name"><i class="fas fa-map-marker-alt"></i> Place Name</label>
+          <input type="text" id="place_name" name="place_name" class="form-control" placeholder="Enter place name" required>
         </div>
-    <?php endif; ?>
-    
-    <?php if (isset($_SESSION['error'])): ?>
-        <div class="message error">
-            <i class="fas fa-exclamation-circle"></i>
-            <?= $_SESSION['error']; unset($_SESSION['error']); ?>
+        <div class="form-group">
+          <label for="place_image"><i class="fas fa-image"></i> Place Image</label>
+          <input type="file" id="place_image" name="place_image" class="form-control" accept="image/*" required>
+          <small style="color: #94a3b8; font-size: 0.85rem;">Allowed: JPG, JPEG, PNG, GIF, WebP, JFIF | Max: 5MB</small>
         </div>
-    <?php endif; ?>
+        <button type="submit" name="add_place" class="btn btn-primary">
+          <i class="fa-solid fa-plus"></i> Add Visited Place
+        </button>
+      </form>
+    </div>
 
-    <!-- ===================== VISITED PLACES ===================== -->
-    <div class="section">
-        <div class="section-header">
-            <i class="fa-solid fa-location-dot"></i>
-            <h2>Visited Places</h2>
-        </div>
-
-        <!-- Add Place Form -->
-        <div class="form-container">
-            <form method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="place_name"><i class="fas fa-map-marker-alt"></i> Place Name</label>
-                    <input type="text" id="place_name" name="place_name" class="form-control" placeholder="Enter place name" required>
-                </div>
-                <div class="form-group">
-                    <label for="place_image"><i class="fas fa-image"></i> Place Image</label>
-                    <input type="file" id="place_image" name="place_image" class="form-control" accept="image/*" required>
-                    <small style="color: #94a3b8; font-size: 0.85rem;">Supported formats: JPG, PNG, GIF, WebP</small>
-                </div>
-                <button type="submit" name="add_place" class="btn btn-primary">
-                    <i class="fa-solid fa-plus"></i> Add Visited Place
-                </button>
-            </form>
-        </div>
-
-        <!-- Display Visited Places -->
-        <div class="grid">
-            <?php if ($placesResult->num_rows > 0): ?>
-                <?php while ($row = $placesResult->fetch_assoc()): ?>
-                    <div class="card">
-                        <?php 
-                        $imagePath = $uploadDir . $row['image'];
-                        $imageExists = file_exists($imagePath);
-                        ?>
-                        <img src="<?= $imageExists ? $uploadDir . htmlspecialchars($row['image']) : 'https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Not+Found'; ?>" 
-                             alt="<?= htmlspecialchars($row['place_name']); ?>"
-                             style="<?= !$imageExists ? 'border: 2px dashed #ef4444;' : '' ?>">
-                        <h3><?= htmlspecialchars($row['place_name']); ?></h3>
-                        <?php if (!$imageExists): ?>
-                            <small style="color: #ef4444; font-size: 0.8rem;">Image file missing</small>
-                        <?php endif; ?>
-                        <form method="POST">
-                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                            <button type="submit" name="delete_place" class="btn btn-delete">
-                                <i class="fa-solid fa-trash"></i> Delete
-                            </button>
-                        </form>
-                    </div>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <div class="empty-state">
-                    <i class="fas fa-map"></i>
-                    <h3>No Visited Places Yet</h3>
-                    <p>Add your first visited place using the form above.</p>
-                </div>
+    <!-- Display Visited Places -->
+    <div class="grid">
+      <?php if ($placesResult->num_rows > 0): ?>
+        <?php while ($row = $placesResult->fetch_assoc()): ?>
+          <div class="card">
+            <?php 
+            // Extract filename from stored path and check if it exists
+            $imageFileName = basename($row['image']);
+            $imagePath = $uploadDir . $imageFileName;
+            $imageExists = file_exists($imagePath);
+            ?>
+            <img src="<?= $imageExists ? $imagePath : 'https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Not+Found'; ?>" 
+                 alt="<?= htmlspecialchars($row['place_name']); ?>"
+                 onerror="this.src='https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Error'"
+                 style="<?= !$imageExists ? 'border: 2px dashed #ef4444;' : '' ?>">
+            <h3><?= htmlspecialchars($row['place_name']); ?></h3>
+            <?php if (!$imageExists): ?>
+              <small style="color: #ef4444; font-size: 0.8rem;">Image file missing</small>
             <?php endif; ?>
-        </div>
-    </div>
-
-    <!-- ===================== DREAM DESTINATIONS ===================== -->
-    <div class="section">
-        <div class="section-header">
-            <i class="fa-solid fa-globe"></i>
-            <h2>Dream Destinations</h2>
-        </div>
-
-        <!-- Add Destination Form -->
-        <div class="form-container">
-            <form method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="destination_name"><i class="fas fa-map-pin"></i> Destination Name</label>
-                    <input type="text" id="destination_name" name="destination_name" class="form-control" placeholder="Enter destination name" required>
-                </div>
-                <div class="form-group">
-                    <label for="destination_image"><i class="fas fa-image"></i> Destination Image</label>
-                    <input type="file" id="destination_image" name="destination_image" class="form-control" accept="image/*" required>
-                    <small style="color: #94a3b8; font-size: 0.85rem;">Supported formats: JPG, PNG, GIF, WebP</small>
-                </div>
-                <button type="submit" name="add_destination" class="btn btn-primary">
-                    <i class="fa-solid fa-plus"></i> Add Dream Destination
-                </button>
+            <form method="POST" onsubmit="return confirm('Are you sure you want to delete this place?');">
+              <input type="hidden" name="id" value="<?= $row['id'] ?>">
+              <button type="submit" name="delete_place" class="btn btn-delete">
+                <i class="fa-solid fa-trash"></i> Delete
+              </button>
             </form>
+          </div>
+        <?php endwhile; ?>
+      <?php else: ?>
+        <div class="empty-state">
+          <i class="fas fa-map"></i>
+          <h3>No Visited Places Yet</h3>
+          <p>Add your first visited place using the form above.</p>
         </div>
-
-        <!-- Display Dream Destinations -->
-        <div class="grid">
-            <?php if ($destinationsResult->num_rows > 0): ?>
-                <?php while ($row = $destinationsResult->fetch_assoc()): ?>
-                    <div class="card">
-                        <?php 
-                        $imagePath = $uploadDir . $row['image'];
-                        $imageExists = file_exists($imagePath);
-                        ?>
-                        <img src="<?= $imageExists ? $uploadDir . htmlspecialchars($row['image']) : 'https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Not+Found'; ?>" 
-                             alt="<?= htmlspecialchars($row['destination_name']); ?>"
-                             style="<?= !$imageExists ? 'border: 2px dashed #ef4444;' : '' ?>">
-                        <h3><?= htmlspecialchars($row['destination_name']); ?></h3>
-                        <?php if (!$imageExists): ?>
-                            <small style="color: #ef4444; font-size: 0.8rem;">Image file missing</small>
-                        <?php endif; ?>
-                        <form method="POST">
-                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                            <button type="submit" name="delete_destination" class="btn btn-delete">
-                                <i class="fa-solid fa-trash"></i> Delete
-                            </button>
-                        </form>
-                    </div>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <div class="empty-state">
-                    <i class="fas fa-sun"></i>
-                    <h3>No Dream Destinations Yet</h3>
-                    <p>Add your first dream destination using the form above.</p>
-                </div>
-            <?php endif; ?>
-        </div>
+      <?php endif; ?>
     </div>
+  </div>
+
+  <!-- ===================== DREAM DESTINATIONS ===================== -->
+  <div class="section">
+    <div class="section-header">
+      <i class="fa-solid fa-globe"></i>
+      <h2>Dream Destinations</h2>
+    </div>
+
+    <!-- Add Destination Form -->
+    <div class="form-container">
+      <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="destination_name"><i class="fas fa-map-pin"></i> Destination Name</label>
+          <input type="text" id="destination_name" name="destination_name" class="form-control" placeholder="Enter destination name" required>
+        </div>
+        <div class="form-group">
+          <label for="destination_image"><i class="fas fa-image"></i> Destination Image</label>
+          <input type="file" id="destination_image" name="destination_image" class="form-control" accept="image/*" required>
+          <small style="color: #94a3b8; font-size: 0.85rem;">Allowed: JPG, JPEG, PNG, GIF, WebP, JFIF | Max: 5MB</small>
+        </div>
+        <button type="submit" name="add_destination" class="btn btn-primary">
+          <i class="fa-solid fa-plus"></i> Add Dream Destination
+        </button>
+      </form>
+    </div>
+
+    <!-- Display Dream Destinations -->
+    <div class="grid">
+      <?php if ($destinationsResult->num_rows > 0): ?>
+        <?php while ($row = $destinationsResult->fetch_assoc()): ?>
+          <div class="card">
+            <?php 
+            // Check if it's a URL or local file
+            if (filter_var($row['image'], FILTER_VALIDATE_URL)) {
+              // It's a URL
+              $imageSrc = $row['image'];
+              $imageExists = true;
+            } else {
+              // It's a local file
+              $imageFileName = basename($row['image']);
+              $imagePath = $uploadDir . $imageFileName;
+              $imageExists = file_exists($imagePath);
+              $imageSrc = $imageExists ? $imagePath : 'https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Not+Found';
+            }
+            ?>
+            <img src="<?= $imageSrc ?>" 
+                 alt="<?= htmlspecialchars($row['destination_name']); ?>"
+                 onerror="this.src='https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Error'"
+                 style="<?= !$imageExists ? 'border: 2px dashed #ef4444;' : '' ?>">
+            <h3><?= htmlspecialchars($row['destination_name']); ?></h3>
+            <?php if (!$imageExists && !filter_var($row['image'], FILTER_VALIDATE_URL)): ?>
+              <small style="color: #ef4444; font-size: 0.8rem;">Image file missing</small>
+            <?php endif; ?>
+            <form method="POST" onsubmit="return confirm('Are you sure you want to delete this destination?');">
+              <input type="hidden" name="id" value="<?= $row['id'] ?>">
+              <button type="submit" name="delete_destination" class="btn btn-delete">
+                <i class="fa-solid fa-trash"></i> Delete
+              </button>
+            </form>
+          </div>
+        <?php endwhile; ?>
+      <?php else: ?>
+        <div class="empty-state">
+          <i class="fas fa-sun"></i>
+          <h3>No Dream Destinations Yet</h3>
+          <p>Add your first dream destination using the form above.</p>
+        </div>
+      <?php endif; ?>
+    </div>
+  </div>
 </div>
 
 <?php mysqli_close($conn); ?>

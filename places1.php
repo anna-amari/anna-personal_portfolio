@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Projects";
+$pageTitle = "Places";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +10,7 @@ $pageTitle = "Projects";
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -30,61 +31,64 @@ $pageTitle = "Projects";
     font-family: 'Montserrat', sans-serif;
   }
 
-  /* Hero Section */
   .hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 100vh;
-    padding: 0 80px;
-    position: relative;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80vh;
+  padding: 0 80px;
+  position: relative;
+}
 
-  .hero-content {
-    flex: 1;
-    max-width: 600px;
-    padding-right: 40px;
-  }
-
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
   .hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #e89cae 0%, #60a5fa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.2;
-  }
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background-clip: text;
+  line-height: 1.2;
+}
 
-  .hero-content p {
-    font-size: 1.3rem;
-    color: #cbd5e1;
-    margin-bottom: 30px;
-    font-weight: 300;
-    line-height: 1.6;
-  }
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: linear-gradient(135deg, #e89cae 0%, #60a5fa 100%);
-    color: white;
-    padding: 14px 32px;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-  }
+.hero-content p {
+  font-size: 1.3rem;
+  color: #ffffffff;
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0; 
+}
 
-  .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(232, 156, 174, 0.3);
-  }
+.hero-content .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  color: black;
+  padding: 14px 32px;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  align-self: flex-start; /* Align button to left */
+  margin-top: 20px; /* Additional spacing above button */
+}
+
+.hero-content .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(232, 156, 174, 0.3);
+}
 
   .hero-image {
     flex: 1;
@@ -107,15 +111,16 @@ $pageTitle = "Projects";
     transform: scale(1.02);
   }
 
-  /* Visited Places Section */
+  
   .carousel-section {
+    margin-top: -20px;
     padding: 100px 40px;
     background: #0d0d0d;
   }
 
   .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
 
   .section-header h2 {
@@ -141,6 +146,7 @@ $pageTitle = "Projects";
     gap: 30px;
     max-width: 1300px;
     margin: 0 auto;
+    margin-top: 40px;
   }
 
   .carousel-card {
@@ -305,81 +311,6 @@ $pageTitle = "Projects";
     scrollbar-width: none;
   }
 
-  /* Responsive Design */
-  @media (max-width: 1024px) {
-    .hero {
-      padding: 0 40px;
-    }
-    
-    .hero-content h1 {
-      font-size: 3rem;
-    }
-    
-    .carousel-grid {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-  }
-
-  @media (max-width: 768px) {
-    .hero {
-      flex-direction: column;
-      text-align: center;
-      padding: 80px 20px;
-      gap: 40px;
-    }
-    
-    .hero-content {
-      padding-right: 0;
-      max-width: 100%;
-    }
-    
-    .hero-content h1 {
-      font-size: 2.5rem;
-    }
-    
-    .hero-image img {
-      width: 100%;
-      max-width: 400px;
-    }
-    
-    .carousel-section,
-    .dream-destination {
-      padding: 60px 20px;
-    }
-    
-    .section-header h2,
-    .section-title {
-      font-size: 2rem;
-    }
-    
-    .destination-grid {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero-content h1 {
-      font-size: 2rem;
-    }
-    
-    .hero-content p {
-      font-size: 1.1rem;
-    }
-    
-    .carousel-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .social-icons {
-      gap: 15px;
-    }
-    
-    .social-icons a {
-      width: 50px;
-      height: 50px;
-      font-size: 1.3rem;
-    }
-  }
 </style>
 
 <!-- Hero Section -->
@@ -393,7 +324,7 @@ $pageTitle = "Projects";
     </a>
   </div>
   <div class="hero-image">
-    <img src="https://i.pinimg.com/736x/dd/43/c6/dd43c653dddbb1a2f2d5fb5c1ecb8ba3.jpg" alt="Travel Adventure">
+    <img src="https://i.pinimg.com/736x/27/26/d9/2726d91bdc51744d1df2b48e090aa390.jpg">
   </div>
 </section>
 
@@ -407,37 +338,46 @@ $pageTitle = "Projects";
   
   <?php
   include 'db.php';
-  // Use the same upload directory as your admin panel
-  $uploadDir = 'images/';
   
-  // Check if directory exists, if not create it
-  if (!file_exists($uploadDir)) {
-      mkdir($uploadDir, 0755, true);
-  }
+  // Define image directories to check for visited places
+  $possibleDirs = [
+    'images/location/',
+    'admin/images/location/',
+    '../images/location/',
+    '../admin/images/location/',
+    'images/',
+    'admin/images/'
+  ];
   
   $visited = $conn->query("SELECT * FROM visited_places ORDER BY id ASC");
   if ($visited && $visited->num_rows > 0): 
   ?>
     <div class="carousel-grid">
       <?php while ($row = $visited->fetch_assoc()): 
-        // Get the image path from database
-        $imageFileName = $row['image'];
-        $imagePath = $uploadDir . $imageFileName;
-        $imageExists = file_exists($imagePath);
+        // Get the image filename from database
+        $imageFileName = basename($row['image']); // Get just the filename
+        $imagePath = null;
+        $imageExists = false;
         
-        // If image doesn't exist in current directory, check if it's in admin images folder
+        // Try to find the image in possible directories
+        foreach ($possibleDirs as $dir) {
+          $testPath = $dir . $imageFileName;
+          if (file_exists($testPath)) {
+            $imagePath = $testPath;
+            $imageExists = true;
+            break;
+          }
+        }
+        
+        // If image not found, use placeholder
         if (!$imageExists) {
-            $adminImagePath = 'admin/' . $uploadDir . $imageFileName;
-            if (file_exists($adminImagePath)) {
-                $imagePath = $adminImagePath;
-                $imageExists = true;
-            }
+          $imagePath = 'https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Not+Found';
         }
       ?>
         <div class="carousel-card">
-          <img src="<?= $imageExists ? $imagePath : 'https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Loading' ?>" 
+          <img src="<?= $imagePath ?>" 
                alt="<?= htmlspecialchars($row['place_name']) ?>"
-               onerror="this.src='https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Not+Found'"
+               onerror="this.src='https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Error'"
                loading="lazy">
           <h3><?= htmlspecialchars($row['place_name']) ?></h3>
         </div>
@@ -463,24 +403,45 @@ $pageTitle = "Projects";
   ?>
     <div class="destination-grid">
       <?php while ($row = $destinations->fetch_assoc()): 
-        // Get the image path from database
-        $imageFileName = $row['image'];
-        $imagePath = $uploadDir . $imageFileName;
-        $imageExists = file_exists($imagePath);
+        $imagePath = $row['image'];
+        $destinationName = $row['destination_name'];
         
-        // If image doesn't exist in current directory, check if it's in admin images folder
-        if (!$imageExists) {
-            $adminImagePath = 'admin/' . $uploadDir . $imageFileName;
-            if (file_exists($adminImagePath)) {
-                $imagePath = $adminImagePath;
-                $imageExists = true;
+        // Check if it's a URL or local file
+        if (filter_var($imagePath, FILTER_VALIDATE_URL)) {
+          // It's a URL, use directly
+          $finalImagePath = $imagePath;
+        } else {
+          // It's a local file, try to find it
+          $imageFileName = basename($imagePath);
+          $imageExists = false;
+          
+          // Check possible directories for local images
+          foreach ($possibleDirs as $dir) {
+            $testPath = $dir . $imageFileName;
+            if (file_exists($testPath)) {
+              $finalImagePath = $testPath;
+              $imageExists = true;
+              break;
             }
+          }
+          
+          // If local image not found, use placeholder
+          if (!$imageExists) {
+            $finalImagePath = 'https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Not+Found';
+          }
+        }
+        
+        // Handle the destination name for ELYU case
+        if ($destinationName === 'ELYU') {
+          $altText = 'Elyu Destination';
+        } else {
+          $altText = htmlspecialchars($destinationName);
         }
       ?>
         <div class="destination-card">
-          <img src="<?= $imageExists ? $imagePath : 'https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Loading' ?>" 
-               alt="<?= htmlspecialchars($row['destination_name']) ?>"
-               onerror="this.src='https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Not+Found'"
+          <img src="<?= $finalImagePath ?>" 
+               alt="<?= $altText ?>"
+               onerror="this.src='https://via.placeholder.com/300x200/1a1a1a/666666?text=Image+Error'"
                loading="lazy">
         </div>
       <?php endwhile; ?>
@@ -497,23 +458,6 @@ $pageTitle = "Projects";
   $conn->close();
   ?>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- Social Section -->
 <div class="social-section">
