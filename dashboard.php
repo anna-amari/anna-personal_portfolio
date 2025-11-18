@@ -2,10 +2,11 @@
 // dashboard.php
 session_start();
 include 'db.php'; 
-include 'activity_logger.php'; // Include the activity logger
 
-// Log dashboard access
-logActivity($conn, 'dashboard_access', 'Accessed dashboard');
+if (!isset($_SESSION["logged_in"])) {
+    header("Location: login.php");
+    exit;
+}
 
 // Fetch recent activities
 $activity_query = "SELECT * FROM activity_logs ORDER BY created_at DESC LIMIT 10";

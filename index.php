@@ -156,6 +156,158 @@
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
     }
+ .testimonials-section {
+  padding: 20px 20px;
+  margin-top: 10px;
+  background: black;
+}
+
+.testimonials-title {
+  text-align: center;
+  background: black;
+  font-size: 3rem;
+  color: #ffffffff;
+  margin-bottom: 50px;
+  font-family: 'Pixelify Sans', sans-serif;
+  text-shadow: 0 4px 8px rgba(232, 156, 174, 0.3);
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+    background: black;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #f2f1f2ff;
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #e6c6cdff, #ddbdc5ff);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(232, 156, 174, 0.2);
+  border-color: #f7b8c8;
+}
+
+.testimonial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.testimonial-info h3 {
+  color: #e89cae;
+  font-size: 1.4rem;
+  margin: 0 0 5px 0;
+  font-weight: 600;
+}
+
+.testimonial-position {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin: 0;
+  font-style: italic;
+}
+
+.testimonial-rating {
+  text-align: right;
+}
+
+.stars {
+  color: #ffd700;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.rating-number {
+  color: #b0b0b0;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 5px;
+}
+
+.testimonial-content {
+  margin-bottom: 20px;
+}
+
+.testimonial-text {
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+  text-align: justify;
+}
+
+.testimonial-footer {
+  border-top: 1px solid rgba(232, 156, 174, 0.3);
+  padding-top: 15px;
+  text-align: right;
+}
+
+.no-testimonials {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #b0b0b0;
+  font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .testimonials-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .testimonial-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .testimonial-rating {
+    text-align: left;
+  }
+  
+  .testimonials-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    padding: 20px;
+  }
+  
+  .testimonials-title {
+    font-size: 2rem;
+  }
+  
+  .testimonial-text {
+    font-size: 1rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -320,6 +472,53 @@
     </div>
   </div>
 
+
+  <section class="testimonials-section">
+  <h1 class="testimonials-title">Testimonials</h1>
+  
+  <div class="testimonials-container">
+    <?php
+    // Fetch testimonials from database
+    $testimonial_query = "SELECT name, position, testimonials_text, rating, created_at 
+                         FROM testimonials 
+                         ORDER BY created_at DESC";
+    $testimonial_result = mysqli_query($conn, $testimonial_query);
+    
+    if(mysqli_num_rows($testimonial_result) > 0):
+      while($testimonial = mysqli_fetch_assoc($testimonial_result)):
+        $stars = str_repeat('★', $testimonial['rating']) . str_repeat('☆', 5 - $testimonial['rating']);
+        $date = date('F j, Y', strtotime($testimonial['created_at']));
+    ?>
+    
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-info">
+          <h3 class="testimonial-name"><?= htmlspecialchars($testimonial['name']) ?></h3>
+          <p class="testimonial-position"><?= htmlspecialchars($testimonial['position']) ?></p>
+        </div>
+        <div class="testimonial-rating">
+          <span class="stars"><?= $stars ?></span>
+          <span class="rating-number">(<?= $testimonial['rating'] ?>/5)</span>
+        </div>
+      </div>
+      
+      <div class="testimonial-content">
+        <p class="testimonial-text">"<?= htmlspecialchars($testimonial['testimonials_text']) ?>"</p>
+      </div>
+      
+    </div>
+    
+    <?php endwhile; ?>
+    
+    <?php else: ?>
+    <div class="no-testimonials">
+      <p>No testimonials yet. Be the first to share your experience!</p>
+    </div>
+    <?php endif; ?>
+  </div>
+</section>
+
+
   <script>
     let currentGallery = { prefix: '', count: 0, loaded: 0 };
     const imagesPerLoad = 6;
@@ -398,7 +597,8 @@
     const roles = [
       "3rd Year IT Student",
       "Aspiring Web Developer",
-      "Aim to be in CyberSecurity Industry",
+      "INFJ girly",
+      "Aiming to be in CyberSecurity Industry",
       "Woman in Tech"
     ];
 
@@ -440,10 +640,11 @@
       const profileImage = document.getElementById('profileImage');
       if (profileImage) {
         profileImage.addEventListener('dblclick', function() {
-          window.location.href = 'dashboard.php';
+          window.location.href = 'login.php';
         });
       }
     });
+
   </script>
 
 </body>
