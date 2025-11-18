@@ -28,7 +28,6 @@ $pageTitle = "Places";
     color: #fff;
     line-height: 1.6;
     overflow-x: hidden;
-    font-family: 'Montserrat', sans-serif;
   }
 
   .hero {

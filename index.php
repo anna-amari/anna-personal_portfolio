@@ -7,308 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  
-  <style>
-    .screenshot-gallery {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .gallery-container {
-      width: 90%;
-      max-width: 1000px;
-      height: 80vh;
-      background: #1a1a1a;
-      border-radius: 16px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      border: 2px solid #e89cae;
-    }
-
-    .gallery-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #e89cae;
-    }
-
-    .gallery-title {
-      color: #e89cae;
-      font-size: 1.5rem;
-      margin: 0;
-    }
-
-    .close-gallery {
-      background: none;
-      border: none;
-      color: #e89cae;
-      font-size: 2rem;
-      cursor: pointer;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .close-gallery:hover {
-      background: rgba(232, 156, 174, 0.2);
-    }
-
-    .gallery-images {
-      flex: 1;
-      overflow-y: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 15px;
-      padding: 10px;
-    }
-
-    .gallery-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 2px solid #333;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .gallery-image:hover {
-      transform: scale(1.05);
-      border-color: #e89cae;
-      box-shadow: 0 5px 20px rgba(232, 156, 174, 0.3);
-    }
-
-    .gallery-nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .nav-btn {
-      background: #e89cae;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .nav-btn:hover {
-      background: #f7b8c8;
-      transform: translateY(-2px);
-    }
-
-    .nav-btn:disabled {
-      background: #666;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    /* Custom scrollbar for gallery */
-    .gallery-images::-webkit-scrollbar {
-      width: 12px;
-    }
-
-    .gallery-images::-webkit-scrollbar-track {
-      background: #2a2a2a;
-      border-radius: 6px;
-    }
-
-    .gallery-images::-webkit-scrollbar-thumb {
-      background: #e89cae;
-      border-radius: 6px;
-    }
-
-    .gallery-images::-webkit-scrollbar-thumb:hover {
-      background: #f7b8c8;
-    }
-    html, body {
-    overflow: auto; /* Keep scrolling functionality */
-    }
-
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    html::-webkit-scrollbar,
-    body::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    html, body {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-    }
- .testimonials-section {
-  padding: 20px 20px;
-  margin-top: 10px;
-  background: black;
-}
-
-.testimonials-title {
-  text-align: center;
-  background: black;
-  font-size: 3rem;
-  color: #ffffffff;
-  margin-bottom: 50px;
-  font-family: 'Pixelify Sans', sans-serif;
-  text-shadow: 0 4px 8px rgba(232, 156, 174, 0.3);
-}
-
-.testimonials-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-    background: black;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
-  padding: 20px;
-}
-
-.testimonial-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid #f2f1f2ff;
-  border-radius: 16px;
-  padding: 30px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonial-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #e6c6cdff, #ddbdc5ff);
-}
-
-.testimonial-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(232, 156, 174, 0.2);
-  border-color: #f7b8c8;
-}
-
-.testimonial-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-.testimonial-info h3 {
-  color: #e89cae;
-  font-size: 1.4rem;
-  margin: 0 0 5px 0;
-  font-weight: 600;
-}
-
-.testimonial-position {
-  color: #b0b0b0;
-  font-size: 0.9rem;
-  margin: 0;
-  font-style: italic;
-}
-
-.testimonial-rating {
-  text-align: right;
-}
-
-.stars {
-  color: #ffd700;
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-}
-
-.rating-number {
-  color: #b0b0b0;
-  font-size: 0.8rem;
-  display: block;
-  margin-top: 5px;
-}
-
-.testimonial-content {
-  margin-bottom: 20px;
-}
-
-.testimonial-text {
-  color: #ffffff;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 0;
-  font-style: italic;
-  text-align: justify;
-}
-
-.testimonial-footer {
-  border-top: 1px solid rgba(232, 156, 174, 0.3);
-  padding-top: 15px;
-  text-align: right;
-}
-
-.no-testimonials {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 60px 20px;
-  color: #b0b0b0;
-  font-size: 1.2rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .testimonials-container {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .testimonial-header {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .testimonial-rating {
-    text-align: left;
-  }
-  
-  .testimonials-title {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .testimonial-card {
-    padding: 20px;
-  }
-  
-  .testimonials-title {
-    font-size: 2rem;
-  }
-  
-  .testimonial-text {
-    font-size: 1rem;
-  }
-}
-  </style>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
@@ -472,54 +171,107 @@
     </div>
   </div>
 
+  <!-- NEW: Testimonial Submission Modal -->
+   
+  <div id="testimonialModal" class="testimonial-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Share Your Experience</h2>
+        <button class="close-modal" id="closeModal">&times;</button>
+      </div>
+      
+      <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i> Thank you for your testimonial! It has been submitted successfully.
+      </div>
+      
+      <form id="testimonialForm">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your name">
+        </div>
+        
+        <div class="form-group">
+          <label for="position">Your Position/Title</label>
+          <input type="text" id="position" name="position" required placeholder="e.g., Web Developer, Student, etc.">
+        </div>
+        
+        <div class="rating-group">
+          <span class="rating-label">Rating:</span>
+          <div class="star-rating" id="starRating">
+            <span class="star" data-rating="1">☆</span>
+            <span class="star" data-rating="2">☆</span>
+            <span class="star" data-rating="3">☆</span>
+            <span class="star" data-rating="4">☆</span>
+            <span class="star" data-rating="5">☆</span>
+          </div>
+          <input type="hidden" id="rating" name="rating" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="testimonial">Your Testimonial</label>
+          <textarea id="testimonial" name="testimonial" required placeholder="Share your experience working with Anna Mari..."></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <i class="fas fa-paper-plane"></i> Submit Testimonial
+        </button>
+      </form>
+    </div>
+  </div>
 
   <section class="testimonials-section">
-  <h1 class="testimonials-title">Testimonials</h1>
-  
-  <div class="testimonials-container">
-    <?php
-    // Fetch testimonials from database
-    $testimonial_query = "SELECT name, position, testimonials_text, rating, created_at 
-                         FROM testimonials 
-                         ORDER BY created_at DESC";
-    $testimonial_result = mysqli_query($conn, $testimonial_query);
+    <h1 class="testimonials-title">Testimonials</h1>
     
-    if(mysqli_num_rows($testimonial_result) > 0):
-      while($testimonial = mysqli_fetch_assoc($testimonial_result)):
-        $stars = str_repeat('★', $testimonial['rating']) . str_repeat('☆', 5 - $testimonial['rating']);
-        $date = date('F j, Y', strtotime($testimonial['created_at']));
-    ?>
+    <!-- MOVED: Add Testimonial Button inside testimonials section -->
+    <button class="add-testimonial-btn" id="addTestimonialBtn">
+      <i class="fas fa-plus"></i>
+    </button>
     
-    <div class="testimonial-card">
-      <div class="testimonial-header">
-        <div class="testimonial-info">
-          <h3 class="testimonial-name"><?= htmlspecialchars($testimonial['name']) ?></h3>
-          <p class="testimonial-position"><?= htmlspecialchars($testimonial['position']) ?></p>
+    <div class="testimonials-container">
+      <?php
+      // Fetch testimonials from database
+      $testimonial_query = "SELECT name, position, testimonials_text, rating, created_at 
+                           FROM testimonials 
+                           ORDER BY created_at DESC";
+      $testimonial_result = mysqli_query($conn, $testimonial_query);
+      
+      if(mysqli_num_rows($testimonial_result) > 0):
+        while($testimonial = mysqli_fetch_assoc($testimonial_result)):
+          $stars = str_repeat('★', $testimonial['rating']) . str_repeat('☆', 5 - $testimonial['rating']);
+          $date = date('F j, Y', strtotime($testimonial['created_at']));
+      ?>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-info">
+            <h3 class="testimonial-name"><?= htmlspecialchars($testimonial['name']) ?></h3>
+            <p class="testimonial-position"><?= htmlspecialchars($testimonial['position']) ?></p>
+          </div>
+          <div class="testimonial-rating">
+            <span class="stars"><?= $stars ?></span>
+            <span class="rating-number">(<?= $testimonial['rating'] ?>/5)</span>
+          </div>
         </div>
-        <div class="testimonial-rating">
-          <span class="stars"><?= $stars ?></span>
-          <span class="rating-number">(<?= $testimonial['rating'] ?>/5)</span>
+        
+        <div class="testimonial-content">
+          <p class="testimonial-text">"<?= htmlspecialchars($testimonial['testimonials_text']) ?>"</p>
         </div>
+        
       </div>
       
-      <div class="testimonial-content">
-        <p class="testimonial-text">"<?= htmlspecialchars($testimonial['testimonials_text']) ?>"</p>
-      </div>
+      <?php endwhile; ?>
       
+      <?php else: ?>
+      <div class="no-testimonials">
+        <p>No testimonials yet. Be the first to share your experience!</p>
+      </div>
+      <?php endif; ?>
     </div>
-    
-    <?php endwhile; ?>
-    
-    <?php else: ?>
-    <div class="no-testimonials">
-      <p>No testimonials yet. Be the first to share your experience!</p>
-    </div>
-    <?php endif; ?>
-  </div>
-</section>
+  </section>
 
 
   <script>
+    // Existing gallery and typewriter functions remain the same
     let currentGallery = { prefix: '', count: 0, loaded: 0 };
     const imagesPerLoad = 6;
 
@@ -645,7 +397,198 @@
       }
     });
 
+    // NEW: Testimonial Submission Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const addTestimonialBtn = document.getElementById('addTestimonialBtn');
+      const testimonialModal = document.getElementById('testimonialModal');
+      const closeModal = document.getElementById('closeModal');
+      const testimonialForm = document.getElementById('testimonialForm');
+      const starRating = document.getElementById('starRating');
+      const ratingInput = document.getElementById('rating');
+      const stars = starRating.querySelectorAll('.star');
+      const successMessage = document.getElementById('successMessage');
+      const submitBtn = document.getElementById('submitBtn');
+
+      let selectedRating = 0;
+
+      // Open modal
+      addTestimonialBtn.addEventListener('click', function() {
+        testimonialModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+
+      // Close modal
+      closeModal.addEventListener('click', function() {
+        closeTestimonialModal();
+      });
+
+      // Close modal when clicking outside
+      testimonialModal.addEventListener('click', function(e) {
+        if (e.target === testimonialModal) {
+          closeTestimonialModal();
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && testimonialModal.style.display === 'flex') {
+          closeTestimonialModal();
+        }
+      });
+
+      // Star rating functionality
+      stars.forEach(star => {
+        star.addEventListener('click', function() {
+          selectedRating = parseInt(this.getAttribute('data-rating'));
+          ratingInput.value = selectedRating;
+          
+          // Update star display
+          stars.forEach((s, index) => {
+            if (index < selectedRating) {
+              s.textContent = '★';
+              s.classList.add('active');
+            } else {
+              s.textContent = '☆';
+              s.classList.remove('active');
+            }
+          });
+        });
+
+        // Hover effect
+        star.addEventListener('mouseover', function() {
+          const hoverRating = parseInt(this.getAttribute('data-rating'));
+          stars.forEach((s, index) => {
+            if (index < hoverRating) {
+              s.textContent = '★';
+            } else {
+              s.textContent = '☆';
+            }
+          });
+        });
+
+        // Reset to selected rating on mouseout
+        star.addEventListener('mouseout', function() {
+          stars.forEach((s, index) => {
+            if (index < selectedRating) {
+              s.textContent = '★';
+            } else {
+              s.textContent = '☆';
+            }
+          });
+        });
+      });
+// Form submission
+testimonialForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  console.log('Form submitted - Starting validation');
+  
+  // Validate rating
+  if (selectedRating === 0) {
+    alert('Please select a rating');
+    console.log('Validation failed - No rating selected');
+    return;
+  }
+
+  // Get form values for debugging
+  const name = document.getElementById('name').value;
+  const position = document.getElementById('position').value;
+  const testimonial = document.getElementById('testimonial').value;
+  
+  console.log('Form data:', {
+    name: name,
+    position: position,
+    rating: selectedRating,
+    testimonial: testimonial
+  });
+
+  // Disable submit button
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+  // Create FormData object
+  const formData = new FormData(testimonialForm);
+  
+  // Log FormData contents
+  console.log('FormData contents:');
+  for (let [key, value] of formData.entries()) {
+    console.log(key + ': ' + value);
+  }
+
+  // Send AJAX request to submit_testimonials.php
+  console.log('Sending fetch request to submit_testimonials.php');
+  
+  fetch('submit_testimonials.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    console.log('Response received, status:', response.status, response.statusText);
+    if (!response.ok) {
+      throw new Error('HTTP error! status: ' + response.status);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Response data:', data);
+    if (data.success) {
+      // Show success message
+      successMessage.style.display = 'block';
+      successMessage.innerHTML = `<i class="fas fa-check-circle"></i> ${data.message}`;
+      console.log('Success - testimonial submitted');
+      
+      // Reset form
+      testimonialForm.reset();
+      stars.forEach(star => {
+        star.textContent = '☆';
+        star.classList.remove('active');
+      });
+      selectedRating = 0;
+      
+      // Refresh the page after 2 seconds to show the new testimonial
+      setTimeout(function() {
+        console.log('Refreshing page...');
+        location.reload();
+      }, 2000);
+      
+    } else {
+      // Show error message
+      console.error('Server error:', data.message);
+      alert('Error: ' + data.message);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Testimonial';
+    }
+  })
+  .catch(error => {
+    console.error('Fetch Error:', error);
+    alert('Network error occurred. Please check console for details. Error: ' + error.message);
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Testimonial';
+  });
+});
+ 
+
+
+
+      function closeTestimonialModal() {
+        testimonialModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        
+        // Reset form
+        testimonialForm.reset();
+        stars.forEach(star => {
+          star.textContent = '☆';
+          star.classList.remove('active');
+        });
+        selectedRating = 0;
+        successMessage.style.display = 'none';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Testimonial';
+      }
+    });
   </script>
+        
+     
 
 </body>
 </html>
