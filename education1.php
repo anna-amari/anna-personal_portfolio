@@ -93,6 +93,7 @@ include 'db.php';
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnHxYpzSOQJhcFuxG0Hr1joAjBiw5u9aYBNg&s" alt="UNEP Logo">
               </div>
               <div class="marker-dot"></div>
+                 <div class="marker-line"></div>
             </div>
             <div class="timeline-content">
               <div class="edu-card">
@@ -107,6 +108,34 @@ include 'db.php';
                   <p class="edu-description">Built academic foundation and developed interest in mathematics and logical thinking that paved the way for my IT career.</p>
                   <div class="edu-details">
                     <span class="year">2015 - 2019</span>
+                    <span class="status completed">Completed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="school-logo">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.kE9EjLYsnhVoqeq0rfjYxgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3">
+              </div>
+                <div class="marker-dot"></div>
+                 <div class="marker-line"></div>
+              <div class="marker-line"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="edu-card">
+                <div class="edu-text">
+                  <h3>
+                    <a href="https://www.facebook.com/pages/San%20Vicente%20Sur%20Elementary%20School,%20Iriga%20City/273800689647185/#" target="_blank">
+                      San Vicente Sur Elementary School
+                    </a>
+                  </h3>
+                  <p class="edu-degree">Elementary School</p>
+                  <p class="edu-honors">1st Honorable Mention</p>
+                  <p class="edu-description">Learned the built by built foundation of what I know today</p>
+                  <div class="edu-details">
+                    <span class="year">2010 - 2017</span>
                     <span class="status completed">Completed</span>
                   </div>
                 </div>
