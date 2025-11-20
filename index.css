@@ -145,6 +145,10 @@
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
     }
+
+
+/* TESTIMONIALS SECTION */
+
  .testimonials-section {
   padding: 20px 20px;
   margin-top: 10px;

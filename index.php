@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Anna Mari</title>
+  <title>Digital Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -70,6 +70,8 @@
       <?php endwhile; ?>
     </div>
   </section>
+
+
 
   <h1 class="featured-title">Featured Work</h1>
 
@@ -171,7 +173,7 @@
     </div>
   </div>
 
-  <!-- NEW: Testimonial Submission Modal -->
+
    
   <div id="testimonialModal" class="testimonial-modal">
     <div class="modal-content">

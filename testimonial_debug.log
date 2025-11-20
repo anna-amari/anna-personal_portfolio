@@ -13,3 +13,18 @@ Executing query: INSERT INTO testimonials (name, position, testimonials_text, ra
 Insert successful, affected rows: 1
 2025-11-18 16:57:40 - Request completed
 
+2025-11-19 21:16:10 - Request started
+POST data received: Array
+(
+    [name] => Joshua Zabala
+    [position] => BSIT Student
+    [rating] => 4
+    [testimonial] => The projects she had created are very user friendly, I had no problems navigating her websites, I know exactly where to find what I am looking for. The colors are pleasant to my eyes and it does not hurt.
+)
+
+Processed data - Name: 'Joshua Zabala', Position: 'BSIT Student', Rating: 4, Text: 'The projects she had created are very user friendly, I had no problems navigating her websites, I know exactly where to find what I am looking for. The colors are pleasant to my eyes and it does not hurt.'
+Executing query: INSERT INTO testimonials (name, position, testimonials_text, rating, created_at) 
+              VALUES ('Joshua Zabala', 'BSIT Student', 'The projects she had created are very user friendly, I had no problems navigating her websites, I know exactly where to find what I am looking for. The colors are pleasant to my eyes and it does not hurt.', 4, NOW())
+Insert successful, affected rows: 1
+2025-11-19 21:16:11 - Request completed
+

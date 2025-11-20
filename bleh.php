@@ -537,8 +537,8 @@ session_start();
     }
 
     .bleh-image-top {
-      width: 300px;
-      height: 250px;
+      width: 220px;
+      height: 240px;
       object-fit: cover;
       border-radius: 10px;
       border: 2px solid #e89cae;
@@ -568,7 +568,7 @@ session_start();
 
     .bleh-image-side {
       width: 250px;
-      height: 200px;
+      height: 270px;
       object-fit: cover;
       border-radius: 10px;
       border: 2px solid #e89cae;
@@ -658,7 +658,7 @@ session_start();
       
       .bleh-image-top {
         width: 250px;
-        height: 200px;
+        height: 270px;
       }
       
       .bleh-image-side {
@@ -682,15 +682,6 @@ session_start();
         padding: 15px 30px;
       }
       
-      .slideshow-container {
-        height: 300px;
-      }
-      
-      .nav-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-      }
       
       .action-buttons {
         flex-direction: column;
@@ -714,6 +705,15 @@ session_start();
       
       .bleh-image-bottom {
         width: 220px;
+      .slideshow-container {
+        height: 300px;
+      }
+      
+      .nav-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
         height: 180px;
       }
       
@@ -760,10 +760,7 @@ session_start();
 
     <!-- Error Section -->
     <section id="errorSection">
-      <div class="error-icon">
-        <i class="fas fa-user-slash"></i>
-      </div>
-      
+   
       <!-- Top Image -->
       <div class="bleh-top">
         <img src="images/bleh7.jpg" alt="BLEH 7" class="bleh-image-top">
