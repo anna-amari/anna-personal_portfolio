@@ -521,3 +521,42 @@
     font-size: 1.5rem;
   }
 }
+
+/* Load More Button Styles */
+.load-more-container {
+    text-align: center;
+    margin: 40px 0;
+    width: 100%;
+}
+
+.load-more-btn {
+    background: linear-gradient(135deg, #f2a6c1, #ff6b9c);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(242, 166, 193, 0.3);
+}
+
+.load-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(242, 166, 193, 0.4);
+    background: linear-gradient(135deg, #ff6b9c, #f2a6c1);
+}
+
+.load-more-btn:active {
+    transform: translateY(0);
+}
+
+.load-more-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.load-more-btn:hover i {
+    transform: translateX(4px);
+}

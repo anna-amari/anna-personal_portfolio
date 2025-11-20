@@ -28,3 +28,93 @@ Executing query: INSERT INTO testimonials (name, position, testimonials_text, ra
 Insert successful, affected rows: 1
 2025-11-19 21:16:11 - Request completed
 
+2025-11-20 14:00:53 - Request started
+POST data received: Array
+(
+    [name] => Gabrielle Nallos
+    [position] => Talented Artist and I.T Student
+    [rating] => 4
+    [testimonial] => I’m really impressed with the projects she created for her portfolio. Each project is simple, clear, and very helpful to others. You can see that she thinks about what people need and tries to make their experience easier. Her designs are easy to use and made with real purpose. Every project shows that she wants to bring value and make a positive impact. Her work feels meaningful and carefully made. I believe her future projects will help even more people.
+)
+
+Processed data - Name: 'Gabrielle Nallos', Position: 'Talented Artist and I.T Student', Rating: 4, Text: 'I’m really impressed with the projects she created for her portfolio. Each project is simple, clear, and very helpful to others. You can see that she thinks about what people need and tries to make their experience easier. Her designs are easy to use and made with real purpose. Every project shows that she wants to bring value and make a positive impact. Her work feels meaningful and carefully made. I believe her future projects will help even more people.'
+Executing query: INSERT INTO testimonials (name, position, testimonials_text, rating, created_at) 
+              VALUES ('Gabrielle Nallos', 'Talented Artist and I.T Student', 'I’m really impressed with the projects she created for her portfolio. Each project is simple, clear, and very helpful to others. You can see that she thinks about what people need and tries to make their experience easier. Her designs are easy to use and made with real purpose. Every project shows that she wants to bring value and make a positive impact. Her work feels meaningful and carefully made. I believe her future projects will help even more people.', 4, NOW())
+Insert successful, affected rows: 1
+2025-11-20 14:00:53 - Request completed
+
+2025-11-20 14:33:25 - Request started
+POST data received: Array
+(
+    [name] => heheeh
+    [position] => mmcxmc
+    [rating] => 4
+    [testimonial] => imiss u
+)
+
+Processed data - Name: 'heheeh', Position: 'mmcxmc', Rating: 4, Text: 'imiss u'
+Executing query: INSERT INTO testimonials (name, position, testimonials_text, rating, created_at) 
+              VALUES ('heheeh', 'mmcxmc', 'imiss u', 4, NOW())
+Insert successful, affected rows: 1
+2025-11-20 14:33:25 - Request completed
+
+2025-11-20 14:41:31 - Request started
+POST data received: Array
+(
+    [name] => ,sx,s,
+    [position] => ,cx,c
+    [rating] => 4
+    [testimonial] => ika isi mo
+)
+
+Processed data - Name: ',sx,s,', Position: ',cx,c', Rating: 4, Text: 'ika isi mo'
+Executing query: INSERT INTO testimonials (name, position, testimonials_text, rating, created_at) 
+              VALUES (',sx,s,', ',cx,c', 'ika isi mo', 4, NOW())
+Insert successful, affected rows: 1
+2025-11-20 14:41:31 - Request completed
+
+2025-11-20 14:41:58 - Request started
+POST data received: Array
+(
+    [name] => mmm
+    [position] => xmm
+    [rating] => 3
+    [testimonial] => mmxc
+)
+
+Processed data - Name: 'mmm', Position: 'xmm', Rating: 3, Text: 'mmxc'
+Executing query: INSERT INTO testimonials (name, position, testimonials_text, rating, created_at) 
+              VALUES ('mmm', 'xmm', 'mmxc', 3, NOW())
+Insert successful, affected rows: 1
+2025-11-20 14:41:58 - Request completed
+
+2025-11-20 14:42:14 - Request started
+POST data received: Array
+(
+    [name] => msmso
+    [position] => mxmxm
+    [rating] => 4
+    [testimonial] => mxmzxm
+)
+
+Processed data - Name: 'msmso', Position: 'mxmxm', Rating: 4, Text: 'mxmzxm'
+Executing query: INSERT INTO testimonials (name, position, testimonials_text, rating, created_at) 
+              VALUES ('msmso', 'mxmxm', 'mxmzxm', 4, NOW())
+Insert successful, affected rows: 1
+2025-11-20 14:42:14 - Request completed
+
+2025-11-20 14:42:49 - Request started
+POST data received: Array
+(
+    [name] => xnxn
+    [position] => xnxn
+    [rating] => 2
+    [testimonial] => xnzxn
+)
+
+Processed data - Name: 'xnxn', Position: 'xnxn', Rating: 2, Text: 'xnzxn'
+Executing query: INSERT INTO testimonials (name, position, testimonials_text, rating, created_at) 
+              VALUES ('xnxn', 'xnxn', 'xnzxn', 2, NOW())
+Insert successful, affected rows: 1
+2025-11-20 14:42:49 - Request completed
+

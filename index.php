@@ -269,8 +269,28 @@
       </div>
       <?php endif; ?>
     </div>
-  </section>
 
+  <!-- ADD THIS: Load More Button for Testimonials -->
+<div class="load-more-container" style="text-align: center; margin: 40px 0; width: 100%;">
+    <button id="testimonialsLoadMoreBtn" class="load-more-btn" style="
+        background: linear-gradient(135deg, #ff6b9c, #f2a6c1);
+        color: white;
+        margin-left: 580px;
+        border: none;
+        padding: 14px 35px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(242, 166, 193, 0.4);
+        position: relative;
+        overflow: hidden;
+    ">
+        Load More Testimonials <i class="fas fa-chevron-down" style="margin-left: 8px; transition: transform 0.3s ease;"></i>
+    </button>
+</div>
+</section>
 
   <script>
     // Existing gallery and typewriter functions remain the same
@@ -399,197 +419,254 @@
       }
     });
 
-    // NEW: Testimonial Submission Functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const addTestimonialBtn = document.getElementById('addTestimonialBtn');
-      const testimonialModal = document.getElementById('testimonialModal');
-      const closeModal = document.getElementById('closeModal');
-      const testimonialForm = document.getElementById('testimonialForm');
-      const starRating = document.getElementById('starRating');
-      const ratingInput = document.getElementById('rating');
-      const stars = starRating.querySelectorAll('.star');
-      const successMessage = document.getElementById('successMessage');
-      const submitBtn = document.getElementById('submitBtn');
+// Testimonial Submission Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const addTestimonialBtn = document.getElementById('addTestimonialBtn');
+    const testimonialModal = document.getElementById('testimonialModal');
+    const closeModal = document.getElementById('closeModal');
+    const testimonialForm = document.getElementById('testimonialForm');
+    const starRating = document.getElementById('starRating');
+    const ratingInput = document.getElementById('rating');
+    const stars = starRating.querySelectorAll('.star');
+    const successMessage = document.getElementById('successMessage');
+    const submitBtn = document.getElementById('submitBtn');
 
-      let selectedRating = 0;
+    let selectedRating = 0;
+    let visibleTestimonials = 6; 
 
-      // Open modal
-      addTestimonialBtn.addEventListener('click', function() {
+    // Open modal
+    addTestimonialBtn.addEventListener('click', function() {
         testimonialModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
-      });
+    });
 
-      // Close modal
-      closeModal.addEventListener('click', function() {
+    // Close modal
+    closeModal.addEventListener('click', function() {
         closeTestimonialModal();
-      });
+    });
 
-      // Close modal when clicking outside
-      testimonialModal.addEventListener('click', function(e) {
+    // Close modal when clicking outside
+    testimonialModal.addEventListener('click', function(e) {
         if (e.target === testimonialModal) {
-          closeTestimonialModal();
+            closeTestimonialModal();
         }
-      });
+    });
 
-      // Close modal with Escape key
-      document.addEventListener('keydown', function(e) {
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && testimonialModal.style.display === 'flex') {
-          closeTestimonialModal();
+            closeTestimonialModal();
         }
-      });
+    });
 
-      // Star rating functionality
-      stars.forEach(star => {
+    // Star rating functionality
+    stars.forEach(star => {
         star.addEventListener('click', function() {
-          selectedRating = parseInt(this.getAttribute('data-rating'));
-          ratingInput.value = selectedRating;
-          
-          // Update star display
-          stars.forEach((s, index) => {
-            if (index < selectedRating) {
-              s.textContent = '★';
-              s.classList.add('active');
-            } else {
-              s.textContent = '☆';
-              s.classList.remove('active');
-            }
-          });
+            selectedRating = parseInt(this.getAttribute('data-rating'));
+            ratingInput.value = selectedRating;
+            
+            // Update star display
+            stars.forEach((s, index) => {
+                if (index < selectedRating) {
+                    s.textContent = '★';
+                    s.classList.add('active');
+                } else {
+                    s.textContent = '☆';
+                    s.classList.remove('active');
+                }
+            });
         });
 
         // Hover effect
         star.addEventListener('mouseover', function() {
-          const hoverRating = parseInt(this.getAttribute('data-rating'));
-          stars.forEach((s, index) => {
-            if (index < hoverRating) {
-              s.textContent = '★';
-            } else {
-              s.textContent = '☆';
-            }
-          });
+            const hoverRating = parseInt(this.getAttribute('data-rating'));
+            stars.forEach((s, index) => {
+                if (index < hoverRating) {
+                    s.textContent = '★';
+                } else {
+                    s.textContent = '☆';
+                }
+            });
         });
 
         // Reset to selected rating on mouseout
         star.addEventListener('mouseout', function() {
-          stars.forEach((s, index) => {
-            if (index < selectedRating) {
-              s.textContent = '★';
-            } else {
-              s.textContent = '☆';
-            }
-          });
+            stars.forEach((s, index) => {
+                if (index < selectedRating) {
+                    s.textContent = '★';
+                } else {
+                    s.textContent = '☆';
+                }
+            });
         });
-      });
-// Form submission
-testimonialForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  console.log('Form submitted - Starting validation');
-  
-  // Validate rating
-  if (selectedRating === 0) {
-    alert('Please select a rating');
-    console.log('Validation failed - No rating selected');
-    return;
-  }
+    });
 
-  // Get form values for debugging
-  const name = document.getElementById('name').value;
-  const position = document.getElementById('position').value;
-  const testimonial = document.getElementById('testimonial').value;
-  
-  console.log('Form data:', {
-    name: name,
-    position: position,
-    rating: selectedRating,
-    testimonial: testimonial
-  });
+    // Form submission
+    testimonialForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        console.log('Form submitted - Starting validation');
+        
+        // Validate rating
+        if (selectedRating === 0) {
+            alert('Please select a rating');
+            console.log('Validation failed - No rating selected');
+            return;
+        }
 
-  // Disable submit button
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        // Get form values for debugging
+        const name = document.getElementById('name').value;
+        const position = document.getElementById('position').value;
+        const testimonial = document.getElementById('testimonial').value;
+        
+        console.log('Form data:', {
+            name: name,
+            position: position,
+            rating: selectedRating,
+            testimonial: testimonial
+        });
 
-  // Create FormData object
-  const formData = new FormData(testimonialForm);
-  
-  // Log FormData contents
-  console.log('FormData contents:');
-  for (let [key, value] of formData.entries()) {
-    console.log(key + ': ' + value);
-  }
+        // Disable submit button
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
-  // Send AJAX request to submit_testimonials.php
-  console.log('Sending fetch request to submit_testimonials.php');
-  
-  fetch('submit_testimonials.php', {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => {
-    console.log('Response received, status:', response.status, response.statusText);
-    if (!response.ok) {
-      throw new Error('HTTP error! status: ' + response.status);
+        // Create FormData object
+        const formData = new FormData(testimonialForm);
+        
+        // Log FormData contents
+        console.log('FormData contents:');
+        for (let [key, value] of formData.entries()) {
+            console.log(key + ': ' + value);
+        }
+
+        // Send AJAX request to submit_testimonials.php
+        console.log('Sending fetch request to submit_testimonials.php');
+        
+        fetch('submit_testimonials.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            console.log('Response received, status:', response.status, response.statusText);
+            if (!response.ok) {
+                throw new Error('HTTP error! status: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response data:', data);
+            if (data.success) {
+                // Show success message
+                successMessage.style.display = 'block';
+                successMessage.innerHTML = `<i class="fas fa-check-circle"></i> ${data.message}`;
+                console.log('Success - testimonial submitted');
+                
+                // Reset form
+                testimonialForm.reset();
+                stars.forEach(star => {
+                    star.textContent = '☆';
+                    star.classList.remove('active');
+                });
+                selectedRating = 0;
+                
+                // Refresh the page after 2 seconds to show the new testimonial
+                setTimeout(function() {
+                    console.log('Refreshing page...');
+                    location.reload();
+                }, 2000);
+                
+            } else {
+                // Show error message
+                console.error('Server error:', data.message);
+                alert('Error: ' + data.message);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Testimonial';
+            }
+        })
+        .catch(error => {
+            console.error('Fetch Error:', error);
+            alert('Network error occurred. Please check console for details. Error: ' + error.message);
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Testimonial';
+        });
+    });
+
+    // Load More Testimonials Functionality - FIXED
+    function initializeLoadMore() {
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        const loadMoreBtn = document.getElementById('testimonialsLoadMoreBtn'); // Changed ID
+        
+        if (!loadMoreBtn) {
+            console.log('Load more button not found');
+            return;
+        }
+        
+        console.log('Total testimonials found:', testimonialCards.length);
+        
+        // Initially hide testimonials beyond the first 6
+        testimonialCards.forEach((card, index) => {
+            if (index >= visibleTestimonials) {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Show/hide load more button based on total testimonials
+        if (testimonialCards.length <= visibleTestimonials) {
+            loadMoreBtn.style.display = 'none';
+            console.log('Hiding load more button - not enough testimonials');
+        } else {
+            loadMoreBtn.style.display = 'block';
+            console.log('Showing load more button');
+        }
+        
+        // Load more button click event
+        loadMoreBtn.addEventListener('click', function() {
+            console.log('Load more clicked');
+            
+            // Show next 6 testimonials
+            const nextIndex = visibleTestimonials;
+            const endIndex = nextIndex + 6;
+            
+            for (let i = nextIndex; i < endIndex && i < testimonialCards.length; i++) {
+                testimonialCards[i].style.display = 'block';
+                console.log('Showing testimonial:', i);
+            }
+            
+            visibleTestimonials = endIndex;
+            
+            // Hide button if all testimonials are shown
+            if (visibleTestimonials >= testimonialCards.length) {
+                loadMoreBtn.style.display = 'none';
+                console.log('All testimonials shown, hiding button');
+            }
+        });
     }
-    return response.json();
-  })
-  .then(data => {
-    console.log('Response data:', data);
-    if (data.success) {
-      // Show success message
-      successMessage.style.display = 'block';
-      successMessage.innerHTML = `<i class="fas fa-check-circle"></i> ${data.message}`;
-      console.log('Success - testimonial submitted');
-      
-      // Reset form
-      testimonialForm.reset();
-      stars.forEach(star => {
-        star.textContent = '☆';
-        star.classList.remove('active');
-      });
-      selectedRating = 0;
-      
-      // Refresh the page after 2 seconds to show the new testimonial
-      setTimeout(function() {
-        console.log('Refreshing page...');
-        location.reload();
-      }, 2000);
-      
-    } else {
-      // Show error message
-      console.error('Server error:', data.message);
-      alert('Error: ' + data.message);
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Testimonial';
-    }
-  })
-  .catch(error => {
-    console.error('Fetch Error:', error);
-    alert('Network error occurred. Please check console for details. Error: ' + error.message);
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Testimonial';
-  });
-});
- 
 
+    // Initialize load more functionality
+    setTimeout(initializeLoadMore, 100); // Small delay to ensure DOM is ready
 
-
-      function closeTestimonialModal() {
+    function closeTestimonialModal() {
         testimonialModal.style.display = 'none';
         document.body.style.overflow = 'auto';
         
         // Reset form
         testimonialForm.reset();
         stars.forEach(star => {
-          star.textContent = '☆';
-          star.classList.remove('active');
+            star.textContent = '☆';
+            star.classList.remove('active');
         });
         selectedRating = 0;
         successMessage.style.display = 'none';
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Testimonial';
-      }
-    });
+    }
+});
+
+
+
+
+
   </script>
-        
      
 
 </body>

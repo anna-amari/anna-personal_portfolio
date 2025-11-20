@@ -20,6 +20,8 @@ if (isset($_POST['add_tech'])) {
         move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath);
         mysqli_query($conn, "INSERT INTO tech_stack (tech_name, alt_text, image_url)
                              VALUES ('$tech_name','$alt_text','$targetFilePath')");
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit();
     }
 }
 
@@ -32,17 +34,33 @@ if (isset($_POST['update_tech'])) {
     if (!empty($_FILES["image"]["name"])) {
         $fileName = time() . "_" . basename($_FILES["image"]["name"]);
         $targetFilePath = $uploadDirTech . $fileName;
-        move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath);
-        $updateQuery .= ", image_url='$targetFilePath'";
+        $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+        $allowedTypes = ['jpg','jpeg','png','gif','svg','webp','jfif'];
+        if (in_array($fileType, $allowedTypes)) {
+            move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath);
+            $updateQuery .= ", image_url='$targetFilePath'";
+        }
     }
     $updateQuery .= " WHERE id=$id";
     mysqli_query($conn, $updateQuery);
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
 }
 
 // DELETE
 if (isset($_POST['confirm_delete_tech'])) {
     $id = intval($_POST['id']);
+    // Optional: Delete the image file from server
+    $result = mysqli_query($conn, "SELECT image_url FROM tech_stack WHERE id=$id");
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        if (file_exists($row['image_url'])) {
+            unlink($row['image_url']);
+        }
+    }
     mysqli_query($conn, "DELETE FROM tech_stack WHERE id=$id");
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
 }
 
 // READ
@@ -51,7 +69,8 @@ $techResult = mysqli_query($conn, "SELECT * FROM tech_stack ORDER BY id ASC");
 
 /* ============================================================
    COLLEGE FRIENDS CRUD
-============================================================ */$uploadDirFriends = "images/BFF/";
+============================================================ */
+$uploadDirFriends = "images/BFF/";
 if (!is_dir($uploadDirFriends)) {
     mkdir($uploadDirFriends, 0777, true);
 }
@@ -65,9 +84,10 @@ if (isset($_POST['add_friend'])) {
 
     if (in_array($fileType, $allowedTypes)) {
         if (move_uploaded_file($_FILES["friend_image"]["tmp_name"], $targetFilePath)) {
-            // Save only the file name in DB, not the full path
             $query = "INSERT INTO college_friends (image) VALUES ('$fileName')";
             mysqli_query($conn, $query);
+            header("Location: ".$_SERVER['PHP_SELF']);
+            exit();
         }
     }
 }
@@ -80,10 +100,12 @@ if (isset($_POST['confirm_delete_friend'])) {
         $row = mysqli_fetch_assoc($getImage);
         $imagePath = $uploadDirFriends . $row['image'];
         if (file_exists($imagePath)) {
-            unlink($imagePath); // delete the actual image file
+            unlink($imagePath);
         }
     }
     mysqli_query($conn, "DELETE FROM college_friends WHERE id=$id");
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
 }
 
 // === READ ===
@@ -143,7 +165,9 @@ input[type="text"], input[type="file"]{
   </form>
 
   <div class="grid">
-    <?php while ($row = mysqli_fetch_assoc($techResult)): ?>
+    <?php 
+    $techResult = mysqli_query($conn, "SELECT * FROM tech_stack ORDER BY id ASC");
+    while ($row = mysqli_fetch_assoc($techResult)): ?>
     <div class="card" id="tech-<?= $row['id'] ?>">
       <img src="<?= htmlspecialchars($row['image_url']); ?>" alt="<?= htmlspecialchars($row['alt_text']); ?>">
       <h3><?= htmlspecialchars($row['tech_name']); ?></h3>
@@ -168,7 +192,6 @@ input[type="text"], input[type="file"]{
     <?php endwhile; ?>
   </div>
 
-<div class="container">
   <!-- ================= COLLEGE FRIENDS ================= -->
   <h2><i class="fa-solid fa-user-group"></i> Manage College Friends</h2>
 
@@ -185,10 +208,12 @@ input[type="text"], input[type="file"]{
 
   <!-- Display Friends -->
   <div class="grid">
-    <?php while ($row = mysqli_fetch_assoc($friendsResult)): ?>
+    <?php 
+    $friendsResult = mysqli_query($conn, "SELECT * FROM college_friends ORDER BY id ASC");
+    while ($row = mysqli_fetch_assoc($friendsResult)): ?>
       <div class="card" id="friend-<?= $row['id'] ?>">
         <img src="<?= $uploadDirFriends . htmlspecialchars($row['image']); ?>" alt="Friend">
-        <button class="btn btn-delete" onclick="openDeletePopup(<?= $row['id'] ?>)">
+        <button class="btn btn-delete" onclick="openDeletePopup('friend',<?= $row['id'] ?>)">
           <i class="fa-solid fa-trash"></i> Delete
         </button>
       </div>
@@ -199,23 +224,62 @@ input[type="text"], input[type="file"]{
 <!-- Delete Popup -->
 <div class="delete-popup" id="deletePopup">
   <div class="popup-content">
-    <h3>Delete Friend Image?</h3>
-    <form method="POST">
+    <h3 id="deleteTitle">Confirm Delete</h3>
+    <form method="POST" id="deleteForm">
       <input type="hidden" name="id" id="deleteId">
+      <input type="hidden" name="type" id="deleteType">
       <button type="button" class="btn-cancel" onclick="closeDeletePopup()">Cancel</button>
-      <button type="submit" name="confirm_delete_friend" class="btn-confirm">Delete</button>
+      <button type="submit" class="btn-confirm" id="confirmButton">Delete</button>
     </form>
   </div>
 </div>
 
 <script>
-function openDeletePopup(id){
-  document.getElementById('deletePopup').style.display='flex';
-  document.getElementById('deleteId').value=id;
+let currentDeleteType = '';
+let currentDeleteId = 0;
+
+function toggleUpdate(type, id) {
+    const form = document.getElementById(`update-${type}-${id}`);
+    form.style.display = form.style.display === 'block' ? 'none' : 'block';
 }
-function closeDeletePopup(){
-  document.getElementById('deletePopup').style.display='none';
+
+function openDeletePopup(type, id) {
+    currentDeleteType = type;
+    currentDeleteId = id;
+    
+    const popup = document.getElementById('deletePopup');
+    const deleteTitle = document.getElementById('deleteTitle');
+    const deleteId = document.getElementById('deleteId');
+    const deleteType = document.getElementById('deleteType');
+    const confirmButton = document.getElementById('confirmButton');
+    const deleteForm = document.getElementById('deleteForm');
+    
+    deleteId.value = id;
+    deleteType.value = type;
+    
+    if (type === 'tech') {
+        deleteTitle.textContent = 'Delete Technology?';
+        confirmButton.name = 'confirm_delete_tech';
+    } else {
+        deleteTitle.textContent = 'Delete Friend Image?';
+        confirmButton.name = 'confirm_delete_friend';
+    }
+    
+    popup.style.display = 'flex';
 }
+
+function closeDeletePopup() {
+    document.getElementById('deletePopup').style.display = 'none';
+    currentDeleteType = '';
+    currentDeleteId = 0;
+}
+
+// Close popup when clicking outside
+document.getElementById('deletePopup').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeDeletePopup();
+    }
+});
 </script>
 
 </body>

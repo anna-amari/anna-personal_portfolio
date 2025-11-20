@@ -490,6 +490,9 @@ $projectsResult = $conn->query($projectsQuery);
       <div class="logo-item">
         <img src="images/Logo/5.jpg" alt="Logo Design 4">
       </div>
+       <div class="logo-item">
+        <img src="images/sl.png" alt="Logo Design 5">
+      </div>
     </div>
   </footer>
 
