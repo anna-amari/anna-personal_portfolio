@@ -102,6 +102,20 @@
         </button>
       </div>
 
+       <div class="project">
+        <img src="images/d4.png" alt="StudLife">
+        <h3>StudLife: IT Academic System</h3>
+        <p>It consists of Pomodoro Timer, To-Do List, Calendar, and Career Path descriptions.</p>
+        <h4>Framework: CodeIgniter 4</h4>
+        <div class="tags">
+          <span>JavaScript</span><span>PHP</span><span>SQL</span><span>Ajax</span>
+        </div>
+       <button class="view-btn" onclick="openScreenshotGallery('StudLife', 'd', 41)">
+  <i class="fas fa-images"></i> View Screenshots
+</button>
+      </div>
+
+
       <div class="project">
         <img src="images/blog.png" alt="BLOG">
         <h3>Personal Blog</h3>
@@ -114,18 +128,7 @@
         </button>
       </div>
 
-      <div class="project">
-        <img src="images/StudLife.png" alt="StudLife">
-        <h3>StudLife: Student Productivity WebApp</h3>
-        <p>It consists of Pomodoro Timer, To-Do List, Calendar, and Career Path descriptions.</p>
-        <h4>Framework: CodeIgniter 4</h4>
-        <div class="tags">
-          <span>JavaScript</span><span>PHP</span><span>SQL</span>
-        </div>
-        <button class="view-btn" onclick="openScreenshotGallery('StudLife', 'd', 4)">
-          <i class="fas fa-images"></i> View Screenshots
-        </button>
-      </div>
+     
 
       <div class="project">
         <img src="images/cspcWebsite.png" alt="CSPC">
@@ -134,7 +137,7 @@
         <div class="tags">
           <span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>SQL</span>
         </div>
-        <button class="view-btn" onclick="openScreenshotGallery('CSPC Website', 'e', 4)">
+        <button class="view-btn" onclick="openScreenshotGallery('CSPC Website', 'e', 2)">
           <i class="fas fa-images"></i> View Screenshots
         </button>
       </div>
@@ -302,7 +305,7 @@
       currentGallery = { prefix: prefix, count: totalCount, loaded: 0 };
       
       // Update gallery title
-      document.getElementById('galleryTitle').textContent = `${projectName} - Screenshots`;
+      document.getElementById('galleryTitle').textContent = `${projectName} `;
       
       // Clear previous images
       document.getElementById('galleryImages').innerHTML = '';

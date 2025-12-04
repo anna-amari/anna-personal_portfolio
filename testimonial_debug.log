@@ -118,3 +118,19 @@ Executing query: INSERT INTO testimonials (name, position, testimonials_text, ra
 Insert successful, affected rows: 1
 2025-11-20 14:42:49 - Request completed
 
+2025-12-04 14:25:50 - Request started
+POST data received: Array
+(
+    [name] => ika isi mo
+    [position] => hehehh
+    [rating] => 5
+    [testimonial] => miss u baby
+
+)
+
+Processed data - Name: 'ika isi mo', Position: 'hehehh', Rating: 5, Text: 'miss u baby'
+Executing query: INSERT INTO testimonials (name, position, testimonials_text, rating, created_at) 
+              VALUES ('ika isi mo', 'hehehh', 'miss u baby', 5, NOW())
+Insert successful, affected rows: 1
+2025-12-04 14:25:51 - Request completed
+

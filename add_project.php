@@ -1,5 +1,4 @@
 <?php
-include 'd_header.php';
 include 'db.php';
 
 $pageTitle = "Add New Project";
@@ -52,71 +51,75 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
-<link rel="stylesheet" href="dashboard.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-    .centered-form-container {
-         display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        min-height: 80vh;
-        padding: 40px 20px;
-        width: 100vw; /* Change to viewport width */
+    body {
+        background: #000;
+        font-family: 'Poppins', sans-serif;
+        color: white;
         margin: 0;
-        margin-left: -50vw; /* Compensate for any parent padding */
-        left: 50%;
-        position: relative;
+        padding: 0;
+    }
+
+    .centered-form-container {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        padding: 50px 20px;
+        width: 100%;
+        min-height: 100vh;
+        background: #000;
     }
 
     .centered-form {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-        border-radius: 16px;
-        padding: 40px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
+        background: #0f0f0f;
+        border-radius: 18px;
+        padding: 45px;
         width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
+        max-width: 850px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
     }
 
     .form-header {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 35px;
         padding-bottom: 20px;
-        border-bottom: 2px solid rgba(232, 156, 174, 0.3);
+        border-bottom: 2px solid rgba(232, 156, 174, 0.25);
     }
 
     .form-header h2 {
-        color: #e89cae;
-        font-size: 2rem;
+        color: #ffb7cb;
+        font-size: 2.1rem;
         font-weight: 700;
-        margin: 0 0 10px 0;
+        margin-bottom: 12px;
     }
 
     .back-button {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        background: rgba(232, 156, 174, 0.1);
-        color: #e89cae;
+        gap: 10px;
+        background: rgba(255, 183, 203, 0.12);
+        color: #ffb7cb;
         padding: 10px 20px;
-        border: 1px solid rgba(232, 156, 174, 0.3);
-        border-radius: 8px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 183, 203, 0.3);
         text-decoration: none;
         font-weight: 500;
-        transition: all 0.3s ease;
+        transition: 0.25s ease-in-out;
     }
 
     .back-button:hover {
-        background: rgba(232, 156, 174, 0.2);
-        transform: translateX(-3px);
+        background: rgba(255, 183, 203, 0.25);
+        transform: translateX(-4px);
     }
 
     .centered-form-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 30px;
+        gap: 22px;
+        margin-bottom: 25px;
     }
 
     .form-group {
@@ -129,8 +132,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     .form-group label {
-        color: #e89cae;
-        font-weight: 600;
+        color: #ffb7cb;
+        font-weight: 500;
         margin-bottom: 8px;
         font-size: 0.95rem;
     }
@@ -138,127 +141,105 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     .form-group input,
     .form-group textarea,
     .form-group select {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: white;
-        padding: 12px 16px;
-        border-radius: 8px;
+        background: #141414;
+        border: 1px solid #333;
+        color: #f2f2f2;
+        padding: 12px 15px;
+        border-radius: 10px;
         font-size: 1rem;
-        transition: all 0.3s ease;
-        width: 100%;
+        transition: 0.25s;
     }
 
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-        border-color: #e89cae;
+        border-color: #ffb7cb;
+        box-shadow: 0 0 0 3px rgba(255, 183, 203, 0.2);
         outline: none;
-        box-shadow: 0 0 0 3px rgba(232, 156, 174, 0.1);
     }
 
     .form-group textarea {
+        min-height: 120px;
         resize: vertical;
-        min-height: 100px;
     }
 
     .file-input-container {
-        background: rgba(255, 255, 255, 0.05);
-        border: 2px dashed rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        padding: 20px;
+        background: #121212;
+        border: 2px dashed rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        padding: 25px;
         text-align: center;
-        transition: all 0.3s ease;
-        width: 100%;
+        transition: 0.3s ease;
     }
 
     .file-input-container:hover {
-        border-color: #e89cae;
-        background: rgba(232, 156, 174, 0.05);
+        border-color: #ffb7cb;
+        background: rgba(255, 183, 203, 0.06);
     }
 
     .file-input-container input[type="file"] {
         width: 100%;
-        background: transparent;
         border: none;
+        background: transparent;
         color: #ccc;
     }
 
     .file-input-container small {
         color: #888;
-        font-size: 0.85rem;
-        display: block;
         margin-top: 8px;
+        display: block;
+        font-size: 0.85rem;
     }
 
     .alt-text-group {
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 6px;
-        padding: 12px;
-        margin-bottom: 10px;
-        border-left: 3px solid #e89cae;
-        width: 100%;
+        background: #151515;
+        border-radius: 10px;
+        padding: 14px;
+        margin-bottom: 12px;
+        border-left: 3px solid #ffb7cb;
     }
 
     .alt-text-group label {
-        color: #ccc;
-        font-size: 0.9rem;
-        margin-bottom: 5px;
-    }
-
-    .alt-text-group input {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        width: 100%;
+        color: #ddd;
+        margin-bottom: 6px;
     }
 
     .submit-btn-container {
         text-align: center;
-        margin-top: 30px;
+        margin-top: 5px;
     }
 
     .btn-primary {
-        background: linear-gradient(135deg, #e89cae 0%, #f7b8c8 100%);
-        color: white;
-        padding: 14px 40px;
-        border: none;
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(232, 156, 174, 0.3);
         display: inline-flex;
         align-items: center;
         gap: 10px;
+        background: linear-gradient(135deg, #ffb7cb 0%, #ff8aae 100%);
+        color: white;
+        padding: 15px 45px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        border: none;
+        cursor: pointer;
+        transition: 0.25s;
+        box-shadow: 0 4px 18px rgba(255, 183, 203, 0.35);
     }
 
     .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(232, 156, 174, 0.4);
-        background: linear-gradient(135deg, #f7b8c8 0%, #e89cae 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(255, 183, 203, 0.5);
     }
 
-    /* Responsive adjustments */
     @media (max-width: 768px) {
-        .centered-form-container {
-            padding: 20px 15px;
-        }
-        
         .centered-form {
-            padding: 30px 20px;
+            padding: 30px 22px;
         }
-        
+
         .centered-form-grid {
             grid-template-columns: 1fr;
-            gap: 15px;
-        }
-        
-        .form-header h2 {
-            font-size: 1.5rem;
         }
     }
 </style>
-
 <main class="dashboard-main">
     <div class="centered-form-container">
         <div class="centered-form">

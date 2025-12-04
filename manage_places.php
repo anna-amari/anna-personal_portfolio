@@ -163,29 +163,29 @@ $destinationsResult = $conn->query("SELECT * FROM dream_destinations ORDER BY id
     position: relative;
   }
 
-  /* Back Button Styles */
-  .back-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: #f2a6c1;
-    color: #111;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    z-index: 1000;
-    transition: all 0.3s ease;
-  }
+ /* Back Button Styles */
+.back-btn {
+  position: absolute; /* Change from fixed to absolute */
+  top: 20px;
+  left: 20px;
+  background: #f2a6c1;
+  color: #111;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
 
-  .back-btn:hover {
-    background: #e89cae;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(232, 156, 174, 0.3);
-  }
+.back-btn:hover {
+  background: #e89cae;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(232, 156, 174, 0.3);
+}
 
   .admin-container {
     max-width: 1200px;

@@ -57,12 +57,11 @@
     .close-gallery:hover {
       background: rgba(232, 156, 174, 0.2);
     }
-
     .gallery-images {
       flex: 1;
       overflow-y: auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(2, 1fr); /* 2 images per row */
       gap: 15px;
       padding: 10px;
     }
@@ -466,60 +465,6 @@
   border-radius: 8px;
   margin-bottom: 20px;
   text-align: center;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .testimonials-container {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .testimonial-header {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .testimonial-rating {
-    text-align: left;
-  }
-  
-  .testimonials-title {
-    font-size: 2.5rem;
-  }
-  
-  .add-testimonial-btn {
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
-    right: 20px;
-    font-size: 1.8rem;
-  }
-  
-  .modal-content {
-    width: 95%;
-    padding: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .testimonial-card {
-    padding: 20px;
-  }
-  
-  .testimonials-title {
-    font-size: 2rem;
-  }
-  
-  .testimonial-text {
-    font-size: 1rem;
-  }
-  
-  .add-testimonial-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-  }
 }
 
 /* Load More Button Styles */

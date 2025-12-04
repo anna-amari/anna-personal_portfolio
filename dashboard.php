@@ -263,7 +263,6 @@ $messages_count = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as cou
     <a href="message_form.php"><i class="fas fa-user"></i> Messages</a>
     <a href="index.php"><i class="fas fa-globe"></i> View Portfolio</a>
     <hr>
-    <a href="settings.php"><i class="fas fa-cog"></i> Settings</a>
     <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
   </div>
 
